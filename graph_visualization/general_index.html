@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+        }
+        
+        #graph-container {
+            width: 100%;
+            height: 90vh;
+            background: #111;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .node:hover {
+            filter: brightness(1.5);
+        }
+        
+        .node-label {
+            font-size: 11px;
+            pointer-events: none;
+            text-shadow: 0 0 3px #000, 0 0 3px #000;
+            fill: #e0e0e0;
+        }
+        
+        .link {
+            stroke-opacity: 0.3;
+            fill: none;
+        }
+        
+        .link-label {
+            font-size: 9px;
+            fill: #888;
+            pointer-events: none;
+            text-shadow: 0 0 2px #000;
+        }
+        
+        .controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            z-index: 1000;
+        }
+        
+        .control-group {
+            margin-bottom: 12px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .control-group select, .control-group input {
+            width: 200px;
+            padding: 5px;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            border-radius: 4px;
+        }
+        
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            max-width: 300px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .info-panel h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #4fc3f7;
+        }
+        
+        .info-panel p {
+            margin: 5px 0;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        button {
+            background: #2196f3;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div id="graph-container">
+        <div class="controls">
+            <div class="control-group">
+                <label>Load Graph JSON:</label>
+                <input type="file" id="json-upload" accept=".json">
+            </div>
+            <div class="control-group">
+                <label>Filter by Node Type:</label>
+                <select id="node-type-filter">
+                    <option value="all">All Types</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Show Edge Labels:</label>
+                <input type="checkbox" id="edge-labels" checked>
+            </div>
+            <div class="control-group">
+                <label>Node Size:</label>
+                <input type="range" id="node-size" min="3" max="15" value="6">
+            </div>
+            <div class="control-group">
+                <label>Color Scheme:</label>
+                <select id="color-scheme">
+                    <option value="vibrant">Vibrant</option>
+                    <option value="pastel">Pastel</option>
+                    <option value="earth">Earth Tones</option>
+                    <option value="neon">Neon</option>
+                    <option value="monochrome">Monochrome</option>
+                </select>
+            </div>
+            <button onclick="resetZoom()">Reset View</button>
+        </div>
+        
+        <div class="legend">
+            <div style="font-weight: bold; margin-bottom: 10px; font-size: 12px;">Node Types</div>
+            <div id="legend-content"></div>
+        </div>
+        
+        <div class="info-panel" id="info-panel">
+            <h3 id="info-title"></h3>
+            <p id="info-description"></p>
+            <p id="info-connections"></p>
+        </div>
+    </div>
+
+    <script>
+        // Default knowledge graph data
+        let graphData = {
+            "nodes": [
+                {"id": "n1", "type": "root_question", "label": "What are the characteristics of successful movies?", "description": "Primary analytical question seeking patterns and attributes of movie success"},
+                {"id": "n2", "type": "sub_question", "label": "How do we define success?", "description": "Meta-question requiring operationalization of 'success'"},
+                {"id": "n3", "type": "success_dimension", "label": "Commercial success", "description": "Financial performance and market impact"},
+                {"id": "n4", "type": "success_dimension", "label": "Critical success", "description": "Professional evaluation and industry recognition"},
+                {"id": "n5", "type": "success_dimension", "label": "Audience success", "description": "Viewer satisfaction and engagement"},
+                {"id": "n6", "type": "success_dimension", "label": "Cultural success", "description": "Long-term impact and cultural resonance"},
+                {"id": "n7", "type": "metric", "label": "ROI", "description": "Return on investment"},
+                {"id": "n8", "type": "metric", "label": "Total revenue", "description": "Absolute financial intake"},
+                {"id": "n31", "type": "sub_question", "label": "What drives success?", "description": "Identifying causal attributes"},
+                {"id": "n32", "type": "concept", "label": "Content attributes", "description": "Intrinsic film properties"},
+                {"id": "n33", "type": "concept", "label": "Creative talent", "description": "People who create"},
+                {"id": "n34", "type": "concept", "label": "Production factors", "description": "How film was made"},
+                {"id": "n35", "type": "concept", "label": "Market strategy", "description": "How film reached audiences"},
+                {"id": "n36", "type": "concept", "label": "Context", "description": "External conditions"},
+                {"id": "n37", "type": "concept", "label": "Genre", "description": "Category/type"},
+                {"id": "n15", "type": "data_point", "label": "Production budget", "description": "Cost to produce"},
+                {"id": "n41", "type": "data_point", "label": "Primary genre", "description": "Main classification"},
+                {"id": "n47", "type": "concept", "label": "Director", "description": "Creative vision leader"},
+                {"id": "n48", "type": "concept", "label": "Cast", "description": "On-screen performers"},
+                {"id": "n61", "type": "concept", "label": "Release strategy", "description": "When/how released"},
+                {"id": "n69", "type": "contextual_factor", "label": "Competition", "description": "Other concurrent films"}
+            ],
+            "edges": [
+                {"from": "n1", "to": "n2", "relationship": "decomposes_into"},
+                {"from": "n1", "to": "n31", "relationship": "decomposes_into"},
+                {"from": "n2", "to": "n3", "relationship": "has_dimension"},
+                {"from": "n2", "to": "n4", "relationship": "has_dimension"},
+                {"from": "n2", "to": "n5", "relationship": "has_dimension"},
+                {"from": "n2", "to": "n6", "relationship": "has_dimension"},
+                {"from": "n3", "to": "n7", "relationship": "measured_by"},
+                {"from": "n3", "to": "n8", "relationship": "measured_by"},
+                {"from": "n31", "to": "n32", "relationship": "investigates"},
+                {"from": "n31", "to": "n33", "relationship": "investigates"},
+                {"from": "n31", "to": "n34", "relationship": "investigates"},
+                {"from": "n31", "to": "n35", "relationship": "investigates"},
+                {"from": "n31", "to": "n36", "relationship": "investigates"},
+                {"from": "n32", "to": "n37", "relationship": "includes"},
+                {"from": "n33", "to": "n47", "relationship": "includes"},
+                {"from": "n33", "to": "n48", "relationship": "includes"},
+                {"from": "n35", "to": "n61", "relationship": "includes"},
+                {"from": "n36", "to": "n69", "relationship": "includes"},
+                {"from": "n37", "to": "n41", "relationship": "operationalized_as"},
+                {"from": "n37", "to": "n3", "relationship": "influences"},
+                {"from": "n37", "to": "n15", "relationship": "influences"},
+                {"from": "n15", "to": "n34", "relationship": "signals"},
+                {"from": "n47", "to": "n3", "relationship": "influences"},
+                {"from": "n47", "to": "n4", "relationship": "influences"},
+                {"from": "n48", "to": "n3", "relationship": "influences"},
+                {"from": "n61", "to": "n3", "relationship": "moderates"},
+                {"from": "n69", "to": "n3", "relationship": "moderates"}
+            ]
+        };
+
+        // Color palettes
+        const colorPalettes = {
+            vibrant: [
+                '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', 
+                '#feca57', '#ff9ff3', '#54a0ff', '#48dbfb',
+                '#fd79a8', '#a29bfe', '#6c5ce7', '#00b894'
+            ],
+            pastel: [
+                '#FFB6C1', '#FFE4B5', '#E6E6FA', '#F0E68C',
+                '#DDA0DD', '#B0E0E6', '#F5DEB3', '#FFE4E1',
+                '#D8BFD8', '#F0FFFF', '#E0FFFF', '#FAFAD2'
+            ],
+            earth: [
+                '#8B4513', '#D2691E', '#CD853F', '#DAA520',
+                '#BC8F8F', '#F4A460', '#DEB887', '#D2B48C',
+                '#FFE4C4', '#FFDEAD', '#F5DEB3', '#8B7355'
+            ],
+            neon: [
+                '#FF073A', '#0AD3FF', '#FF0099', '#39FF14',
+                '#FFFF33', '#FF6EC7', '#00FFCC', '#FFA500',
+                '#FF1493', '#00FF00', '#FF00FF', '#00CED1'
+            ],
+            monochrome: [
+                '#2c3e50', '#34495e', '#7f8c8d', '#95a5a6',
+                '#bdc3c7', '#ecf0f1', '#465669', '#576574',
+                '#707B7C', '#808B96', '#909497', '#A6ACAF'
+            ]
+        };
+
+        let currentColorScheme = {};
+        let currentPalette = 'vibrant';
+
+        // Dynamic color assignment function
+        function generateColorScheme(nodeTypes, palette = 'vibrant') {
+            const colors = colorPalettes[palette];
+            const scheme = {};
+            
+            // Sort node types for consistent color assignment
+            const sortedTypes = [...nodeTypes].sort();
+            
+            sortedTypes.forEach((type, index) => {
+                // Use modulo to cycle through colors if there are more types than colors
+                scheme[type] = colors[index % colors.length];
+            });
+            
+            return scheme;
+        }
+
+        // Function to update color scheme based on current data
+        function updateColorScheme() {
+            const nodeTypes = [...new Set(graphData.nodes.map(n => n.type))];
+            currentColorScheme = generateColorScheme(nodeTypes, currentPalette);
+            return currentColorScheme;
+        }
+
+        // File upload handler
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('json-upload').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const newGraphData = JSON.parse(event.target.result);
+                        
+                        // Validate the JSON structure
+                        if (!newGraphData.nodes || !newGraphData.edges) {
+                            alert('Invalid JSON format. Must contain "nodes" and "edges" arrays.');
+                            return;
+                        }
+
+                        // Update graph data and redraw
+                        graphData = newGraphData;
+                        renderGraph();
+                    } catch (error) {
+                        alert('Error parsing JSON: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            });
+
+            // Color scheme selector
+            document.getElementById('color-scheme').addEventListener('change', function(e) {
+                currentPalette = e.target.value;
+                renderGraph();
+            });
+        });
+
+        // Setup SVG
+        const container = document.getElementById('graph-container');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        const svg = d3.select('#graph-container')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const g = svg.append('g');
+
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on('zoom', (event) => {
+                g.attr('transform', event.transform);
+            });
+
+        svg.call(zoom);
+
+        function resetZoom() {
+            svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+        }
+
+        // Initialize the graph
+        renderGraph();
+
+        function renderGraph() {
+            // Update color scheme based on current data
+            updateColorScheme();
+            
+            // Clear existing graph
+            g.selectAll('*').remove();
+            svg.select('defs').selectAll('*').remove();
+
+            // Create defs if it doesn't exist
+            if (svg.select('defs').empty()) {
+                svg.append('defs');
+            }
+            
+            // Create a single arrow marker with a neutral color
+            svg.select('defs').append('marker')
+                .attr('id', 'arrowhead')
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 15)
+                .attr('refY', 0)
+                .attr('markerWidth', 8)
+                .attr('markerHeight', 8)
+                .attr('orient', 'auto')
+                .attr('markerUnits', 'strokeWidth')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', '#999')
+                .style('stroke', 'none');
+
+            // Convert edges to use source/target for D3
+            const edges = graphData.edges.map(e => ({
+                source: e.from,
+                target: e.to,
+                relationship: e.relationship
+            }));
+
+            // Create force simulation
+            const simulation = d3.forceSimulation(graphData.nodes)
+                .force('link', d3.forceLink(edges)
+                    .id(d => d.id)
+                    .distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(30));
+
+            // Draw links
+            const link = g.append('g')
+                .selectAll('line')
+                .data(edges)
+                .enter()
+                .append('line')
+                .attr('class', 'link')
+                .attr('stroke', d => {
+                    const sourceNode = graphData.nodes.find(n => n.id === (d.source.id || d.source));
+                    return currentColorScheme[sourceNode.type] || '#666';
+                })
+                .attr('stroke-width', 2)
+                .attr('marker-end', 'url(#arrowhead)')
+                .style('stroke-opacity', 0.6);
+
+            // Draw link labels
+            const linkLabel = g.append('g')
+                .selectAll('text')
+                .data(edges)
+                .enter()
+                .append('text')
+                .attr('class', 'link-label')
+                .text(d => d.relationship);
+
+            // Draw nodes
+            const node = g.append('g')
+                .selectAll('circle')
+                .data(graphData.nodes)
+                .enter()
+                .append('circle')
+                .attr('class', 'node')
+                .attr('r', 6)
+                .attr('fill', d => currentColorScheme[d.type] || '#666')
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended))
+                .on('click', showNodeInfo)
+                .on('mouseover', highlightConnections)
+                .on('mouseout', resetHighlight);
+
+            // Draw node labels
+            const nodeLabel = g.append('g')
+                .selectAll('text')
+                .data(graphData.nodes)
+                .enter()
+                .append('text')
+                .attr('class', 'node-label')
+                .attr('dx', 10)
+                .attr('dy', 4)
+                .text(d => (d.label.length > 30) ? d.label.substring(0, 30) + '...' : d.label);
+
+            // Update positions on simulation tick
+            simulation.on('tick', () => {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+
+                linkLabel
+                    .attr('x', d => (d.source.x + d.target.x) / 2)
+                    .attr('y', d => (d.source.y + d.target.y) / 2);
+
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+
+                nodeLabel
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+
+            // Drag functions
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            // Show node information
+            function showNodeInfo(event, d) {
+                const panel = document.getElementById('info-panel');
+                const title = document.getElementById('info-title');
+                const description = document.getElementById('info-description');
+                const connections = document.getElementById('info-connections');
+
+                title.textContent = d.label;
+                description.textContent = d.description || 'No description available';
+                
+                const incomingEdges = edges.filter(e => {
+                    const targetId = e.target.id || e.target;
+                    return targetId === d.id;
+                });
+                const outgoingEdges = edges.filter(e => {
+                    const sourceId = e.source.id || e.source;
+                    return sourceId === d.id;
+                });
+                
+                connections.innerHTML = `<strong>Type:</strong> ${d.type}<br>
+                    <strong>Incoming:</strong> ${incomingEdges.length}<br>
+                    <strong>Outgoing:</strong> ${outgoingEdges.length}`;
+
+                panel.style.display = 'block';
+            }
+
+            // Highlight connected nodes
+            function highlightConnections(event, d) {
+                const connectedIds = new Set();
+                edges.forEach(e => {
+                    const sourceId = e.source.id || e.source;
+                    const targetId = e.target.id || e.target;
+                    if (sourceId === d.id) connectedIds.add(targetId);
+                    if (targetId === d.id) connectedIds.add(sourceId);
+                });
+
+                node.style('opacity', n => n.id === d.id || connectedIds.has(n.id) ? 1 : 0.2);
+                link.style('opacity', e => {
+                    const sourceId = e.source.id || e.source;
+                    const targetId = e.target.id || e.target;
+                    return sourceId === d.id || targetId === d.id ? 0.8 : 0.1;
+                });
+                nodeLabel.style('opacity', n => n.id === d.id || connectedIds.has(n.id) ? 1 : 0.2);
+            }
+
+            function resetHighlight() {
+                node.style('opacity', 1);
+                link.style('stroke-opacity', 0.6);
+                nodeLabel.style('opacity', 1);
+            }
+
+            // Update filter dropdown with current node types
+            const typeFilter = document.getElementById('node-type-filter');
+            typeFilter.innerHTML = '<option value="all">All Types</option>';
+            const uniqueTypes = [...new Set(graphData.nodes.map(n => n.type))];
+            uniqueTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type.replace(/_/g, ' ');
+                typeFilter.appendChild(option);
+            });
+
+            // Update legend dynamically
+            const legendContent = document.getElementById('legend-content');
+            legendContent.innerHTML = '';
+            Object.entries(currentColorScheme).forEach(([type, color]) => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `<div class="legend-color" style="background: ${color}"></div>${type.replace(/_/g, ' ')}`;
+                legendContent.appendChild(item);
+            });
+
+            // Event listeners for controls
+            document.getElementById('node-type-filter').addEventListener('change', function(e) {
+                const selectedType = e.target.value;
+                node.style('opacity', d => selectedType === 'all' || d.type === selectedType ? 1 : 0.2);
+                nodeLabel.style('opacity', d => selectedType === 'all' || d.type === selectedType ? 1 : 0.2);
+            });
+
+            document.getElementById('edge-labels').addEventListener('change', function(e) {
+                linkLabel.style('display', e.target.checked ? 'block' : 'none');
+            });
+
+            document.getElementById('node-size').addEventListener('input', function(e) {
+                node.attr('r', e.target.value);
+            });
+        }
+    </script>
+</body>
+</html>

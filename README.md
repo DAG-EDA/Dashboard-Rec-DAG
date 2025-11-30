@@ -1,7 +1,9 @@
 # Design Intent Dashboard Recommendation
 
-## Motivation: Dashboard designers are currently on their own to interpret given data, analyst/domain objectives, and design practices for dashboard components. There are dashboard recommendation systems but they employ template-based approaches to generate dashboard components. 
-## Approach: Our team utilizes LLMs generate dynamic and nuanced dashboard recommendations based on a user's natural language intent and a data set. To construct dashboard recommendations we, build data representations between three layers of abstracted information: Natural language | Conceptual | Data. 
+## Motivation: 
+Dashboard designers are currently on their own to interpret given data, analyst/domain objectives, and design practices for dashboard components. There are dashboard recommendation systems but they employ template-based approaches to generate dashboard components. 
+## Approach: 
+Our team utilizes LLMs generate dynamic and nuanced dashboard recommendations based on a user's natural language intent and a data set. To construct dashboard recommendations we, build data representations between three layers of abstracted information: Natural language | Conceptual | Data. 
 
 ![Information layers diagram](dageda.jpg)
 

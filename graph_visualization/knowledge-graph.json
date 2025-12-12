@@ -1,0 +1,507 @@
+{
+  "Successful Movie Characteristics": [
+    {
+      "edge": "Characterized By",
+      "neighbor": "Production Attributes"
+    },
+    {
+      "edge": "Characterized By",
+      "neighbor": "Reception & Critical Acclaim"
+    },
+    {
+      "edge": "Characterized By",
+      "neighbor": "Financial Performance"
+    },
+    {
+      "edge": "Characterized By",
+      "neighbor": "Audience Engagement"
+    }
+  ],
+  "Production Attributes": [
+    {
+      "edge": "Includes",
+      "neighbor": "Creative Elements"
+    },
+    {
+      "edge": "Includes",
+      "neighbor": "Cast & Crew"
+    },
+    {
+      "edge": "Includes",
+      "neighbor": "Technical Specifications"
+    },
+    {
+      "edge": "Includes",
+      "neighbor": "Production Logistics"
+    }
+  ],
+  "Reception & Critical Acclaim": [
+    {
+      "edge": "Measured By",
+      "neighbor": "Critical Reviews"
+    },
+    {
+      "edge": "Measured By",
+      "neighbor": "Audience Ratings"
+    },
+    {
+      "edge": "Measured By",
+      "neighbor": "Awards & Nominations"
+    }
+  ],
+  "Financial Performance": [
+    {
+      "edge": "Assessed Through",
+      "neighbor": "Revenue Streams"
+    },
+    {
+      "edge": "Assessed Through",
+      "neighbor": "Production & Marketing Costs"
+    },
+    {
+      "edge": "Assessed Through",
+      "neighbor": "Profitability Metrics"
+    }
+  ],
+  "Audience Engagement": [
+    {
+      "edge": "Gauged Via",
+      "neighbor": "Social Media Buzz"
+    },
+    {
+      "edge": "Gauged Via",
+      "neighbor": "Cultural Impact"
+    },
+    {
+      "edge": "Gauged Via",
+      "neighbor": "Franchise Potential"
+    }
+  ],
+  "Creative Elements": [
+    {
+      "edge": "Composed Of",
+      "neighbor": "Genre"
+    },
+    {
+      "edge": "Composed Of",
+      "neighbor": "Source Material"
+    },
+    {
+      "edge": "Composed Of",
+      "neighbor": "Screenplay"
+    },
+    {
+      "edge": "Composed Of",
+      "neighbor": "Original Score"
+    }
+  ],
+  "Cast & Crew": [
+    {
+      "edge": "Consists Of",
+      "neighbor": "Director"
+    },
+    {
+      "edge": "Consists Of",
+      "neighbor": "Lead Actors"
+    },
+    {
+      "edge": "Consists Of",
+      "neighbor": "Writer"
+    }
+  ],
+  "Technical Specifications": [
+    {
+      "edge": "Defined By",
+      "neighbor": "Runtime"
+    },
+    {
+      "edge": "Defined By",
+      "neighbor": "MPAA Rating"
+    },
+    {
+      "edge": "Defined By",
+      "neighbor": "Primary Language"
+    },
+    {
+      "edge": "Defined By",
+      "neighbor": "Country of Origin"
+    }
+  ],
+  "Production Logistics": [
+    {
+      "edge": "Involves",
+      "neighbor": "Production Company"
+    },
+    {
+      "edge": "Involves",
+      "neighbor": "Distributor"
+    },
+    {
+      "edge": "Involves",
+      "neighbor": "Release Season"
+    }
+  ],
+  "Critical Reviews": [
+    {
+      "edge": "Aggregated As",
+      "neighbor": "Metacritic Score"
+    },
+    {
+      "edge": "Aggregated As",
+      "neighbor": "Rotten Tomatoes Tomatometer"
+    }
+  ],
+  "Audience Ratings": [
+    {
+      "edge": "Aggregated As",
+      "neighbor": "Rotten Tomatoes Audience Score"
+    },
+    {
+      "edge": "Aggregated As",
+      "neighbor": "IMDb User Rating"
+    },
+    {
+      "edge": "Aggregated As",
+      "neighbor": "CinemaScore"
+    }
+  ],
+  "Awards & Nominations": [
+    {
+      "edge": "Exemplified By",
+      "neighbor": "Academy Awards"
+    },
+    {
+      "edge": "Exemplified By",
+      "neighbor": "Golden Globes"
+    },
+    {
+      "edge": "Exemplified By",
+      "neighbor": "BAFTAs"
+    }
+  ],
+  "Revenue Streams": [
+    {
+      "edge": "Generated From",
+      "neighbor": "Domestic Box Office Gross"
+    },
+    {
+      "edge": "Generated From",
+      "neighbor": "International Box Office Gross"
+    },
+    {
+      "edge": "Generated From",
+      "neighbor": "Streaming & VOD Revenue"
+    }
+  ],
+  "Production & Marketing Costs": [
+    {
+      "edge": "Broken Down Into",
+      "neighbor": "Production Budget"
+    },
+    {
+      "edge": "Broken Down Into",
+      "neighbor": "Marketing Budget"
+    }
+  ],
+  "Profitability Metrics": [
+    {
+      "edge": "Calculated Using",
+      "neighbor": "Return on Investment (ROI)"
+    },
+    {
+      "edge": "Calculated Using",
+      "neighbor": "Net Profit"
+    }
+  ],
+  "Social Media Buzz": [
+    {
+      "edge": "Measured By",
+      "neighbor": "Pre-Release Hype"
+    },
+    {
+      "edge": "Measured By",
+      "neighbor": "Post-Release Conversation Volume"
+    },
+    {
+      "edge": "Measured By",
+      "neighbor": "Sentiment Analysis"
+    }
+  ],
+  "Cultural Impact": [
+    {
+      "edge": "Observed Through",
+      "neighbor": "Search Trend Volume"
+    },
+    {
+      "edge": "Observed Through",
+      "neighbor": "Longevity of Discussion"
+    }
+  ],
+  "Franchise Potential": [
+    {
+      "edge": "Realized Through",
+      "neighbor": "Sequel/Prequel/Spinoff Count"
+    },
+    {
+      "edge": "Realized Through",
+      "neighbor": "Expanded Universe Media"
+    }
+  ],
+  "Genre": [
+    {
+      "edge": "Specified As",
+      "neighbor": "Primary Genre"
+    },
+    {
+      "edge": "Specified As",
+      "neighbor": "Sub-Genre(s)"
+    }
+  ],
+  "Source Material": [
+    {
+      "edge": "Categorized By",
+      "neighbor": "Adaptation Type"
+    },
+    {
+      "edge": "Categorized By",
+      "neighbor": "Source Material Popularity"
+    }
+  ],
+  "Screenplay": [
+    {
+      "edge": "Analyzed For",
+      "neighbor": "Passes Bechdel Test"
+    }
+  ],
+  "Director": [
+    {
+      "edge": "Evaluated By",
+      "neighbor": "Director's Previous Box Office Performance"
+    },
+    {
+      "edge": "Evaluated By",
+      "neighbor": "Director's Previous Award Nominations"
+    }
+  ],
+  "Lead Actors": [
+    {
+      "edge": "Evaluated By",
+      "neighbor": "Actor's Previous Box Office Performance"
+    },
+    {
+      "edge": "Evaluated By",
+      "neighbor": "Actor's Social Media Following"
+    },
+    {
+      "edge": "Evaluated By",
+      "neighbor": "Actor's Previous Award Nominations"
+    }
+  ],
+  "Writer": [],
+  "Original Score": [],
+  "MPAA Rating": [],
+  "Primary Language": [],
+  "Country of Origin": [],
+  "Production Company": [],
+  "Distributor": [],
+  "Release Season": [
+    {
+      "edge": "Categorized By",
+      "neighbor": "Release Quarter (Q1-Q4)"
+    },
+    {
+      "edge": "Categorized By",
+      "neighbor": "Is Holiday Release"
+    },
+    {
+      "edge": "Categorized By",
+      "neighbor": "Is Summer Blockbuster Season Release"
+    }
+  ],
+  "Academy Awards": [
+    {
+      "edge": "Quantified By",
+      "neighbor": "Number of Nominations (Academy Awards)"
+    },
+    {
+      "edge": "Quantified By",
+      "neighbor": "Number of Wins (Academy Awards)"
+    }
+  ],
+  "Golden Globes": [],
+  "BAFTAs": [],
+  "Production Budget": [
+    {
+      "edge": "Measured As",
+      "neighbor": "Budget Amount (USD)"
+    }
+  ],
+  "Marketing Budget": [
+    {
+      "edge": "Measured As",
+      "neighbor": "Budget Amount (USD)"
+    }
+  ],
+  "Return on Investment (ROI)": [
+    {
+      "edge": "Calculated As",
+      "neighbor": "Worldwide Gross to Budget Ratio"
+    }
+  ],
+  "Pre-Release Hype": [],
+  "Post-Release Conversation Volume": [],
+  "Search Trend Volume": [],
+  "Longevity of Discussion": [],
+  "Expanded Universe Media": [],
+  "Actor's Previous Box Office Performance": [
+    {
+      "edge": "Measured By",
+      "neighbor": "Average Gross of Last 5 Films (USD)"
+    }
+  ],
+  "Actor's Social Media Following": [
+    {
+      "edge": "Quantified As",
+      "neighbor": "Combined Follower Count"
+    },
+    {
+      "edge": "Quantified As",
+      "neighbor": "Average Engagement Rate"
+    }
+  ],
+  "Actor's Previous Award Nominations": [
+    {
+      "edge": "Counted As",
+      "neighbor": "Count of Major Award Nominations"
+    },
+    {
+      "edge": "Counted As",
+      "neighbor": "Count of Major Award Wins"
+    }
+  ],
+  "Number of Nominations (Academy Awards)": [
+    {
+      "edge": "Is",
+      "neighbor": "Total Oscar Nomination Count"
+    }
+  ],
+  "Number of Wins (Academy Awards)": [
+    {
+      "edge": "Is",
+      "neighbor": "Total Oscar Win Count"
+    }
+  ],
+  "Budget Amount (USD)": [
+    {
+      "edge": "Is",
+      "neighbor": "Budget in Millions (USD)"
+    }
+  ],
+  "Worldwide Gross to Budget Ratio": [
+    {
+      "edge": "Is",
+      "neighbor": "Ratio Value"
+    }
+  ],
+  "Metacritic Score": [
+    {
+      "edge": "Is",
+      "neighbor": "Metascore (0-100)"
+    }
+  ],
+  "Rotten Tomatoes Tomatometer": [
+    {
+      "edge": "Is",
+      "neighbor": "Tomatometer Percentage (0-100%)"
+    }
+  ],
+  "Rotten Tomatoes Audience Score": [
+    {
+      "edge": "Is",
+      "neighbor": "Audience Score Percentage (0-100%)"
+    }
+  ],
+  "IMDb User Rating": [
+    {
+      "edge": "Is",
+      "neighbor": "IMDb Score (1-10)"
+    }
+  ],
+  "CinemaScore": [
+    {
+      "edge": "Is",
+      "neighbor": "CinemaScore Grade (A+ to F)"
+    }
+  ],
+  "Runtime": [
+    {
+      "edge": "Is",
+      "neighbor": "Runtime in Minutes"
+    }
+  ],
+  "Sentiment Analysis": [
+    {
+      "edge": "Reported As",
+      "neighbor": "Positive Sentiment Percentage"
+    },
+    {
+      "edge": "Reported As",
+      "neighbor": "Negative Sentiment Percentage"
+    }
+  ],
+  "Domestic Box Office Gross": [
+    {
+      "edge": "Is",
+      "neighbor": "Gross Amount (USD)"
+    }
+  ],
+  "International Box Office Gross": [
+    {
+      "edge": "Is",
+      "neighbor": "Gross Amount (USD)"
+    }
+  ],
+  "Streaming & VOD Revenue": [],
+  "Net Profit": [
+    {
+      "edge": "Is",
+      "neighbor": "Profit Amount (USD)"
+    }
+  ],
+  "Sequel/Prequel/Spinoff Count": [
+    {
+      "edge": "Is",
+      "neighbor": "Total Franchise Installment Count"
+    }
+  ],
+  "Primary Genre": [],
+  "Sub-Genre(s)": [],
+  "Adaptation Type": [],
+  "Source Material Popularity": [],
+  "Passes Bechdel Test": [],
+  "Director's Previous Box Office Performance": [],
+  "Director's Previous Award Nominations": [],
+  "Release Quarter (Q1-Q4)": [],
+  "Is Holiday Release": [],
+  "Is Summer Blockbuster Season Release": [],
+  "Average Gross of Last 5 Films (USD)": [],
+  "Combined Follower Count": [],
+  "Average Engagement Rate": [],
+  "Count of Major Award Nominations": [],
+  "Count of Major Award Wins": [],
+  "Total Oscar Nomination Count": [],
+  "Total Oscar Win Count": [],
+  "Budget in Millions (USD)": [],
+  "Ratio Value": [],
+  "Metascore (0-100)": [],
+  "Tomatometer Percentage (0-100%)": [],
+  "Audience Score Percentage (0-100%)": [],
+  "IMDb Score (1-10)": [],
+  "CinemaScore Grade (A+ to F)": [],
+  "Runtime in Minutes": [],
+  "Positive Sentiment Percentage": [],
+  "Negative Sentiment Percentage": [],
+  "Gross Amount (USD)": [],
+  "Profit Amount (USD)": [],
+  "Total Franchise Installment Count": []
+}

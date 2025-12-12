@@ -11,13 +11,13 @@ class VariableGraph:
         self.edges: list[GraphEdge] = []
         self.node_id_map = {}  # concept_name -> node_id mapping
     
-    def add_node(self, concept_name: str, node_type: str, **attributes) -> str:
+    def add_node(self, concept_name: str, node_type=None, **attributes=None) -> str:
         """Add a node to the graph"""
         node_id = str(uuid.uuid4())
         
         node = GraphNode(
             id=node_id,
-            type=node_type,
+            type="conceptual",
             concept_name=concept_name,
             **attributes
         )
@@ -26,7 +26,7 @@ class VariableGraph:
         self.node_id_map[concept_name] = node_id
         return node_id
     
-    def add_edge(self, source_name: str, target_name: str, edge_type: str, **metadata) -> GraphEdge:
+    def add_edge(self, source_name: str, target_name: str, edge_type=None, **metadata) -> GraphEdge:
         """Add an edge between two nodes"""
         source_id = self.node_id_map.get(source_name)
         target_id = self.node_id_map.get(target_name)
@@ -60,10 +60,11 @@ class VariableGraph:
             edges=self.edges
         )
     
-    def save_json(self, filepath: str):
+    def save_json(self, filename: str):
         """Save graph to JSON file"""
         graph_output = self.to_pydantic()
-        
+        filepath = "../graph_generation/output_graphs/" + filename
+
         with open(filepath, 'w') as f:
             # Use Pydantic's JSON export
             f.write(graph_output.model_dump_json(indent=2))

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Graph Visualization</title>
+    <title>Graph Visualizations</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <style>
         body {
@@ -154,10 +154,6 @@
     <div id="graph-container">
         <div class="controls">
             <div class="control-group">
-                <label>Load Graph JSON:</label>
-                <input type="file" id="json-upload" accept=".json">
-            </div>
-            <div class="control-group">
                 <label>Filter by Node Type:</label>
                 <select id="node-type-filter">
                     <option value="all">All Types</option>
@@ -166,10 +162,6 @@
             <div class="control-group">
                 <label>Show Edge Labels:</label>
                 <input type="checkbox" id="edge-labels" checked>
-            </div>
-            <div class="control-group">
-                <label>Node Size:</label>
-                <input type="range" id="node-size" min="3" max="15" value="6">
             </div>
             <div class="control-group">
                 <label>Color Scheme:</label>
@@ -308,16 +300,12 @@
             return currentColorScheme;
         }
 
-        // File upload handler
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('json-upload').addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (!file) return;
 
-                const reader = new FileReader();
+        // render graph
+        const reader = new FileReader();
                 reader.onload = function(event) {
                     try {
-                        const newGraphData = JSON.parse(event.target.result);
+                        const newGraphData = JSON.parse("../graph_generation/output_graphs/movie_success_graph.json");
                         
                         // Validate the JSON structure
                         if (!newGraphData.nodes || !newGraphData.edges) {
@@ -326,21 +314,18 @@
                         }
 
                         // Update graph data and redraw
-                        graphData = newGraphData;
+                        let graphData = newGraphData;
                         renderGraph();
                     } catch (error) {
                         alert('Error parsing JSON: ' + error.message);
                     }
                 };
-                reader.readAsText(file);
-            });
 
-            // Color scheme selector
+         // Color scheme selector
             document.getElementById('color-scheme').addEventListener('change', function(e) {
                 currentPalette = e.target.value;
                 renderGraph();
             });
-        });
 
         // Setup SVG
         const container = document.getElementById('graph-container');
@@ -445,7 +430,17 @@
                 .enter()
                 .append('circle')
                 .attr('class', 'node')
-                .attr('r', 6)
+                .attr('r', d => {
+                    const incomingEdges = edges.filter(e => {
+                    const targetId = e.target.id || e.target;
+                    return targetId === d.id;
+                });
+                    const outgoingEdges = edges.filter(e => {
+                        const sourceId = e.source.id || e.source;
+                        return sourceId === d.id;
+                    });
+                    return incomingEdges.length + outgoingEdges.length
+                })
                 .attr('fill', d => currentColorScheme[d.type] || '#666')
                 .call(d3.drag()
                     .on('start', dragstarted)
@@ -588,9 +583,6 @@
                 linkLabel.style('display', e.target.checked ? 'block' : 'none');
             });
 
-            document.getElementById('node-size').addEventListener('input', function(e) {
-                node.attr('r', e.target.value);
-            });
         }
     </script>
 </body>

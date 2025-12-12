@@ -1,0 +1,170 @@
+{
+  "nodes": [
+    {
+      "id": "Title",
+      "description": "The official name of the movie."
+    },
+    {
+      "id": "US Gross",
+      "description": "The total box office revenue earned in the United States."
+    },
+    {
+      "id": "Worldwide Gross",
+      "description": "The total box office revenue earned globally."
+    },
+    {
+      "id": "US DVD Sales",
+      "description": "The revenue generated from DVD sales in the United States."
+    },
+    {
+      "id": "Production Budget",
+      "description": "The total cost of producing the movie, including cast, crew, and materials."
+    },
+    {
+      "id": "Release Date",
+      "description": "The official date when the movie was released in theaters."
+    },
+    {
+      "id": "MPAA Rating",
+      "description": "The Motion Picture Association's age-appropriateness classification (e.g., G, PG-13, R)."
+    },
+    {
+      "id": "Running Time min",
+      "description": "The total duration of the movie, measured in minutes."
+    },
+    {
+      "id": "Distributor",
+      "description": "The company responsible for distributing the movie to theaters or streaming platforms."
+    },
+    {
+      "id": "Source",
+      "description": "The origin of the story, such as 'original screenplay', 'based on book', or 'true story'."
+    },
+    {
+      "id": "Major Genre",
+      "description": "The primary genre category of the movie (e.g., Drama, Comedy, Action)."
+    },
+    {
+      "id": "Creative Type",
+      "description": "The stylistic or production type, such as 'live action', 'animation', or 'documentary'."
+    },
+    {
+      "id": "Director",
+      "description": "The individual who directed the film and oversaw its creative execution."
+    },
+    {
+      "id": "Rotten Tomatoes Rating",
+      "description": "The critic score (0-100) from Rotten Tomatoes, representing critical reception."
+    },
+    {
+      "id": "IMDB Rating",
+      "description": "The average audience rating (0-10) from IMDb users, reflecting viewer satisfaction."
+    },
+    {
+      "id": "IMDB Votes",
+      "description": "The number of audience votes submitted on IMDb for the movie."
+    }
+  ],
+  "edges": [
+    {
+      "from": "US Gross",
+      "to": "Worldwide Gross"
+    },
+    {
+      "from": "US Gross",
+      "to": "US DVD Sales"
+    },
+    {
+      "from": "Production Budget",
+      "to": "US Gross"
+    },
+    {
+      "from": "Production Budget",
+      "to": "Worldwide Gross"
+    },
+    {
+      "from": "Production Budget",
+      "to": "US DVD Sales"
+    },
+    {
+      "from": "Release Date",
+      "to": "US Gross"
+    },
+    {
+      "from": "Release Date",
+      "to": "Worldwide Gross"
+    },
+    {
+      "from": "Release Date",
+      "to": "US DVD Sales"
+    },
+    {
+      "from": "Release Date",
+      "to": "IMDB Votes"
+    },
+    {
+      "from": "Distributor",
+      "to": "US Gross"
+    },
+    {
+      "from": "Distributor",
+      "to": "Worldwide Gross"
+    },
+    {
+      "from": "Distributor",
+      "to": "US DVD Sales"
+    },
+    {
+      "from": "Distributor",
+      "to": "Release Date"
+    },
+    {
+      "from": "Source",
+      "to": "Major Genre"
+    },
+    {
+      "from": "Source",
+      "to": "Creative Type"
+    },
+    {
+      "from": "Major Genre",
+      "to": "MPAA Rating"
+    },
+    {
+      "from": "Major Genre",
+      "to": "Creative Type"
+    },
+    {
+      "from": "Major Genre",
+      "to": "Rotten Tomatoes Rating"
+    },
+    {
+      "from": "Major Genre",
+      "to": "IMDB Rating"
+    },
+    {
+      "from": "Creative Type",
+      "to": "Running Time min"
+    },
+    {
+      "from": "Creative Type",
+      "to": "Production Budget"
+    },
+    {
+      "from": "Director",
+      "to": "Rotten Tomatoes Rating"
+    },
+    {
+      "from": "Director",
+      "to": "IMDB Rating"
+    },
+    {
+      "from": "Director",
+      "to": "Major Genre"
+    },
+    {
+      "from": "Director",
+      "to": "Creative Type"
+    }
+  ]
+}

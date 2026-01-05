@@ -1,0 +1,6 @@
+google-generativeai
+python-dotenv
+networkx
+matplotlib
+pyvis
+jinja2

@@ -1,0 +1,51 @@
+{
+  "Major Genre": [],
+  "Rotten Tomatoes Rating": [],
+  "Production Budget": [],
+  "Worldwide Gross": [
+    {
+      "edge": "is split into",
+      "neighbor": "US Gross"
+    }
+  ],
+  "Creative Type": [
+    {
+      "edge": "consist of",
+      "neighbor": "Source"
+    }
+  ],
+  "Source": [],
+  "IMDB Rating": [],
+  "Title": [],
+  "Release Date": [],
+  "Running Time (min)": [
+    {
+      "edge": "is calculated from",
+      "neighbor": "Production Budget"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Worldwide Gross"
+    }
+  ],
+  "US Gross": [],
+  "US DVD Sales": [],
+  "MPAA Rating": [
+    {
+      "edge": "are measured by",
+      "neighbor": "IMDB Rating"
+    },
+    {
+      "edge": "sustains",
+      "neighbor": "Worldwide Gross"
+    }
+  ],
+  "Distributor": [
+    {
+      "edge": "is defined by",
+      "neighbor": "Release Date"
+    }
+  ],
+  "Director": [],
+  "IMDB Votes": []
+}

@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Mortgage Lending Discrimination", "label": "Mortgage Lending Discrimination", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lending Outcomes", "label": "Lending Outcomes", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant Demographics", "label": "Applicant Demographics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant Financial Profile", "label": "Applicant Financial Profile", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender Characteristics", "label": "Lender Characteristics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Geographic Factors", "label": "Geographic Factors", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Application Decision", "label": "Loan Application Decision", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Terms", "label": "Loan Terms", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Post-Origination Performance", "label": "Post-Origination Performance", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Race / Ethnicity", "label": "Race / Ethnicity", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Gender / Sex", "label": "Gender / Sex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Age", "label": "Age", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Creditworthiness", "label": "Creditworthiness", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Income \u0026 Employment", "label": "Income \u0026 Employment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan \u0026 Property Characteristics", "label": "Loan \u0026 Property Characteristics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Existing Debt", "label": "Existing Debt", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender Type", "label": "Lender Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender Size", "label": "Lender Size", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Census Tract Demographics", "label": "Census Tract Demographics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Local Economic Conditions", "label": "Local Economic Conditions", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Market Competition", "label": "Market Competition", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Application Approval Rate", "label": "Application Approval Rate", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Application Denial Rate", "label": "Application Denial Rate", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Reasons for Denial", "label": "Reasons for Denial", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Interest Rate Spread", "label": "Interest Rate Spread", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Costs \u0026 Fees", "label": "Loan Costs \u0026 Fees", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Product Type", "label": "Loan Product Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Approval Rate by Race", "label": "Approval Rate by Race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Rate Spread Incidence by Race", "label": "Rate Spread Incidence by Race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Approval Rate by Gender", "label": "Approval Rate by Gender", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Credit Score", "label": "Credit Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Credit History", "label": "Credit History", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant Income", "label": "Applicant Income", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Debt-to-Income (DTI) Ratio", "label": "Debt-to-Income (DTI) Ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan-to-Value (LTV) Ratio", "label": "Loan-to-Value (LTV) Ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Amount", "label": "Loan Amount", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Property Value", "label": "Property Value", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Depository Institution", "label": "Depository Institution", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Non-Depository Institution", "label": "Non-Depository Institution", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Tract Racial Composition", "label": "Tract Racial Composition", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Tract Median Income", "label": "Tract Median Income", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Denial Reason Distribution by Race", "label": "Denial Reason Distribution by Race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Average Rate Spread by Race", "label": "Average Rate Spread by Race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "White Applicant Approval Count", "label": "White Applicant Approval Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Black Applicant Approval Count", "label": "Black Applicant Approval Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total White Applicant Count", "label": "Total White Applicant Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Black Applicant Count", "label": "Total Black Applicant Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Controlled Approval Rate Disparity (Race)", "label": "Controlled Approval Rate Disparity (Race)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Controlled Rate Spread Disparity (Race)", "label": "Controlled Rate Spread Disparity (Race)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Average DTI for Approved Applicants by Race", "label": "Average DTI for Approved Applicants by Race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Average LTV for Approved Applicants by Race", "label": "Average LTV for Approved Applicants by Race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Percentage of Black Residents in Tract", "label": "Percentage of Black Residents in Tract", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Percentage of Hispanic Residents in Tract", "label": "Percentage of Hispanic Residents in Tract", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Majority-Minority Tract Indicator", "label": "Majority-Minority Tract Indicator", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of \u0027DTI\u0027 Denials for White Applicants", "label": "Count of \u0027DTI\u0027 Denials for White Applicants", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of \u0027Credit History\u0027 Denials for Black Applicants", "label": "Count of \u0027Credit History\u0027 Denials for Black Applicants", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Mean DTI for Approved White Applicants", "label": "Mean DTI for Approved White Applicants", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Mean DTI for Approved Black Applicants", "label": "Mean DTI for Approved Black Applicants", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Mean LTV for Approved White Applicants", "label": "Mean LTV for Approved White Applicants", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Mean LTV for Approved Black Applicants", "label": "Mean LTV for Approved Black Applicants", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Denial Rate in Majority-Minority Tracts", "label": "Denial Rate in Majority-Minority Tracts", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Mortgage Lending Discrimination", "label": "is assessed by analyzing", "to": "Lending Outcomes", "width": 1}, {"arrows": "to", "from": "Mortgage Lending Discrimination", "label": "is measured across", "to": "Applicant Demographics", "width": 1}, {"arrows": "to", "from": "Mortgage Lending Discrimination", "label": "must be distinguished from decisions based on", "to": "Applicant Financial Profile", "width": 1}, {"arrows": "to", "from": "Mortgage Lending Discrimination", "label": "can be influenced by", "to": "Lender Characteristics", "width": 1}, {"arrows": "to", "from": "Mortgage Lending Discrimination", "label": "can be geographically concentrated due to", "to": "Geographic Factors", "width": 1}, {"arrows": "to", "from": "Lending Outcomes", "label": "is primarily determined by the", "to": "Loan Application Decision", "width": 1}, {"arrows": "to", "from": "Lending Outcomes", "label": "is characterized by the", "to": "Loan Terms", "width": 1}, {"arrows": "to", "from": "Lending Outcomes", "label": "is validated by", "to": "Post-Origination Performance", "width": 1}, {"arrows": "to", "from": "Applicant Demographics", "label": "is specified by", "to": "Race / Ethnicity", "width": 1}, {"arrows": "to", "from": "Applicant Demographics", "label": "is specified by", "to": "Gender / Sex", "width": 1}, {"arrows": "to", "from": "Applicant Demographics", "label": "is specified by", "to": "Age", "width": 1}, {"arrows": "to", "from": "Applicant Financial Profile", "label": "is quantified by", "to": "Creditworthiness", "width": 1}, {"arrows": "to", "from": "Applicant Financial Profile", "label": "is quantified by", "to": "Income \u0026 Employment", "width": 1}, {"arrows": "to", "from": "Applicant Financial Profile", "label": "is quantified by", "to": "Loan \u0026 Property Characteristics", "width": 1}, {"arrows": "to", "from": "Applicant Financial Profile", "label": "is quantified by", "to": "Existing Debt", "width": 1}, {"arrows": "to", "from": "Applicant Financial Profile", "label": "is a primary determinant of", "to": "Lending Outcomes", "width": 1}, {"arrows": "to", "from": "Lender Characteristics", "label": "is categorized by", "to": "Lender Type", "width": 1}, {"arrows": "to", "from": "Lender Characteristics", "label": "is categorized by", "to": "Lender Size", "width": 1}, {"arrows": "to", "from": "Geographic Factors", "label": "are described by", "to": "Census Tract Demographics", "width": 1}, {"arrows": "to", "from": "Geographic Factors", "label": "are described by", "to": "Local Economic Conditions", "width": 1}, {"arrows": "to", "from": "Geographic Factors", "label": "are described by", "to": "Market Competition", "width": 1}, {"arrows": "to", "from": "Geographic Factors", "label": "influences through market conditions", "to": "Lending Outcomes", "width": 1}, {"arrows": "to", "from": "Geographic Factors", "label": "correlates with", "to": "Applicant Financial Profile", "width": 1}, {"arrows": "to", "from": "Loan Application Decision", "label": "is measured by", "to": "Application Approval Rate", "width": 1}, {"arrows": "to", "from": "Loan Application Decision", "label": "is measured by", "to": "Application Denial Rate", "width": 1}, {"arrows": "to", "from": "Loan Application Decision", "label": "is explained by", "to": "Reasons for Denial", "width": 1}, {"arrows": "to", "from": "Loan Terms", "label": "are defined by", "to": "Interest Rate Spread", "width": 1}, {"arrows": "to", "from": "Loan Terms", "label": "are defined by", "to": "Loan Costs \u0026 Fees", "width": 1}, {"arrows": "to", "from": "Loan Terms", "label": "are defined by", "to": "Loan Product Type", "width": 1}, {"arrows": "to", "from": "Race / Ethnicity", "label": "is used to compare", "to": "Approval Rate by Race", "width": 1}, {"arrows": "to", "from": "Race / Ethnicity", "label": "is used to compare", "to": "Rate Spread Incidence by Race", "width": 1}, {"arrows": "to", "from": "Gender / Sex", "label": "is used to compare", "to": "Approval Rate by Gender", "width": 1}, {"arrows": "to", "from": "Creditworthiness", "label": "is measured by", "to": "Credit Score", "width": 1}, {"arrows": "to", "from": "Creditworthiness", "label": "is evidenced by", "to": "Credit History", "width": 1}, {"arrows": "to", "from": "Income \u0026 Employment", "label": "is measured by", "to": "Applicant Income", "width": 1}, {"arrows": "to", "from": "Income \u0026 Employment", "label": "is a component of", "to": "Debt-to-Income (DTI) Ratio", "width": 1}, {"arrows": "to", "from": "Loan \u0026 Property Characteristics", "label": "are measured by", "to": "Loan-to-Value (LTV) Ratio", "width": 1}, {"arrows": "to", "from": "Loan \u0026 Property Characteristics", "label": "include", "to": "Loan Amount", "width": 1}, {"arrows": "to", "from": "Loan \u0026 Property Characteristics", "label": "include", "to": "Property Value", "width": 1}, {"arrows": "to", "from": "Existing Debt", "label": "is a component of", "to": "Debt-to-Income (DTI) Ratio", "width": 1}, {"arrows": "to", "from": "Lender Type", "label": "is specified as", "to": "Depository Institution", "width": 1}, {"arrows": "to", "from": "Lender Type", "label": "is specified as", "to": "Non-Depository Institution", "width": 1}, {"arrows": "to", "from": "Lender Type", "label": "often specializes in", "to": "Loan Product Type", "width": 1}, {"arrows": "to", "from": "Census Tract Demographics", "label": "are measured by", "to": "Tract Racial Composition", "width": 1}, {"arrows": "to", "from": "Census Tract Demographics", "label": "are measured by", "to": "Tract Median Income", "width": 1}, {"arrows": "to", "from": "Application Approval Rate", "label": "is disaggregated by demography into", "to": "Approval Rate by Race", "width": 1}, {"arrows": "to", "from": "Application Approval Rate", "label": "is disaggregated by demography into", "to": "Approval Rate by Gender", "width": 1}, {"arrows": "to", "from": "Application Denial Rate", "label": "is explained by", "to": "Denial Reason Distribution by Race", "width": 1}, {"arrows": "to", "from": "Reasons for Denial", "label": "are analyzed by", "to": "Denial Reason Distribution by Race", "width": 1}, {"arrows": "to", "from": "Interest Rate Spread", "label": "is analyzed by", "to": "Rate Spread Incidence by Race", "width": 1}, {"arrows": "to", "from": "Interest Rate Spread", "label": "is averaged for", "to": "Average Rate Spread by Race", "width": 1}, {"arrows": "to", "from": "Approval Rate by Race", "label": "is calculated from", "to": "White Applicant Approval Count", "width": 1}, {"arrows": "to", "from": "Approval Rate by Race", "label": "is calculated from", "to": "Black Applicant Approval Count", "width": 1}, {"arrows": "to", "from": "Approval Rate by Race", "label": "is calculated from", "to": "Total White Applicant Count", "width": 1}, {"arrows": "to", "from": "Approval Rate by Race", "label": "is calculated from", "to": "Total Black Applicant Count", "width": 1}, {"arrows": "to", "from": "Approval Rate by Race", "label": "is refined into", "to": "Controlled Approval Rate Disparity (Race)", "width": 1}, {"arrows": "to", "from": "Rate Spread Incidence by Race", "label": "is refined into", "to": "Controlled Rate Spread Disparity (Race)", "width": 1}, {"arrows": "to", "from": "Credit Score", "label": "is a primary determinant of", "to": "Interest Rate Spread", "width": 1}, {"arrows": "to", "from": "Credit Score", "label": "strongly informs", "to": "Loan Application Decision", "width": 1}, {"arrows": "to", "from": "Credit History", "label": "is a common component of", "to": "Reasons for Denial", "width": 1}, {"arrows": "to", "from": "Debt-to-Income (DTI) Ratio", "label": "is compared across demographics in", "to": "Average DTI for Approved Applicants by Race", "width": 1}, {"arrows": "to", "from": "Debt-to-Income (DTI) Ratio", "label": "is a common component of", "to": "Reasons for Denial", "width": 1}, {"arrows": "to", "from": "Loan-to-Value (LTV) Ratio", "label": "is compared across demographics in", "to": "Average LTV for Approved Applicants by Race", "width": 1}, {"arrows": "to", "from": "Loan-to-Value (LTV) Ratio", "label": "informs", "to": "Loan Application Decision", "width": 1}, {"arrows": "to", "from": "Tract Racial Composition", "label": "is measured by", "to": "Percentage of Black Residents in Tract", "width": 1}, {"arrows": "to", "from": "Tract Racial Composition", "label": "is measured by", "to": "Percentage of Hispanic Residents in Tract", "width": 1}, {"arrows": "to", "from": "Tract Racial Composition", "label": "is used to create", "to": "Majority-Minority Tract Indicator", "width": 1}, {"arrows": "to", "from": "Tract Racial Composition", "label": "provides context for", "to": "Approval Rate by Race", "width": 1}, {"arrows": "to", "from": "Denial Reason Distribution by Race", "label": "is quantified by metrics like", "to": "Count of \u0027DTI\u0027 Denials for White Applicants", "width": 1}, {"arrows": "to", "from": "Denial Reason Distribution by Race", "label": "is quantified by metrics like", "to": "Count of \u0027Credit History\u0027 Denials for Black Applicants", "width": 1}, {"arrows": "to", "from": "Average Rate Spread by Race", "label": "is refined into", "to": "Controlled Rate Spread Disparity (Race)", "width": 1}, {"arrows": "to", "from": "Average DTI for Approved Applicants by Race", "label": "is calculated from", "to": "Mean DTI for Approved White Applicants", "width": 1}, {"arrows": "to", "from": "Average DTI for Approved Applicants by Race", "label": "is calculated from", "to": "Mean DTI for Approved Black Applicants", "width": 1}, {"arrows": "to", "from": "Average LTV for Approved Applicants by Race", "label": "is calculated from", "to": "Mean LTV for Approved White Applicants", "width": 1}, {"arrows": "to", "from": "Average LTV for Approved Applicants by Race", "label": "is calculated from", "to": "Mean LTV for Approved Black Applicants", "width": 1}, {"arrows": "to", "from": "Majority-Minority Tract Indicator", "label": "is used to calculate", "title": "is used to calculate", "to": "Denial Rate in Majority-Minority Tracts", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.33,
+            "damping": 0.95,
+            "nodeDistance": 150,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

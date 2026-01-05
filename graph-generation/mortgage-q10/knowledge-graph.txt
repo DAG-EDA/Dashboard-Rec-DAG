@@ -1,0 +1,637 @@
+```json
+{
+  "Mortgage Application Outcome": [
+    {
+      "edge": "is determined by",
+      "neighbor": "Applicant's Financial Profile"
+    },
+    {
+      "edge": "is determined by",
+      "neighbor": "Applicant's Capacity to Repay"
+    },
+    {
+      "edge": "is determined by",
+      "neighbor": "Collateral"
+    },
+    {
+      "edge": "is determined by",
+      "neighbor": "Capital"
+    },
+    {
+      "edge": "is determined by",
+      "neighbor": "Loan and Market Conditions"
+    }
+  ],
+  "Applicant's Financial Profile": [
+    {
+      "edge": "is assessed via",
+      "neighbor": "Credit History"
+    },
+    {
+      "edge": "is assessed via",
+      "neighbor": "Employment History"
+    },
+    {
+      "edge": "is assessed via",
+      "neighbor": "Existing Financial Obligations"
+    }
+  ],
+  "Applicant's Capacity to Repay": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Income"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Debt-to-Income Ratio (DTI)"
+    }
+  ],
+  "Collateral": [
+    {
+      "edge": "is evaluated by",
+      "neighbor": "Property Valuation"
+    },
+    {
+      "edge": "is classified by",
+      "neighbor": "Property Type"
+    },
+    {
+      "edge": "is evaluated by",
+      "neighbor": "Property Location"
+    }
+  ],
+  "Capital": [
+    {
+      "edge": "is comprised of",
+      "neighbor": "Down Payment"
+    },
+    {
+      "edge": "is comprised of",
+      "neighbor": "Liquid Assets & Reserves"
+    }
+  ],
+  "Loan and Market Conditions": [
+    {
+      "edge": "are defined by",
+      "neighbor": "Loan Product Characteristics"
+    },
+    {
+      "edge": "are influenced by",
+      "neighbor": "Economic Indicators"
+    },
+    {
+      "edge": "are defined by",
+      "neighbor": "Lender-Specific Policies"
+    }
+  ],
+  "Credit History": [
+    {
+      "edge": "is summarized by",
+      "neighbor": "Credit Score"
+    },
+    {
+      "edge": "is detailed in",
+      "neighbor": "Payment History"
+    },
+    {
+      "edge": "is reflected in",
+      "neighbor": "Credit Utilization"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Public Records"
+    }
+  ],
+  "Employment History": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Job Stability"
+    },
+    {
+      "edge": "is categorized by",
+      "neighbor": "Employment Type"
+    }
+  ],
+  "Existing Financial Obligations": [
+    {
+      "edge": "includes",
+      "neighbor": "Existing Debt Payments"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Other Liabilities"
+    }
+  ],
+  "Income": [
+    {
+      "edge": "is sourced from",
+      "neighbor": "Primary Income Source"
+    },
+    {
+      "edge": "is sourced from",
+      "neighbor": "Secondary Income Sources"
+    },
+    {
+      "edge": "is evaluated for",
+      "neighbor": "Income Stability"
+    }
+  ],
+  "Debt-to-Income Ratio (DTI)": [
+    {
+      "edge": "is a component of",
+      "neighbor": "Back-End DTI (Total Debt Ratio)"
+    },
+    {
+      "edge": "is a component of",
+      "neighbor": "Front-End DTI (Housing Ratio)"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Income"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Existing Financial Obligations"
+    }
+  ],
+  "Property Valuation": [
+    {
+      "edge": "determines",
+      "neighbor": "Appraised Value"
+    },
+    {
+      "edge": "is used to calculate",
+      "neighbor": "Loan-to-Value Ratio (LTV)"
+    }
+  ],
+  "Property Type": [
+    {
+      "edge": "can be",
+      "neighbor": "Single-Family Home"
+    },
+    {
+      "edge": "can be",
+      "neighbor": "Condominium/Co-op"
+    },
+    {
+      "edge": "can be",
+      "neighbor": "Multi-Family Dwelling"
+    }
+  ],
+  "Property Location": [
+    {
+      "edge": "has",
+      "neighbor": "Geographic Risk Factors"
+    },
+    {
+      "edge": "has",
+      "neighbor": "Local Market Trends"
+    }
+  ],
+  "Down Payment": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Down Payment Amount"
+    },
+    {
+      "edge": "is verified by",
+      "neighbor": "Source of Down Payment"
+    }
+  ],
+  "Liquid Assets & Reserves": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Cash Reserves"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Other Liquidable Assets"
+    }
+  ],
+  "Loan Product Characteristics": [
+    {
+      "edge": "is defined by",
+      "neighbor": "Loan Type"
+    },
+    {
+      "edge": "is defined by",
+      "neighbor": "Interest Rate Type"
+    },
+    {
+      "edge": "is defined by",
+      "neighbor": "Loan Term"
+    },
+    {
+      "edge": "is influenced by",
+      "neighbor": "Credit Score"
+    },
+    {
+      "edge": "is constrained by",
+      "neighbor": "Loan-to-Value Ratio (LTV)"
+    }
+  ],
+  "Economic Indicators": [
+    {
+      "edge": "include",
+      "neighbor": "Prevailing Interest Rates"
+    },
+    {
+      "edge": "include",
+      "neighbor": "Housing Market Index"
+    }
+  ],
+  "Lender-Specific Policies": [
+    {
+      "edge": "are comprised of",
+      "neighbor": "Lender Overlays"
+    },
+    {
+      "edge": "are informed by",
+      "neighbor": "Automated Underwriting System (AUS) Findings"
+    },
+    {
+      "edge": "sets requirements for",
+      "neighbor": "Credit History"
+    },
+    {
+      "edge": "sets requirements for",
+      "neighbor": "Debt-to-Income Ratio (DTI)"
+    }
+  ],
+  "Credit Score": [
+    {
+      "edge": "is a type of",
+      "neighbor": "FICO Score"
+    },
+    {
+      "edge": "is a type of",
+      "neighbor": "VantageScore"
+    }
+  ],
+  "Payment History": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Number of Late Payments"
+    },
+    {
+      "edge": "is quantified by",
+      "neighbor": "Severity of Delinquencies"
+    }
+  ],
+  "Credit Utilization": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Overall Credit Utilization Ratio"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Per-Account Utilization Ratio"
+    }
+  ],
+  "Public Records": [
+    {
+      "edge": "are characterized by",
+      "neighbor": "Age of Bankruptcy/Foreclosure"
+    },
+    {
+      "edge": "are characterized by",
+      "neighbor": "Type of Public Record"
+    }
+  ],
+  "Job Stability": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Time at Current Job"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Time in Same Industry"
+    }
+  ],
+  "Employment Type": [
+    {
+      "edge": "can be",
+      "neighbor": "Salaried (W-2)"
+    },
+    {
+      "edge": "can be",
+      "neighbor": "Self-Employed (1099)"
+    },
+    {
+      "edge": "can be",
+      "neighbor": "Commission-Based"
+    }
+  ],
+  "Existing Debt Payments": [
+    {
+      "edge": "includes",
+      "neighbor": "Monthly Auto Loan Payment"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Monthly Student Loan Payment"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Minimum Credit Card Payments"
+    }
+  ],
+  "Primary Income Source": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Verified Gross Monthly Income"
+    }
+  ],
+  "Income Stability": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Income Trend (2-year average)"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Income Volatility"
+    }
+  ],
+  "Front-End DTI (Housing Ratio)": [
+    {
+      "edge": "is calculated using",
+      "neighbor": "Proposed PITI Payment"
+    }
+  ],
+  "Back-End DTI (Total Debt Ratio)": [
+    {
+      "edge": "is calculated using",
+      "neighbor": "Total Monthly Debt Obligations"
+    }
+  ],
+  "Appraised Value": [
+    {
+      "edge": "is specifically",
+      "neighbor": "Official Appraised Property Value"
+    }
+  ],
+  "Loan-to-Value Ratio (LTV)": [
+    {
+      "edge": "is specifically",
+      "neighbor": "Calculated LTV Percentage"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Appraised Value"
+    }
+  ],
+  "Source of Down Payment": [
+    {
+      "edge": "can be",
+      "neighbor": "Personal Savings"
+    },
+    {
+      "edge": "can be",
+      "neighbor": "Gift Funds"
+    },
+    {
+      "edge": "can be",
+      "neighbor": "Down Payment Assistance Program"
+    }
+  ],
+  "Cash Reserves": [
+    {
+      "edge": "is measured in",
+      "neighbor": "Months of PITI in Reserve"
+    }
+  ],
+  "Loan Type": [
+    {
+      "edge": "is specifically",
+      "neighbor": "Loan Program Name"
+    },
+    {
+      "edge": "influences requirements for",
+      "neighbor": "Down Payment"
+    },
+    {
+      "edge": "influences requirements for",
+      "neighbor": "Property Type"
+    }
+  ],
+  "Prevailing Interest Rates": [
+    {
+      "edge": "are adjusted by",
+      "neighbor": "FICO Score"
+    }
+  ],
+  "Lender Overlays": [
+    {
+      "edge": "include",
+      "neighbor": "Lender-Specific DTI Limits"
+    },
+    {
+      "edge": "include",
+      "neighbor": "Lender-Specific Credit Score Minimums"
+    }
+  ],
+  "Automated Underwriting System (AUS) Findings)": [
+    {
+      "edge": "produce",
+      "neighbor": "DU/LP Recommendation"
+    }
+  ],
+  "FICO Score": [
+    {
+      "edge": "is specified as",
+      "neighbor": "Applicant 1 FICO Score"
+    },
+    {
+      "edge": "is specified as",
+      "neighbor": "Applicant 2 FICO Score"
+    },
+    {
+      "edge": "is determined by",
+      "neighbor": "Governing FICO Score"
+    }
+  ],
+  "Number of Late Payments": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Count of 30-Day Lates (Last 24m)"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Count of 60-Day Lates (Last 24m)"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Count of 90+ Day Lates (Last 24m)"
+    }
+  ],
+  "Overall Credit Utilization Ratio": [
+    {
+      "edge": "is calculated as",
+      "neighbor": "Total Balances / Total Credit Limits (%)"
+    }
+  ],
+  "Age of Bankruptcy/Foreclosure": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Months Since Bankruptcy Discharge"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Months Since Foreclosure Sale Date"
+    }
+  ],
+  "Time at Current Job": [
+    {
+      "edge": "is measured in",
+      "neighbor": "Months in Current Position"
+    }
+  ],
+  "Time in Same Industry": [
+    {
+      "edge": "is measured in",
+      "neighbor": "Months in Current Field of Work"
+    }
+  ],
+  "Verified Gross Monthly Income": [
+    {
+      "edge": "is comprised of",
+      "neighbor": "Applicant 1 Gross Monthly Income ($)"
+    },
+    {
+      "edge": "is comprised of",
+      "neighbor": "Applicant 2 Gross Monthly Income ($)"
+    },
+    {
+      "edge": "is aggregated into",
+      "neighbor": "Total Qualifying Gross Monthly Income ($)"
+    }
+  ],
+  "Proposed PITI Payment": [
+    {
+      "edge": "includes",
+      "neighbor": "Monthly Principal & Interest ($)"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Monthly Property Tax ($)"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Monthly Homeowners Insurance ($)"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Monthly PMI/HOA Dues ($)"
+    }
+  ],
+  "Total Monthly Debt Obligations": [
+    {
+      "edge": "is calculated as",
+      "neighbor": "Sum of All Monthly Debt Payments ($)"
+    }
+  ],
+  "Official Appraised Property Value": [
+    {
+      "edge": "is measured in",
+      "neighbor": "Appraised Value ($)"
+    }
+  ],
+  "Calculated LTV Percentage": [
+    {
+      "edge": "is calculated as",
+      "neighbor": "Loan Amount / Appraised Value (%)"
+    }
+  ],
+  "Months of PITI in Reserve": [
+    {
+      "edge": "is calculated as",
+      "neighbor": "Total Liquid Assets / Monthly PITI (months)"
+    },
+    {
+      "edge": "is calculated using",
+      "neighbor": "Proposed PITI Payment"
+    },
+    {
+      "edge": "is calculated using",
+      "neighbor": "Cash Reserves"
+    }
+  ],
+  "Loan Program Name": [
+    {
+      "edge": "is identified by",
+      "neighbor": "Specific Loan Program ID"
+    }
+  ],
+  "Lender-Specific DTI Limits": [
+    {
+      "edge": "is specified as",
+      "neighbor": "Maximum Allowable Back-End DTI (%)"
+    }
+  ],
+  "Lender-Specific Credit Score Minimums": [
+    {
+      "edge": "is specified as",
+      "neighbor": "Minimum FICO Score Requirement"
+    }
+  ],
+  "DU/LP Recommendation": [
+    {
+      "edge": "is",
+      "neighbor": "AUS Final Recommendation"
+    }
+  ],
+  "Applicant 1 FICO Score": [],
+  "Applicant 2 FICO Score": [],
+  "Governing FICO Score": [],
+  "Count of 30-Day Lates (Last 24m)": [],
+  "Count of 60-Day Lates (Last 24m)": [],
+  "Count of 90+ Day Lates (Last 24m)": [],
+  "Total Balances / Total Credit Limits (%)": [],
+  "Months Since Bankruptcy Discharge": [],
+  "Months Since Foreclosure Sale Date": [],
+  "Months in Current Position": [],
+  "Months in Current Field of Work": [],
+  "Applicant 1 Gross Monthly Income ($)": [],
+  "Applicant 2 Gross Monthly Income ($)": [],
+  "Total Qualifying Gross Monthly Income ($)": [],
+  "Monthly Principal & Interest ($)": [],
+  "Monthly Property Tax ($)": [],
+  "Monthly Homeowners Insurance ($)": [],
+  "Monthly PMI/HOA Dues ($)": [],
+  "Sum of All Monthly Debt Payments ($)": [],
+  "Appraised Value ($)": [],
+  "Loan Amount / Appraised Value (%)": [],
+  "Total Liquid Assets / Monthly PITI (months)": [],
+  "Specific Loan Program ID": [],
+  "Maximum Allowable Back-End DTI (%)": [],
+  "Minimum FICO Score Requirement": [],
+  "AUS Final Recommendation": [],
+  "Other Liabilities": [],
+  "Secondary Income Sources": [],
+  "Single-Family Home": [],
+  "Condominium/Co-op": [],
+  "Multi-Family Dwelling": [],
+  "Geographic Risk Factors": [],
+  "Local Market Trends": [],
+  "Down Payment Amount": [],
+  "Other Liquidable Assets": [],
+  "Interest Rate Type": [],
+  "Loan Term": [],
+  "Housing Market Index": [],
+  "VantageScore": [],
+  "Severity of Delinquencies": [],
+  "Per-Account Utilization Ratio": [],
+  "Type of Public Record": [],
+  "Salaried (W-2)": [],
+  "Self-Employed (1099)": [],
+  "Commission-Based": [],
+  "Monthly Auto Loan Payment": [],
+  "Monthly Student Loan Payment": [],
+  "Minimum Credit Card Payments": [],
+  "Income Trend (2-year average)": [],
+  "Income Volatility": [],
+  "Personal Savings": [],
+  "Gift Funds": [],
+  "Down Payment Assistance Program": []
+}
+```

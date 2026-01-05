@@ -1,0 +1,540 @@
+{
+  "Successful Movies": [
+    {
+      "edge": "is characterized by",
+      "neighbor": "Financial Performance"
+    },
+    {
+      "edge": "is characterized by",
+      "neighbor": "Critical Acclaim"
+    },
+    {
+      "edge": "is characterized by",
+      "neighbor": "Audience Reception"
+    },
+    {
+      "edge": "is characterized by",
+      "neighbor": "Cultural Impact"
+    },
+    {
+      "edge": "is characterized by",
+      "neighbor": "Production Elements"
+    }
+  ],
+  "Financial Performance": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Box Office Revenue"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Return on Investment (ROI)"
+    }
+  ],
+  "Critical Acclaim": [
+    {
+      "edge": "is assessed via",
+      "neighbor": "Review Aggregates"
+    },
+    {
+      "edge": "is assessed via",
+      "neighbor": "Awards Recognition"
+    }
+  ],
+  "Audience Reception": [
+    {
+      "edge": "is reflected in",
+      "neighbor": "Audience Ratings"
+    },
+    {
+      "edge": "is reflected in",
+      "neighbor": "Post-Release Engagement"
+    }
+  ],
+  "Cultural Impact": [
+    {
+      "edge": "is observed through",
+      "neighbor": "Franchise Potential"
+    },
+    {
+      "edge": "is observed through",
+      "neighbor": "Enduring Relevance"
+    }
+  ],
+  "Production Elements": [
+    {
+      "edge": "are composed of",
+      "neighbor": "Key Personnel"
+    },
+    {
+      "edge": "are composed of",
+      "neighbor": "Creative Components"
+    },
+    {
+      "edge": "are composed of",
+      "neighbor": "Production Quality"
+    },
+    {
+      "edge": "are composed of",
+      "neighbor": "Business Strategy"
+    }
+  ],
+  "Box Office Revenue": [
+    {
+      "edge": "is composed of",
+      "neighbor": "Worldwide Gross"
+    }
+  ],
+  "Return on Investment (ROI)": [
+    {
+      "edge": "is calculated from",
+      "neighbor": "Production Budget"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Marketing Spend"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Worldwide Gross"
+    }
+  ],
+  "Review Aggregates": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Metacritic Score"
+    },
+    {
+      "edge": "is quantified by",
+      "neighbor": "Rotten Tomatoes Tomatometer"
+    }
+  ],
+  "Awards Recognition": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Major Award Nominations"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Major Award Wins"
+    },
+    {
+      "edge": "boosts",
+      "neighbor": "Home Media Performance"
+    }
+  ],
+  "Audience Ratings": [
+    {
+      "edge": "are measured by",
+      "neighbor": "IMDb User Rating"
+    },
+    {
+      "edge": "are measured by",
+      "neighbor": "CinemaScore"
+    },
+    {
+      "edge": "are measured by",
+      "neighbor": "RT Audience Score"
+    },
+    {
+      "edge": "sustains",
+      "neighbor": "Worldwide Gross"
+    }
+  ],
+  "Post-Release Engagement": [
+    {
+      "edge": "is tracked by",
+      "neighbor": "Social Media Buzz"
+    },
+    {
+      "edge": "is tracked by",
+      "neighbor": "Home Media Performance"
+    }
+  ],
+  "Franchise Potential": [
+    {
+      "edge": "is demonstrated by",
+      "neighbor": "Sequel/Spinoff Greenlight"
+    },
+    {
+      "edge": "is demonstrated by",
+      "neighbor": "Merchandise Sales"
+    },
+    {
+      "edge": "is indicated by",
+      "neighbor": "Worldwide Gross"
+    }
+  ],
+  "Enduring Relevance": [
+    {
+      "edge": "is seen in",
+      "neighbor": "Lexicon Entry"
+    },
+    {
+      "edge": "is seen in",
+      "neighbor": "Cult Following"
+    }
+  ],
+  "Key Personnel": [
+    {
+      "edge": "includes",
+      "neighbor": "Director"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Lead Cast"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Writer"
+    },
+    {
+      "edge": "is often reviewed based on",
+      "neighbor": "Metacritic Score"
+    }
+  ],
+  "Creative Components": [
+    {
+      "edge": "consist of",
+      "neighbor": "Genre"
+    },
+    {
+      "edge": "consist of",
+      "neighbor": "Source Material"
+    },
+    {
+      "edge": "sets audience expectations for",
+      "neighbor": "CinemaScore"
+    }
+  ],
+  "Production Quality": [
+    {
+      "edge": "is defined by",
+      "neighbor": "Technical Craft"
+    },
+    {
+      "edge": "is enabled by",
+      "neighbor": "Production Budget"
+    }
+  ],
+  "Business Strategy": [
+    {
+      "edge": "involves",
+      "neighbor": "Marketing Campaign"
+    },
+    {
+      "edge": "involves",
+      "neighbor": "Distribution Plan"
+    },
+    {
+      "edge": "aims to maximize",
+      "neighbor": "Opening Weekend Gross"
+    }
+  ],
+  "Worldwide Gross": [
+    {
+      "edge": "is split into",
+      "neighbor": "Domestic Gross"
+    },
+    {
+      "edge": "is split into",
+      "neighbor": "International Gross"
+    },
+    {
+      "edge": "is initiated by",
+      "neighbor": "Opening Weekend Gross"
+    }
+  ],
+  "Production Budget": [
+    {
+      "edge": "is specified as",
+      "neighbor": "Reported Budget (USD)"
+    }
+  ],
+  "Marketing Spend": [
+    {
+      "edge": "is specified as",
+      "neighbor": "Estimated P&A Spend (USD)"
+    }
+  ],
+  "Metacritic Score": [
+    {
+      "edge": "is based on",
+      "neighbor": "Average Critic Score (0-100)"
+    },
+    {
+      "edge": "is based on",
+      "neighbor": "Number of Critics"
+    }
+  ],
+  "Rotten Tomatoes Tomatometer": [],
+  "Major Award Nominations": [],
+  "Major Award Wins": [
+    {
+      "edge": "includes",
+      "neighbor": "Number of Oscar Wins"
+    },
+    {
+      "edge": "includes",
+      "neighbor": "Number of Golden Globe Wins"
+    },
+    {
+      "edge": "can increase interest for",
+      "neighbor": "International Gross"
+    }
+  ],
+  "IMDb User Rating": [
+    {
+      "edge": "is determined by",
+      "neighbor": "Average User Score (1-10)"
+    },
+    {
+      "edge": "is determined by",
+      "neighbor": "Number of User Votes"
+    }
+  ],
+  "CinemaScore": [
+    {
+      "edge": "correlates with multiplier for",
+      "neighbor": "Domestic Gross"
+    }
+  ],
+  "RT Audience Score": [],
+  "Social Media Buzz": [
+    {
+      "edge": "is measured via",
+      "neighbor": "Sentiment Score"
+    },
+    {
+      "edge": "is measured via",
+      "neighbor": "Mention Volume"
+    }
+  ],
+  "Home Media Performance": [],
+  "Sequel/Spinoff Greenlight": [],
+  "Merchandise Sales": [],
+  "Lexicon Entry": [],
+  "Cult Following": [],
+  "Director": [
+    {
+      "edge": "is evaluated by",
+      "neighbor": "Director's Past Performance"
+    }
+  ],
+  "Lead Cast": [
+    {
+      "edge": "is evaluated by",
+      "neighbor": "Lead Actor's Star Power"
+    },
+    {
+      "edge": "drives views for",
+      "neighbor": "Trailer Performance"
+    }
+  ],
+  "Writer": [],
+  "Genre": [
+    {
+      "edge": "is categorized by",
+      "neighbor": "Primary Genre"
+    },
+    {
+      "edge": "is categorized by",
+      "neighbor": "Sub-Genre"
+    },
+    {
+      "edge": "often dictates scale of",
+      "neighbor": "Production Budget"
+    }
+  ],
+  "Source Material": [
+    {
+      "edge": "is defined by",
+      "neighbor": "Adaptation Type"
+    }
+  ],
+  "Technical Craft": [
+    {
+      "edge": "is comprised of",
+      "neighbor": "Cinematography"
+    },
+    {
+      "edge": "is comprised of",
+      "neighbor": "Visual Effects"
+    },
+    {
+      "edge": "is comprised of",
+      "neighbor": "Musical Score"
+    }
+  ],
+  "Marketing Campaign": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Trailer Performance"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Promotional Partnerships"
+    }
+  ],
+  "Distribution Plan": [
+    {
+      "edge": "is defined by",
+      "neighbor": "Release Date"
+    },
+    {
+      "edge": "is defined by",
+      "neighbor": "Theatrical Footprint"
+    }
+  ],
+  "Domestic Gross": [],
+  "International Gross": [],
+  "Opening Weekend Gross": [],
+  "Reported Budget (USD)": [
+    {
+      "edge": "is represented as",
+      "neighbor": "Budget_USD_Absolute"
+    },
+    {
+      "edge": "is represented as",
+      "neighbor": "Budget_USD_Inflation_Adjusted"
+    }
+  ],
+  "Estimated P&A Spend (USD)": [],
+  "Average Critic Score (0-100)": [],
+  "Number of Critics": [],
+  "Number of Oscar Wins": [
+    {
+      "edge": "is specified by",
+      "neighbor": "Count_Best_Picture_Win"
+    },
+    {
+      "edge": "is specified by",
+      "neighbor": "Count_Major_Category_Wins"
+    },
+    {
+      "edge": "is specified by",
+      "neighbor": "Count_Technical_Category_Wins"
+    }
+  ],
+  "Number of Golden Globe Wins": [],
+  "Average User Score (1-10)": [
+    {
+      "edge": "is refined into",
+      "neighbor": "IMDb_Weighted_Average_Score"
+    }
+  ],
+  "Number of User Votes": [
+    {
+      "edge": "is refined into",
+      "neighbor": "IMDb_Total_Vote_Count"
+    }
+  ],
+  "Sentiment Score": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Positive_Mention_Percentage"
+    }
+  ],
+  "Mention Volume": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Total_Mentions_First_Week"
+    }
+  ],
+  "Director's Past Performance": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Director_Avg_Metascore"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Director_Avg_Box_Office"
+    }
+  ],
+  "Lead Actor's Star Power": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Lead_Actor_Avg_Box_Office"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Lead_Actor_Social_Following"
+    },
+    {
+      "edge": "justifies",
+      "neighbor": "Opening_Weekend_Theater_Count"
+    }
+  ],
+  "Primary Genre": [],
+  "Sub-Genre": [],
+  "Adaptation Type": [
+    {
+      "edge": "is classified as",
+      "neighbor": "Is_Original_Screenplay"
+    },
+    {
+      "edge": "is classified as",
+      "neighbor": "Is_Based_On_Book"
+    },
+    {
+      "edge": "is classified as",
+      "neighbor": "Is_Remake"
+    }
+  ],
+  "Cinematography": [],
+  "Visual Effects": [
+    {
+      "edge": "is a major cost driver for",
+      "neighbor": "Budget_USD_Absolute"
+    }
+  ],
+  "Musical Score": [],
+  "Trailer Performance": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Trailer_Views_First_24h"
+    }
+  ],
+  "Promotional Partnerships": [],
+  "Release Date": [
+    {
+      "edge": "is classified by",
+      "neighbor": "Release_Season_Summer"
+    },
+    {
+      "edge": "is classified by",
+      "neighbor": "Release_Season_Holiday"
+    },
+    {
+      "edge": "is classified by",
+      "neighbor": "Release_Season_Awards"
+    }
+  ],
+  "Theatrical Footprint": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Opening_Weekend_Theater_Count"
+    }
+  ],
+  "Budget_USD_Absolute": [],
+  "Budget_USD_Inflation_Adjusted": [],
+  "Count_Best_Picture_Win": [],
+  "Count_Major_Category_Wins": [],
+  "Count_Technical_Category_Wins": [],
+  "IMDb_Weighted_Average_Score": [],
+  "IMDb_Total_Vote_Count": [],
+  "Positive_Mention_Percentage": [],
+  "Total_Mentions_First_Week": [],
+  "Director_Avg_Metascore": [],
+  "Director_Avg_Box_Office": [],
+  "Lead_Actor_Avg_Box_Office": [],
+  "Lead_Actor_Social_Following": [],
+  "Is_Original_Screenplay": [],
+  "Is_Based_On_Book": [],
+  "Is_Remake": [],
+  "Release_Season_Summer": [],
+  "Release_Season_Holiday": [],
+  "Release_Season_Awards": [],
+  "Opening_Weekend_Theater_Count": [],
+  "Trailer_Views_First_24h": []
+}

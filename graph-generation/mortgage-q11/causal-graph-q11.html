@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "#000000"}, "id": "loan_term", "label": "loan_term", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "intro_rate_period", "label": "intro_rate_period", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "loan_purpose", "label": "loan_purpose", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_race_observed", "label": "applicant_race_observed", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "derived_ethnicity", "label": "derived_ethnicity", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "property_value", "label": "property_value", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "discount_points", "label": "discount_points", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "debt_to_income_ratio", "label": "debt_to_income_ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "derived_msa-md", "label": "derived_msa-md", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "initially_payable_to_institution", "label": "initially_payable_to_institution", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "lender_credits", "label": "lender_credits", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "purchaser_type", "label": "purchaser_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_race", "label": "applicant_race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "activity_year", "label": "activity_year", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "occupancy_type", "label": "occupancy_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "other_nonamortizing_features", "label": "other_nonamortizing_features", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_race", "label": "co-applicant_race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "lien_status", "label": "lien_status", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "derived_loan_product_type", "label": "derived_loan_product_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_sex_observed", "label": "applicant_sex_observed", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "action_taken", "label": "action_taken", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "interest_only_payment", "label": "interest_only_payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "balloon_payment", "label": "balloon_payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "total_units", "label": "total_units", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "loan_amount", "label": "loan_amount", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "aus", "label": "aus", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_sex", "label": "co-applicant_sex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "combined_loan_to_value_ratio", "label": "combined_loan_to_value_ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_credit_score_type", "label": "applicant_credit_score_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_ethnicity", "label": "applicant_ethnicity", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "county_code", "label": "county_code", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_ethnicity", "label": "co-applicant_ethnicity", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "denial_reason", "label": "denial_reason", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "negative_amortization", "label": "negative_amortization", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "multifamily_affordable_units", "label": "multifamily_affordable_units", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "derived_dwelling_category", "label": "derived_dwelling_category", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "hoepa_status", "label": "hoepa_status", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_credit_score_type", "label": "co-applicant_credit_score_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "lei", "label": "lei", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_ethnicity_observed", "label": "co-applicant_ethnicity_observed", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_sex", "label": "applicant_sex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "open-end_line_of_credit", "label": "open-end_line_of_credit", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "prepayment_penalty_term", "label": "prepayment_penalty_term", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "preapproval", "label": "preapproval", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "census_tract", "label": "census_tract", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "rate_spread", "label": "rate_spread", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "total_loan_costs", "label": "total_loan_costs", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "origination_charges", "label": "origination_charges", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "loan_type", "label": "loan_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "interest_rate", "label": "interest_rate", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "reverse_mortgage", "label": "reverse_mortgage", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "derived_race", "label": "derived_race", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "manufactured_home_secured_property_type", "label": "manufactured_home_secured_property_type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_ethnicity_observed", "label": "applicant_ethnicity_observed", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_age_above_62", "label": "co-applicant_age_above_62", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "submission_of_application", "label": "submission_of_application", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "conforming_loan_limit", "label": "conforming_loan_limit", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "derived_sex", "label": "derived_sex", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "construction_method", "label": "construction_method", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "manufactured_home_land_property_interest", "label": "manufactured_home_land_property_interest", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "applicant_age_above_62", "label": "applicant_age_above_62", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "business_or_commercial_purpose", "label": "business_or_commercial_purpose", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "total_points_and_fees", "label": "total_points_and_fees", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "income", "label": "income", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_race_observed", "label": "co-applicant_race_observed", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_sex_observed", "label": "co-applicant_sex_observed", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "co-applicant_age", "label": "co-applicant_age", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "state_code", "label": "state_code", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "ageapplicant", "label": "ageapplicant", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "loan_term", "label": "are defined by", "to": "intro_rate_period", "width": 1}, {"arrows": "to", "from": "loan_term", "label": "are defined by", "to": "loan_purpose", "width": 1}, {"arrows": "to", "from": "applicant_race_observed", "label": "is specified by", "title": "is specified by", "to": "derived_ethnicity", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.33,
+            "damping": 0.95,
+            "nodeDistance": 150,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,401 @@
+```json
+{
+  "Mortgage Lending Discrimination": [
+    {
+      "edge": "is assessed by analyzing",
+      "neighbor": "Lending Outcomes"
+    },
+    {
+      "edge": "is measured across",
+      "neighbor": "Applicant Demographics"
+    },
+    {
+      "edge": "must be distinguished from decisions based on",
+      "neighbor": "Applicant Financial Profile"
+    },
+    {
+      "edge": "can be influenced by",
+      "neighbor": "Lender Characteristics"
+    },
+    {
+      "edge": "can be geographically concentrated due to",
+      "neighbor": "Geographic Factors"
+    }
+  ],
+  "Lending Outcomes": [
+    {
+      "edge": "is primarily determined by the",
+      "neighbor": "Loan Application Decision"
+    },
+    {
+      "edge": "is characterized by the",
+      "neighbor": "Loan Terms"
+    },
+    {
+      "edge": "is validated by",
+      "neighbor": "Post-Origination Performance"
+    }
+  ],
+  "Applicant Demographics": [
+    {
+      "edge": "is specified by",
+      "neighbor": "Race / Ethnicity"
+    },
+    {
+      "edge": "is specified by",
+      "neighbor": "Gender / Sex"
+    },
+    {
+      "edge": "is specified by",
+      "neighbor": "Age"
+    }
+  ],
+  "Applicant Financial Profile": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "Creditworthiness"
+    },
+    {
+      "edge": "is quantified by",
+      "neighbor": "Income & Employment"
+    },
+    {
+      "edge": "is quantified by",
+      "neighbor": "Loan & Property Characteristics"
+    },
+    {
+      "edge": "is quantified by",
+      "neighbor": "Existing Debt"
+    },
+    {
+      "edge": "is a primary determinant of",
+      "neighbor": "Lending Outcomes"
+    }
+  ],
+  "Lender Characteristics": [
+    {
+      "edge": "is categorized by",
+      "neighbor": "Lender Type"
+    },
+    {
+      "edge": "is categorized by",
+      "neighbor": "Lender Size"
+    }
+  ],
+  "Geographic Factors": [
+    {
+      "edge": "are described by",
+      "neighbor": "Census Tract Demographics"
+    },
+    {
+      "edge": "are described by",
+      "neighbor": "Local Economic Conditions"
+    },
+    {
+      "edge": "are described by",
+      "neighbor": "Market Competition"
+    },
+    {
+      "edge": "influences through market conditions",
+      "neighbor": "Lending Outcomes"
+    },
+    {
+      "edge": "correlates with",
+      "neighbor": "Applicant Financial Profile"
+    }
+  ],
+  "Loan Application Decision": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Application Approval Rate"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Application Denial Rate"
+    },
+    {
+      "edge": "is explained by",
+      "neighbor": "Reasons for Denial"
+    }
+  ],
+  "Loan Terms": [
+    {
+      "edge": "are defined by",
+      "neighbor": "Interest Rate Spread"
+    },
+    {
+      "edge": "are defined by",
+      "neighbor": "Loan Costs & Fees"
+    },
+    {
+      "edge": "are defined by",
+      "neighbor": "Loan Product Type"
+    }
+  ],
+  "Post-Origination Performance": [],
+  "Race / Ethnicity": [
+    {
+      "edge": "is used to compare",
+      "neighbor": "Approval Rate by Race"
+    },
+    {
+      "edge": "is used to compare",
+      "neighbor": "Rate Spread Incidence by Race"
+    }
+  ],
+  "Gender / Sex": [
+    {
+      "edge": "is used to compare",
+      "neighbor": "Approval Rate by Gender"
+    }
+  ],
+  "Age": [],
+  "Creditworthiness": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Credit Score"
+    },
+    {
+      "edge": "is evidenced by",
+      "neighbor": "Credit History"
+    }
+  ],
+  "Income & Employment": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Applicant Income"
+    },
+    {
+      "edge": "is a component of",
+      "neighbor": "Debt-to-Income (DTI) Ratio"
+    }
+  ],
+  "Loan & Property Characteristics": [
+    {
+      "edge": "are measured by",
+      "neighbor": "Loan-to-Value (LTV) Ratio"
+    },
+    {
+      "edge": "include",
+      "neighbor": "Loan Amount"
+    },
+    {
+      "edge": "include",
+      "neighbor": "Property Value"
+    }
+  ],
+  "Existing Debt": [
+    {
+      "edge": "is a component of",
+      "neighbor": "Debt-to-Income (DTI) Ratio"
+    }
+  ],
+  "Lender Type": [
+    {
+      "edge": "is specified as",
+      "neighbor": "Depository Institution"
+    },
+    {
+      "edge": "is specified as",
+      "neighbor": "Non-Depository Institution"
+    },
+    {
+      "edge": "often specializes in",
+      "neighbor": "Loan Product Type"
+    }
+  ],
+  "Lender Size": [],
+  "Census Tract Demographics": [
+    {
+      "edge": "are measured by",
+      "neighbor": "Tract Racial Composition"
+    },
+    {
+      "edge": "are measured by",
+      "neighbor": "Tract Median Income"
+    }
+  ],
+  "Local Economic Conditions": [],
+  "Market Competition": [],
+  "Application Approval Rate": [
+    {
+      "edge": "is disaggregated by demography into",
+      "neighbor": "Approval Rate by Race"
+    },
+    {
+      "edge": "is disaggregated by demography into",
+      "neighbor": "Approval Rate by Gender"
+    }
+  ],
+  "Application Denial Rate": [
+    {
+      "edge": "is explained by",
+      "neighbor": "Denial Reason Distribution by Race"
+    }
+  ],
+  "Reasons for Denial": [
+    {
+      "edge": "are analyzed by",
+      "neighbor": "Denial Reason Distribution by Race"
+    }
+  ],
+  "Interest Rate Spread": [
+    {
+      "edge": "is analyzed by",
+      "neighbor": "Rate Spread Incidence by Race"
+    },
+    {
+      "edge": "is averaged for",
+      "neighbor": "Average Rate Spread by Race"
+    }
+  ],
+  "Loan Costs & Fees": [],
+  "Loan Product Type": [],
+  "Credit Score": [
+    {
+      "edge": "is a primary determinant of",
+      "neighbor": "Interest Rate Spread"
+    },
+    {
+      "edge": "strongly informs",
+      "neighbor": "Loan Application Decision"
+    }
+  ],
+  "Credit History": [
+    {
+      "edge": "is a common component of",
+      "neighbor": "Reasons for Denial"
+    }
+  ],
+  "Debt-to-Income (DTI) Ratio": [
+    {
+      "edge": "is compared across demographics in",
+      "neighbor": "Average DTI for Approved Applicants by Race"
+    },
+    {
+      "edge": "is a common component of",
+      "neighbor": "Reasons for Denial"
+    }
+  ],
+  "Loan-to-Value (LTV) Ratio": [
+    {
+      "edge": "is compared across demographics in",
+      "neighbor": "Average LTV for Approved Applicants by Race"
+    },
+    {
+      "edge": "informs",
+      "neighbor": "Loan Application Decision"
+    }
+  ],
+  "Applicant Income": [],
+  "Property Value": [],
+  "Loan Amount": [],
+  "Tract Racial Composition": [
+    {
+      "edge": "is measured by",
+      "neighbor": "Percentage of Black Residents in Tract"
+    },
+    {
+      "edge": "is measured by",
+      "neighbor": "Percentage of Hispanic Residents in Tract"
+    },
+    {
+      "edge": "is used to create",
+      "neighbor": "Majority-Minority Tract Indicator"
+    },
+    {
+      "edge": "provides context for",
+      "neighbor": "Approval Rate by Race"
+    }
+  ],
+  "Tract Median Income": [],
+  "Depository Institution": [],
+  "Non-Depository Institution": [],
+  "Approval Rate by Race": [
+    {
+      "edge": "is calculated from",
+      "neighbor": "White Applicant Approval Count"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Black Applicant Approval Count"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Total White Applicant Count"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Total Black Applicant Count"
+    },
+    {
+      "edge": "is refined into",
+      "neighbor": "Controlled Approval Rate Disparity (Race)"
+    }
+  ],
+  "Approval Rate by Gender": [],
+  "Rate Spread Incidence by Race": [
+    {
+      "edge": "is refined into",
+      "neighbor": "Controlled Rate Spread Disparity (Race)"
+    }
+  ],
+  "Average Rate Spread by Race": [
+    {
+      "edge": "is refined into",
+      "neighbor": "Controlled Rate Spread Disparity (Race)"
+    }
+  ],
+  "Denial Reason Distribution by Race": [
+    {
+      "edge": "is quantified by metrics like",
+      "neighbor": "Count of 'DTI' Denials for White Applicants"
+    },
+    {
+      "edge": "is quantified by metrics like",
+      "neighbor": "Count of 'Credit History' Denials for Black Applicants"
+    }
+  ],
+  "Average DTI for Approved Applicants by Race": [
+    {
+      "edge": "is calculated from",
+      "neighbor": "Mean DTI for Approved White Applicants"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Mean DTI for Approved Black Applicants"
+    }
+  ],
+  "Average LTV for Approved Applicants by Race": [
+    {
+      "edge": "is calculated from",
+      "neighbor": "Mean LTV for Approved White Applicants"
+    },
+    {
+      "edge": "is calculated from",
+      "neighbor": "Mean LTV for Approved Black Applicants"
+    }
+  ],
+  "Majority-Minority Tract Indicator": [
+    {
+      "edge": "is used to calculate",
+      "neighbor": "Denial Rate in Majority-Minority Tracts"
+    }
+  ],
+  "Percentage of Black Residents in Tract": [],
+  "Percentage of Hispanic Residents in Tract": [],
+  "Controlled Approval Rate Disparity (Race)": [],
+  "Controlled Rate Spread Disparity (Race)": [],
+  "Mean DTI for Approved White Applicants": [],
+  "Mean DTI for Approved Black Applicants": [],
+  "Mean LTV for Approved White Applicants": [],
+  "Mean LTV for Approved Black Applicants": [],
+  "Denial Rate in Majority-Minority Tracts": [],
+  "Count of 'DTI' Denials for White Applicants": [],
+  "Count of 'Credit History' Denials for Black Applicants": [],
+  "White Applicant Approval Count": [],
+  "Black Applicant Approval Count": [],
+  "Total White Applicant Count": [],
+  "Total Black Applicant Count": []
+}
+```

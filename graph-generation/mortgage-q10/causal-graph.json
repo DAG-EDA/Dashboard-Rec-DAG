@@ -1,0 +1,100 @@
+{
+  "property_value": [
+    {
+      "edge": "is used to calculate",
+      "neighbor": "combined_loan_to_value_ratio"
+    }
+  ],
+  "discount_points": [],
+  "debt_to_income_ratio": [
+    {
+      "edge": "is calculated from",
+      "neighbor": "income"
+    }
+  ],
+  "derived_msa-md": [],
+  "initially_payable_to_institution": [],
+  "lender_credits": [],
+  "purchaser_type": [
+    {
+      "edge": "can be",
+      "neighbor": "multifamily_affordable_units"
+    }
+  ],
+  "applicant_race": [],
+  "activity_year": [],
+  "occupancy_type": [
+    {
+      "edge": "influences requirements for",
+      "neighbor": "balloon_payment"
+    },
+    {
+      "edge": "influences requirements for",
+      "neighbor": "purchaser_type"
+    }
+  ],
+  "other_nonamortizing_features": [],
+  "co-applicant_race": [],
+  "lien_status": [],
+  "derived_ethnicity": [],
+  "derived_loan_product_type": [],
+  "applicant_sex_observed": [],
+  "action_taken": [],
+  "interest_only_payment": [],
+  "balloon_payment": [
+    {
+      "edge": "is quantified by",
+      "neighbor": "loan_amount"
+    }
+  ],
+  "total_units": [],
+  "loan_amount": [],
+  "aus": [],
+  "co-applicant_sex": [],
+  "combined_loan_to_value_ratio": [],
+  "loan_term": [],
+  "applicant_credit_score_type": [],
+  "applicant_ethnicity": [],
+  "county_code": [],
+  "co-applicant_ethnicity": [],
+  "denial_reason": [],
+  "negative_amortization": [],
+  "intro_rate_period": [],
+  "multifamily_affordable_units": [],
+  "derived_dwelling_category": [],
+  "hoepa_status": [],
+  "co-applicant_credit_score_type": [],
+  "lei": [],
+  "co-applicant_ethnicity_observed": [],
+  "applicant_sex": [],
+  "open-end_line_of_credit": [],
+  "prepayment_penalty_term": [],
+  "preapproval": [],
+  "applicant_race_observed": [],
+  "census_tract": [],
+  "rate_spread": [],
+  "total_loan_costs": [],
+  "origination_charges": [],
+  "loan_type": [],
+  "interest_rate": [],
+  "reverse_mortgage": [],
+  "derived_race": [],
+  "manufactured_home_secured_property_type": [],
+  "applicant_ethnicity_observed": [],
+  "co-applicant_age_above_62": [],
+  "submission_of_application": [],
+  "conforming_loan_limit": [],
+  "derived_sex": [],
+  "construction_method": [],
+  "manufactured_home_land_property_interest": [],
+  "applicant_age_above_62": [],
+  "business_or_commercial_purpose": [],
+  "total_points_and_fees": [],
+  "income": [],
+  "co-applicant_race_observed": [],
+  "co-applicant_sex_observed": [],
+  "loan_purpose": [],
+  "co-applicant_age": [],
+  "state_code": [],
+  "ageapplicant": []
+}

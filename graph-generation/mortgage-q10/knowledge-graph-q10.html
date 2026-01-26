@@ -1,0 +1,258 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 750px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Mortgage Application Outcome", "label": "Mortgage Application Outcome", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant\u0027s Financial Profile", "label": "Applicant\u0027s Financial Profile", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant\u0027s Capacity to Repay", "label": "Applicant\u0027s Capacity to Repay", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Collateral", "label": "Collateral", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Capital", "label": "Capital", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan and Market Conditions", "label": "Loan and Market Conditions", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Credit History", "label": "Credit History", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Employment History", "label": "Employment History", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Existing Financial Obligations", "label": "Existing Financial Obligations", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Income", "label": "Income", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Debt-to-Income Ratio (DTI)", "label": "Debt-to-Income Ratio (DTI)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Property Valuation", "label": "Property Valuation", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Property Type", "label": "Property Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Property Location", "label": "Property Location", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Down Payment", "label": "Down Payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Liquid Assets \u0026 Reserves", "label": "Liquid Assets \u0026 Reserves", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Product Characteristics", "label": "Loan Product Characteristics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Economic Indicators", "label": "Economic Indicators", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender-Specific Policies", "label": "Lender-Specific Policies", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Credit Score", "label": "Credit Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Payment History", "label": "Payment History", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Credit Utilization", "label": "Credit Utilization", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Public Records", "label": "Public Records", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Job Stability", "label": "Job Stability", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Employment Type", "label": "Employment Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Existing Debt Payments", "label": "Existing Debt Payments", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Other Liabilities", "label": "Other Liabilities", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Primary Income Source", "label": "Primary Income Source", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Secondary Income Sources", "label": "Secondary Income Sources", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Income Stability", "label": "Income Stability", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Back-End DTI (Total Debt Ratio)", "label": "Back-End DTI (Total Debt Ratio)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Front-End DTI (Housing Ratio)", "label": "Front-End DTI (Housing Ratio)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Appraised Value", "label": "Appraised Value", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan-to-Value Ratio (LTV)", "label": "Loan-to-Value Ratio (LTV)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Single-Family Home", "label": "Single-Family Home", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Condominium/Co-op", "label": "Condominium/Co-op", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Multi-Family Dwelling", "label": "Multi-Family Dwelling", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Geographic Risk Factors", "label": "Geographic Risk Factors", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Local Market Trends", "label": "Local Market Trends", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Down Payment Amount", "label": "Down Payment Amount", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Source of Down Payment", "label": "Source of Down Payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Cash Reserves", "label": "Cash Reserves", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Other Liquidable Assets", "label": "Other Liquidable Assets", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Type", "label": "Loan Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Interest Rate Type", "label": "Interest Rate Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Term", "label": "Loan Term", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Prevailing Interest Rates", "label": "Prevailing Interest Rates", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Housing Market Index", "label": "Housing Market Index", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender Overlays", "label": "Lender Overlays", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Automated Underwriting System (AUS) Findings", "label": "Automated Underwriting System (AUS) Findings", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "FICO Score", "label": "FICO Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "VantageScore", "label": "VantageScore", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Number of Late Payments", "label": "Number of Late Payments", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Severity of Delinquencies", "label": "Severity of Delinquencies", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Overall Credit Utilization Ratio", "label": "Overall Credit Utilization Ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Per-Account Utilization Ratio", "label": "Per-Account Utilization Ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Age of Bankruptcy/Foreclosure", "label": "Age of Bankruptcy/Foreclosure", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Type of Public Record", "label": "Type of Public Record", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Time at Current Job", "label": "Time at Current Job", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Time in Same Industry", "label": "Time in Same Industry", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Salaried (W-2)", "label": "Salaried (W-2)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Self-Employed (1099)", "label": "Self-Employed (1099)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Commission-Based", "label": "Commission-Based", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Monthly Auto Loan Payment", "label": "Monthly Auto Loan Payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Monthly Student Loan Payment", "label": "Monthly Student Loan Payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Minimum Credit Card Payments", "label": "Minimum Credit Card Payments", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Verified Gross Monthly Income", "label": "Verified Gross Monthly Income", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Income Trend (2-year average)", "label": "Income Trend (2-year average)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Income Volatility", "label": "Income Volatility", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Monthly Debt Obligations", "label": "Total Monthly Debt Obligations", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Proposed PITI Payment", "label": "Proposed PITI Payment", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Official Appraised Property Value", "label": "Official Appraised Property Value", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Calculated LTV Percentage", "label": "Calculated LTV Percentage", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Personal Savings", "label": "Personal Savings", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Gift Funds", "label": "Gift Funds", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Down Payment Assistance Program", "label": "Down Payment Assistance Program", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Months of PITI in Reserve", "label": "Months of PITI in Reserve", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Program Name", "label": "Loan Program Name", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender-Specific DTI Limits", "label": "Lender-Specific DTI Limits", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lender-Specific Credit Score Minimums", "label": "Lender-Specific Credit Score Minimums", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant 1 FICO Score", "label": "Applicant 1 FICO Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant 2 FICO Score", "label": "Applicant 2 FICO Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Governing FICO Score", "label": "Governing FICO Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of 30-Day Lates (Last 24m)", "label": "Count of 30-Day Lates (Last 24m)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of 60-Day Lates (Last 24m)", "label": "Count of 60-Day Lates (Last 24m)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of 90+ Day Lates (Last 24m)", "label": "Count of 90+ Day Lates (Last 24m)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Balances / Total Credit Limits (%)", "label": "Total Balances / Total Credit Limits (%)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Months Since Bankruptcy Discharge", "label": "Months Since Bankruptcy Discharge", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Months Since Foreclosure Sale Date", "label": "Months Since Foreclosure Sale Date", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Months in Current Position", "label": "Months in Current Position", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Months in Current Field of Work", "label": "Months in Current Field of Work", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant 1 Gross Monthly Income ($)", "label": "Applicant 1 Gross Monthly Income ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Applicant 2 Gross Monthly Income ($)", "label": "Applicant 2 Gross Monthly Income ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Qualifying Gross Monthly Income ($)", "label": "Total Qualifying Gross Monthly Income ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Monthly Principal \u0026 Interest ($)", "label": "Monthly Principal \u0026 Interest ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Monthly Property Tax ($)", "label": "Monthly Property Tax ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Monthly Homeowners Insurance ($)", "label": "Monthly Homeowners Insurance ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Monthly PMI/HOA Dues ($)", "label": "Monthly PMI/HOA Dues ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Sum of All Monthly Debt Payments ($)", "label": "Sum of All Monthly Debt Payments ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Appraised Value ($)", "label": "Appraised Value ($)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Loan Amount / Appraised Value (%)", "label": "Loan Amount / Appraised Value (%)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Liquid Assets / Monthly PITI (months)", "label": "Total Liquid Assets / Monthly PITI (months)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Specific Loan Program ID", "label": "Specific Loan Program ID", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Maximum Allowable Back-End DTI (%)", "label": "Maximum Allowable Back-End DTI (%)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Minimum FICO Score Requirement", "label": "Minimum FICO Score Requirement", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Automated Underwriting System (AUS) Findings)", "label": "Automated Underwriting System (AUS) Findings)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "DU/LP Recommendation", "label": "DU/LP Recommendation", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "AUS Final Recommendation", "label": "AUS Final Recommendation", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Mortgage Application Outcome", "label": "is determined by", "to": "Applicant\u0027s Financial Profile", "width": 1}, {"arrows": "to", "from": "Mortgage Application Outcome", "label": "is determined by", "to": "Applicant\u0027s Capacity to Repay", "width": 1}, {"arrows": "to", "from": "Mortgage Application Outcome", "label": "is determined by", "to": "Collateral", "width": 1}, {"arrows": "to", "from": "Mortgage Application Outcome", "label": "is determined by", "to": "Capital", "width": 1}, {"arrows": "to", "from": "Mortgage Application Outcome", "label": "is determined by", "to": "Loan and Market Conditions", "width": 1}, {"arrows": "to", "from": "Applicant\u0027s Financial Profile", "label": "is assessed via", "to": "Credit History", "width": 1}, {"arrows": "to", "from": "Applicant\u0027s Financial Profile", "label": "is assessed via", "to": "Employment History", "width": 1}, {"arrows": "to", "from": "Applicant\u0027s Financial Profile", "label": "is assessed via", "to": "Existing Financial Obligations", "width": 1}, {"arrows": "to", "from": "Applicant\u0027s Capacity to Repay", "label": "is measured by", "to": "Income", "width": 1}, {"arrows": "to", "from": "Applicant\u0027s Capacity to Repay", "label": "is measured by", "to": "Debt-to-Income Ratio (DTI)", "width": 1}, {"arrows": "to", "from": "Collateral", "label": "is evaluated by", "to": "Property Valuation", "width": 1}, {"arrows": "to", "from": "Collateral", "label": "is classified by", "to": "Property Type", "width": 1}, {"arrows": "to", "from": "Collateral", "label": "is evaluated by", "to": "Property Location", "width": 1}, {"arrows": "to", "from": "Capital", "label": "is comprised of", "to": "Down Payment", "width": 1}, {"arrows": "to", "from": "Capital", "label": "is comprised of", "to": "Liquid Assets \u0026 Reserves", "width": 1}, {"arrows": "to", "from": "Loan and Market Conditions", "label": "are defined by", "to": "Loan Product Characteristics", "width": 1}, {"arrows": "to", "from": "Loan and Market Conditions", "label": "are influenced by", "to": "Economic Indicators", "width": 1}, {"arrows": "to", "from": "Loan and Market Conditions", "label": "are defined by", "to": "Lender-Specific Policies", "width": 1}, {"arrows": "to", "from": "Credit History", "label": "is summarized by", "to": "Credit Score", "width": 1}, {"arrows": "to", "from": "Credit History", "label": "is detailed in", "to": "Payment History", "width": 1}, {"arrows": "to", "from": "Credit History", "label": "is reflected in", "to": "Credit Utilization", "width": 1}, {"arrows": "to", "from": "Credit History", "label": "includes", "to": "Public Records", "width": 1}, {"arrows": "to", "from": "Employment History", "label": "is measured by", "to": "Job Stability", "width": 1}, {"arrows": "to", "from": "Employment History", "label": "is categorized by", "to": "Employment Type", "width": 1}, {"arrows": "to", "from": "Existing Financial Obligations", "label": "includes", "to": "Existing Debt Payments", "width": 1}, {"arrows": "to", "from": "Existing Financial Obligations", "label": "includes", "to": "Other Liabilities", "width": 1}, {"arrows": "to", "from": "Income", "label": "is sourced from", "to": "Primary Income Source", "width": 1}, {"arrows": "to", "from": "Income", "label": "is sourced from", "to": "Secondary Income Sources", "width": 1}, {"arrows": "to", "from": "Income", "label": "is evaluated for", "to": "Income Stability", "width": 1}, {"arrows": "to", "from": "Debt-to-Income Ratio (DTI)", "label": "is a component of", "to": "Back-End DTI (Total Debt Ratio)", "width": 1}, {"arrows": "to", "from": "Debt-to-Income Ratio (DTI)", "label": "is a component of", "to": "Front-End DTI (Housing Ratio)", "width": 1}, {"arrows": "to", "from": "Debt-to-Income Ratio (DTI)", "label": "is calculated from", "to": "Income", "width": 1}, {"arrows": "to", "from": "Debt-to-Income Ratio (DTI)", "label": "is calculated from", "to": "Existing Financial Obligations", "width": 1}, {"arrows": "to", "from": "Property Valuation", "label": "determines", "to": "Appraised Value", "width": 1}, {"arrows": "to", "from": "Property Valuation", "label": "is used to calculate", "to": "Loan-to-Value Ratio (LTV)", "width": 1}, {"arrows": "to", "from": "Property Type", "label": "can be", "to": "Single-Family Home", "width": 1}, {"arrows": "to", "from": "Property Type", "label": "can be", "to": "Condominium/Co-op", "width": 1}, {"arrows": "to", "from": "Property Type", "label": "can be", "to": "Multi-Family Dwelling", "width": 1}, {"arrows": "to", "from": "Property Location", "label": "has", "to": "Geographic Risk Factors", "width": 1}, {"arrows": "to", "from": "Property Location", "label": "has", "to": "Local Market Trends", "width": 1}, {"arrows": "to", "from": "Down Payment", "label": "is quantified by", "to": "Down Payment Amount", "width": 1}, {"arrows": "to", "from": "Down Payment", "label": "is verified by", "to": "Source of Down Payment", "width": 1}, {"arrows": "to", "from": "Liquid Assets \u0026 Reserves", "label": "is quantified by", "to": "Cash Reserves", "width": 1}, {"arrows": "to", "from": "Liquid Assets \u0026 Reserves", "label": "includes", "to": "Other Liquidable Assets", "width": 1}, {"arrows": "to", "from": "Loan Product Characteristics", "label": "is defined by", "to": "Loan Type", "width": 1}, {"arrows": "to", "from": "Loan Product Characteristics", "label": "is defined by", "to": "Interest Rate Type", "width": 1}, {"arrows": "to", "from": "Loan Product Characteristics", "label": "is defined by", "to": "Loan Term", "width": 1}, {"arrows": "to", "from": "Loan Product Characteristics", "label": "is influenced by", "to": "Credit Score", "width": 1}, {"arrows": "to", "from": "Loan Product Characteristics", "label": "is constrained by", "to": "Loan-to-Value Ratio (LTV)", "width": 1}, {"arrows": "to", "from": "Economic Indicators", "label": "include", "to": "Prevailing Interest Rates", "width": 1}, {"arrows": "to", "from": "Economic Indicators", "label": "include", "to": "Housing Market Index", "width": 1}, {"arrows": "to", "from": "Lender-Specific Policies", "label": "are comprised of", "to": "Lender Overlays", "width": 1}, {"arrows": "to", "from": "Lender-Specific Policies", "label": "are informed by", "to": "Automated Underwriting System (AUS) Findings", "width": 1}, {"arrows": "to", "from": "Lender-Specific Policies", "label": "sets requirements for", "to": "Credit History", "width": 1}, {"arrows": "to", "from": "Lender-Specific Policies", "label": "sets requirements for", "to": "Debt-to-Income Ratio (DTI)", "width": 1}, {"arrows": "to", "from": "Credit Score", "label": "is a type of", "to": "FICO Score", "width": 1}, {"arrows": "to", "from": "Credit Score", "label": "is a type of", "to": "VantageScore", "width": 1}, {"arrows": "to", "from": "Payment History", "label": "is quantified by", "to": "Number of Late Payments", "width": 1}, {"arrows": "to", "from": "Payment History", "label": "is quantified by", "to": "Severity of Delinquencies", "width": 1}, {"arrows": "to", "from": "Credit Utilization", "label": "is measured by", "to": "Overall Credit Utilization Ratio", "width": 1}, {"arrows": "to", "from": "Credit Utilization", "label": "is measured by", "to": "Per-Account Utilization Ratio", "width": 1}, {"arrows": "to", "from": "Public Records", "label": "are characterized by", "to": "Age of Bankruptcy/Foreclosure", "width": 1}, {"arrows": "to", "from": "Public Records", "label": "are characterized by", "to": "Type of Public Record", "width": 1}, {"arrows": "to", "from": "Job Stability", "label": "is measured by", "to": "Time at Current Job", "width": 1}, {"arrows": "to", "from": "Job Stability", "label": "is measured by", "to": "Time in Same Industry", "width": 1}, {"arrows": "to", "from": "Employment Type", "label": "can be", "to": "Salaried (W-2)", "width": 1}, {"arrows": "to", "from": "Employment Type", "label": "can be", "to": "Self-Employed (1099)", "width": 1}, {"arrows": "to", "from": "Employment Type", "label": "can be", "to": "Commission-Based", "width": 1}, {"arrows": "to", "from": "Existing Debt Payments", "label": "includes", "to": "Monthly Auto Loan Payment", "width": 1}, {"arrows": "to", "from": "Existing Debt Payments", "label": "includes", "to": "Monthly Student Loan Payment", "width": 1}, {"arrows": "to", "from": "Existing Debt Payments", "label": "includes", "to": "Minimum Credit Card Payments", "width": 1}, {"arrows": "to", "from": "Primary Income Source", "label": "is quantified by", "to": "Verified Gross Monthly Income", "width": 1}, {"arrows": "to", "from": "Income Stability", "label": "is measured by", "to": "Income Trend (2-year average)", "width": 1}, {"arrows": "to", "from": "Income Stability", "label": "is measured by", "to": "Income Volatility", "width": 1}, {"arrows": "to", "from": "Back-End DTI (Total Debt Ratio)", "label": "is calculated using", "to": "Total Monthly Debt Obligations", "width": 1}, {"arrows": "to", "from": "Front-End DTI (Housing Ratio)", "label": "is calculated using", "to": "Proposed PITI Payment", "width": 1}, {"arrows": "to", "from": "Appraised Value", "label": "is specifically", "to": "Official Appraised Property Value", "width": 1}, {"arrows": "to", "from": "Loan-to-Value Ratio (LTV)", "label": "is specifically", "to": "Calculated LTV Percentage", "width": 1}, {"arrows": "to", "from": "Loan-to-Value Ratio (LTV)", "label": "is calculated from", "to": "Appraised Value", "width": 1}, {"arrows": "to", "from": "Source of Down Payment", "label": "can be", "to": "Personal Savings", "width": 1}, {"arrows": "to", "from": "Source of Down Payment", "label": "can be", "to": "Gift Funds", "width": 1}, {"arrows": "to", "from": "Source of Down Payment", "label": "can be", "to": "Down Payment Assistance Program", "width": 1}, {"arrows": "to", "from": "Cash Reserves", "label": "is measured in", "to": "Months of PITI in Reserve", "width": 1}, {"arrows": "to", "from": "Loan Type", "label": "is specifically", "to": "Loan Program Name", "width": 1}, {"arrows": "to", "from": "Loan Type", "label": "influences requirements for", "to": "Down Payment", "width": 1}, {"arrows": "to", "from": "Loan Type", "label": "influences requirements for", "to": "Property Type", "width": 1}, {"arrows": "to", "from": "Prevailing Interest Rates", "label": "are adjusted by", "to": "FICO Score", "width": 1}, {"arrows": "to", "from": "Lender Overlays", "label": "include", "to": "Lender-Specific DTI Limits", "width": 1}, {"arrows": "to", "from": "Lender Overlays", "label": "include", "to": "Lender-Specific Credit Score Minimums", "width": 1}, {"arrows": "to", "from": "FICO Score", "label": "is specified as", "to": "Applicant 1 FICO Score", "width": 1}, {"arrows": "to", "from": "FICO Score", "label": "is specified as", "to": "Applicant 2 FICO Score", "width": 1}, {"arrows": "to", "from": "FICO Score", "label": "is determined by", "to": "Governing FICO Score", "width": 1}, {"arrows": "to", "from": "Number of Late Payments", "label": "is measured by", "to": "Count of 30-Day Lates (Last 24m)", "width": 1}, {"arrows": "to", "from": "Number of Late Payments", "label": "is measured by", "to": "Count of 60-Day Lates (Last 24m)", "width": 1}, {"arrows": "to", "from": "Number of Late Payments", "label": "is measured by", "to": "Count of 90+ Day Lates (Last 24m)", "width": 1}, {"arrows": "to", "from": "Overall Credit Utilization Ratio", "label": "is calculated as", "to": "Total Balances / Total Credit Limits (%)", "width": 1}, {"arrows": "to", "from": "Age of Bankruptcy/Foreclosure", "label": "is measured by", "to": "Months Since Bankruptcy Discharge", "width": 1}, {"arrows": "to", "from": "Age of Bankruptcy/Foreclosure", "label": "is measured by", "to": "Months Since Foreclosure Sale Date", "width": 1}, {"arrows": "to", "from": "Time at Current Job", "label": "is measured in", "to": "Months in Current Position", "width": 1}, {"arrows": "to", "from": "Time in Same Industry", "label": "is measured in", "to": "Months in Current Field of Work", "width": 1}, {"arrows": "to", "from": "Verified Gross Monthly Income", "label": "is comprised of", "to": "Applicant 1 Gross Monthly Income ($)", "width": 1}, {"arrows": "to", "from": "Verified Gross Monthly Income", "label": "is comprised of", "to": "Applicant 2 Gross Monthly Income ($)", "width": 1}, {"arrows": "to", "from": "Verified Gross Monthly Income", "label": "is aggregated into", "to": "Total Qualifying Gross Monthly Income ($)", "width": 1}, {"arrows": "to", "from": "Proposed PITI Payment", "label": "includes", "to": "Monthly Principal \u0026 Interest ($)", "width": 1}, {"arrows": "to", "from": "Proposed PITI Payment", "label": "includes", "to": "Monthly Property Tax ($)", "width": 1}, {"arrows": "to", "from": "Proposed PITI Payment", "label": "includes", "to": "Monthly Homeowners Insurance ($)", "width": 1}, {"arrows": "to", "from": "Proposed PITI Payment", "label": "includes", "to": "Monthly PMI/HOA Dues ($)", "width": 1}, {"arrows": "to", "from": "Total Monthly Debt Obligations", "label": "is calculated as", "to": "Sum of All Monthly Debt Payments ($)", "width": 1}, {"arrows": "to", "from": "Official Appraised Property Value", "label": "is measured in", "to": "Appraised Value ($)", "width": 1}, {"arrows": "to", "from": "Calculated LTV Percentage", "label": "is calculated as", "to": "Loan Amount / Appraised Value (%)", "width": 1}, {"arrows": "to", "from": "Months of PITI in Reserve", "label": "is calculated as", "to": "Total Liquid Assets / Monthly PITI (months)", "width": 1}, {"arrows": "to", "from": "Months of PITI in Reserve", "label": "is calculated using", "to": "Proposed PITI Payment", "width": 1}, {"arrows": "to", "from": "Months of PITI in Reserve", "label": "is calculated using", "to": "Cash Reserves", "width": 1}, {"arrows": "to", "from": "Loan Program Name", "label": "is identified by", "to": "Specific Loan Program ID", "width": 1}, {"arrows": "to", "from": "Lender-Specific DTI Limits", "label": "is specified as", "to": "Maximum Allowable Back-End DTI (%)", "width": 1}, {"arrows": "to", "from": "Lender-Specific Credit Score Minimums", "label": "is specified as", "to": "Minimum FICO Score Requirement", "width": 1}, {"arrows": "to", "from": "Automated Underwriting System (AUS) Findings)", "label": "produce", "to": "DU/LP Recommendation", "width": 1}, {"arrows": "to", "from": "DU/LP Recommendation", "label": "is", "title": "is", "to": "AUS Final Recommendation", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.33,
+            "damping": 0.95,
+            "nodeDistance": 150,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

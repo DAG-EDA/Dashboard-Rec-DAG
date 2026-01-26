@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Successful Movie Characteristics", "label": "Successful Movie Characteristics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Production Attributes", "label": "Production Attributes", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Reception \u0026 Critical Acclaim", "label": "Reception \u0026 Critical Acclaim", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Financial Performance", "label": "Financial Performance", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Audience Engagement", "label": "Audience Engagement", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Creative Elements", "label": "Creative Elements", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Cast \u0026 Crew", "label": "Cast \u0026 Crew", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Technical Specifications", "label": "Technical Specifications", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Production Logistics", "label": "Production Logistics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Critical Reviews", "label": "Critical Reviews", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Audience Ratings", "label": "Audience Ratings", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Awards \u0026 Nominations", "label": "Awards \u0026 Nominations", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Revenue Streams", "label": "Revenue Streams", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Production \u0026 Marketing Costs", "label": "Production \u0026 Marketing Costs", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Profitability Metrics", "label": "Profitability Metrics", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Social Media Buzz", "label": "Social Media Buzz", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Cultural Impact", "label": "Cultural Impact", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Franchise Potential", "label": "Franchise Potential", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Genre", "label": "Genre", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Source Material", "label": "Source Material", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Screenplay", "label": "Screenplay", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Original Score", "label": "Original Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Director", "label": "Director", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Lead Actors", "label": "Lead Actors", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Writer", "label": "Writer", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Runtime", "label": "Runtime", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "MPAA Rating", "label": "MPAA Rating", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Primary Language", "label": "Primary Language", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Country of Origin", "label": "Country of Origin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Production Company", "label": "Production Company", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Distributor", "label": "Distributor", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Release Season", "label": "Release Season", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Metacritic Score", "label": "Metacritic Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Rotten Tomatoes Tomatometer", "label": "Rotten Tomatoes Tomatometer", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Rotten Tomatoes Audience Score", "label": "Rotten Tomatoes Audience Score", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "IMDb User Rating", "label": "IMDb User Rating", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "CinemaScore", "label": "CinemaScore", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Academy Awards", "label": "Academy Awards", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Golden Globes", "label": "Golden Globes", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "BAFTAs", "label": "BAFTAs", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Domestic Box Office Gross", "label": "Domestic Box Office Gross", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "International Box Office Gross", "label": "International Box Office Gross", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Streaming \u0026 VOD Revenue", "label": "Streaming \u0026 VOD Revenue", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Production Budget", "label": "Production Budget", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Marketing Budget", "label": "Marketing Budget", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Return on Investment (ROI)", "label": "Return on Investment (ROI)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Net Profit", "label": "Net Profit", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Pre-Release Hype", "label": "Pre-Release Hype", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Post-Release Conversation Volume", "label": "Post-Release Conversation Volume", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Sentiment Analysis", "label": "Sentiment Analysis", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Search Trend Volume", "label": "Search Trend Volume", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Longevity of Discussion", "label": "Longevity of Discussion", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Sequel/Prequel/Spinoff Count", "label": "Sequel/Prequel/Spinoff Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Expanded Universe Media", "label": "Expanded Universe Media", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Primary Genre", "label": "Primary Genre", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Sub-Genre(s)", "label": "Sub-Genre(s)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Adaptation Type", "label": "Adaptation Type", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Source Material Popularity", "label": "Source Material Popularity", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Passes Bechdel Test", "label": "Passes Bechdel Test", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Director\u0027s Previous Box Office Performance", "label": "Director\u0027s Previous Box Office Performance", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Director\u0027s Previous Award Nominations", "label": "Director\u0027s Previous Award Nominations", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Actor\u0027s Previous Box Office Performance", "label": "Actor\u0027s Previous Box Office Performance", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Actor\u0027s Social Media Following", "label": "Actor\u0027s Social Media Following", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Actor\u0027s Previous Award Nominations", "label": "Actor\u0027s Previous Award Nominations", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Runtime in Minutes", "label": "Runtime in Minutes", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Release Quarter (Q1-Q4)", "label": "Release Quarter (Q1-Q4)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Is Holiday Release", "label": "Is Holiday Release", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Is Summer Blockbuster Season Release", "label": "Is Summer Blockbuster Season Release", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Metascore (0-100)", "label": "Metascore (0-100)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Tomatometer Percentage (0-100%)", "label": "Tomatometer Percentage (0-100%)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Audience Score Percentage (0-100%)", "label": "Audience Score Percentage (0-100%)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "IMDb Score (1-10)", "label": "IMDb Score (1-10)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "CinemaScore Grade (A+ to F)", "label": "CinemaScore Grade (A+ to F)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Number of Nominations (Academy Awards)", "label": "Number of Nominations (Academy Awards)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Number of Wins (Academy Awards)", "label": "Number of Wins (Academy Awards)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Gross Amount (USD)", "label": "Gross Amount (USD)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Budget Amount (USD)", "label": "Budget Amount (USD)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Worldwide Gross to Budget Ratio", "label": "Worldwide Gross to Budget Ratio", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Profit Amount (USD)", "label": "Profit Amount (USD)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Positive Sentiment Percentage", "label": "Positive Sentiment Percentage", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Negative Sentiment Percentage", "label": "Negative Sentiment Percentage", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Franchise Installment Count", "label": "Total Franchise Installment Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Average Gross of Last 5 Films (USD)", "label": "Average Gross of Last 5 Films (USD)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Combined Follower Count", "label": "Combined Follower Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Average Engagement Rate", "label": "Average Engagement Rate", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of Major Award Nominations", "label": "Count of Major Award Nominations", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Count of Major Award Wins", "label": "Count of Major Award Wins", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Oscar Nomination Count", "label": "Total Oscar Nomination Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Total Oscar Win Count", "label": "Total Oscar Win Count", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Budget in Millions (USD)", "label": "Budget in Millions (USD)", "shape": "dot", "size": 10}, {"color": "#97c2fc", "font": {"color": "#000000"}, "id": "Ratio Value", "label": "Ratio Value", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Successful Movie Characteristics", "label": "Characterized By", "to": "Production Attributes", "width": 1}, {"arrows": "to", "from": "Successful Movie Characteristics", "label": "Characterized By", "to": "Reception \u0026 Critical Acclaim", "width": 1}, {"arrows": "to", "from": "Successful Movie Characteristics", "label": "Characterized By", "to": "Financial Performance", "width": 1}, {"arrows": "to", "from": "Successful Movie Characteristics", "label": "Characterized By", "to": "Audience Engagement", "width": 1}, {"arrows": "to", "from": "Production Attributes", "label": "Includes", "to": "Creative Elements", "width": 1}, {"arrows": "to", "from": "Production Attributes", "label": "Includes", "to": "Cast \u0026 Crew", "width": 1}, {"arrows": "to", "from": "Production Attributes", "label": "Includes", "to": "Technical Specifications", "width": 1}, {"arrows": "to", "from": "Production Attributes", "label": "Includes", "to": "Production Logistics", "width": 1}, {"arrows": "to", "from": "Reception \u0026 Critical Acclaim", "label": "Measured By", "to": "Critical Reviews", "width": 1}, {"arrows": "to", "from": "Reception \u0026 Critical Acclaim", "label": "Measured By", "to": "Audience Ratings", "width": 1}, {"arrows": "to", "from": "Reception \u0026 Critical Acclaim", "label": "Measured By", "to": "Awards \u0026 Nominations", "width": 1}, {"arrows": "to", "from": "Financial Performance", "label": "Assessed Through", "to": "Revenue Streams", "width": 1}, {"arrows": "to", "from": "Financial Performance", "label": "Assessed Through", "to": "Production \u0026 Marketing Costs", "width": 1}, {"arrows": "to", "from": "Financial Performance", "label": "Assessed Through", "to": "Profitability Metrics", "width": 1}, {"arrows": "to", "from": "Audience Engagement", "label": "Gauged Via", "to": "Social Media Buzz", "width": 1}, {"arrows": "to", "from": "Audience Engagement", "label": "Gauged Via", "to": "Cultural Impact", "width": 1}, {"arrows": "to", "from": "Audience Engagement", "label": "Gauged Via", "to": "Franchise Potential", "width": 1}, {"arrows": "to", "from": "Creative Elements", "label": "Composed Of", "to": "Genre", "width": 1}, {"arrows": "to", "from": "Creative Elements", "label": "Composed Of", "to": "Source Material", "width": 1}, {"arrows": "to", "from": "Creative Elements", "label": "Composed Of", "to": "Screenplay", "width": 1}, {"arrows": "to", "from": "Creative Elements", "label": "Composed Of", "to": "Original Score", "width": 1}, {"arrows": "to", "from": "Cast \u0026 Crew", "label": "Consists Of", "to": "Director", "width": 1}, {"arrows": "to", "from": "Cast \u0026 Crew", "label": "Consists Of", "to": "Lead Actors", "width": 1}, {"arrows": "to", "from": "Cast \u0026 Crew", "label": "Consists Of", "to": "Writer", "width": 1}, {"arrows": "to", "from": "Technical Specifications", "label": "Defined By", "to": "Runtime", "width": 1}, {"arrows": "to", "from": "Technical Specifications", "label": "Defined By", "to": "MPAA Rating", "width": 1}, {"arrows": "to", "from": "Technical Specifications", "label": "Defined By", "to": "Primary Language", "width": 1}, {"arrows": "to", "from": "Technical Specifications", "label": "Defined By", "to": "Country of Origin", "width": 1}, {"arrows": "to", "from": "Production Logistics", "label": "Involves", "to": "Production Company", "width": 1}, {"arrows": "to", "from": "Production Logistics", "label": "Involves", "to": "Distributor", "width": 1}, {"arrows": "to", "from": "Production Logistics", "label": "Involves", "to": "Release Season", "width": 1}, {"arrows": "to", "from": "Critical Reviews", "label": "Aggregated As", "to": "Metacritic Score", "width": 1}, {"arrows": "to", "from": "Critical Reviews", "label": "Aggregated As", "to": "Rotten Tomatoes Tomatometer", "width": 1}, {"arrows": "to", "from": "Audience Ratings", "label": "Aggregated As", "to": "Rotten Tomatoes Audience Score", "width": 1}, {"arrows": "to", "from": "Audience Ratings", "label": "Aggregated As", "to": "IMDb User Rating", "width": 1}, {"arrows": "to", "from": "Audience Ratings", "label": "Aggregated As", "to": "CinemaScore", "width": 1}, {"arrows": "to", "from": "Awards \u0026 Nominations", "label": "Exemplified By", "to": "Academy Awards", "width": 1}, {"arrows": "to", "from": "Awards \u0026 Nominations", "label": "Exemplified By", "to": "Golden Globes", "width": 1}, {"arrows": "to", "from": "Awards \u0026 Nominations", "label": "Exemplified By", "to": "BAFTAs", "width": 1}, {"arrows": "to", "from": "Revenue Streams", "label": "Generated From", "to": "Domestic Box Office Gross", "width": 1}, {"arrows": "to", "from": "Revenue Streams", "label": "Generated From", "to": "International Box Office Gross", "width": 1}, {"arrows": "to", "from": "Revenue Streams", "label": "Generated From", "to": "Streaming \u0026 VOD Revenue", "width": 1}, {"arrows": "to", "from": "Production \u0026 Marketing Costs", "label": "Broken Down Into", "to": "Production Budget", "width": 1}, {"arrows": "to", "from": "Production \u0026 Marketing Costs", "label": "Broken Down Into", "to": "Marketing Budget", "width": 1}, {"arrows": "to", "from": "Profitability Metrics", "label": "Calculated Using", "to": "Return on Investment (ROI)", "width": 1}, {"arrows": "to", "from": "Profitability Metrics", "label": "Calculated Using", "to": "Net Profit", "width": 1}, {"arrows": "to", "from": "Social Media Buzz", "label": "Measured By", "to": "Pre-Release Hype", "width": 1}, {"arrows": "to", "from": "Social Media Buzz", "label": "Measured By", "to": "Post-Release Conversation Volume", "width": 1}, {"arrows": "to", "from": "Social Media Buzz", "label": "Measured By", "to": "Sentiment Analysis", "width": 1}, {"arrows": "to", "from": "Cultural Impact", "label": "Observed Through", "to": "Search Trend Volume", "width": 1}, {"arrows": "to", "from": "Cultural Impact", "label": "Observed Through", "to": "Longevity of Discussion", "width": 1}, {"arrows": "to", "from": "Franchise Potential", "label": "Realized Through", "to": "Sequel/Prequel/Spinoff Count", "width": 1}, {"arrows": "to", "from": "Franchise Potential", "label": "Realized Through", "to": "Expanded Universe Media", "width": 1}, {"arrows": "to", "from": "Genre", "label": "Specified As", "to": "Primary Genre", "width": 1}, {"arrows": "to", "from": "Genre", "label": "Specified As", "to": "Sub-Genre(s)", "width": 1}, {"arrows": "to", "from": "Source Material", "label": "Categorized By", "to": "Adaptation Type", "width": 1}, {"arrows": "to", "from": "Source Material", "label": "Categorized By", "to": "Source Material Popularity", "width": 1}, {"arrows": "to", "from": "Screenplay", "label": "Analyzed For", "to": "Passes Bechdel Test", "width": 1}, {"arrows": "to", "from": "Director", "label": "Evaluated By", "to": "Director\u0027s Previous Box Office Performance", "width": 1}, {"arrows": "to", "from": "Director", "label": "Evaluated By", "to": "Director\u0027s Previous Award Nominations", "width": 1}, {"arrows": "to", "from": "Lead Actors", "label": "Evaluated By", "to": "Actor\u0027s Previous Box Office Performance", "width": 1}, {"arrows": "to", "from": "Lead Actors", "label": "Evaluated By", "to": "Actor\u0027s Social Media Following", "width": 1}, {"arrows": "to", "from": "Lead Actors", "label": "Evaluated By", "to": "Actor\u0027s Previous Award Nominations", "width": 1}, {"arrows": "to", "from": "Runtime", "label": "Is", "to": "Runtime in Minutes", "width": 1}, {"arrows": "to", "from": "Release Season", "label": "Categorized By", "to": "Release Quarter (Q1-Q4)", "width": 1}, {"arrows": "to", "from": "Release Season", "label": "Categorized By", "to": "Is Holiday Release", "width": 1}, {"arrows": "to", "from": "Release Season", "label": "Categorized By", "to": "Is Summer Blockbuster Season Release", "width": 1}, {"arrows": "to", "from": "Metacritic Score", "label": "Is", "to": "Metascore (0-100)", "width": 1}, {"arrows": "to", "from": "Rotten Tomatoes Tomatometer", "label": "Is", "to": "Tomatometer Percentage (0-100%)", "width": 1}, {"arrows": "to", "from": "Rotten Tomatoes Audience Score", "label": "Is", "to": "Audience Score Percentage (0-100%)", "width": 1}, {"arrows": "to", "from": "IMDb User Rating", "label": "Is", "to": "IMDb Score (1-10)", "width": 1}, {"arrows": "to", "from": "CinemaScore", "label": "Is", "to": "CinemaScore Grade (A+ to F)", "width": 1}, {"arrows": "to", "from": "Academy Awards", "label": "Quantified By", "to": "Number of Nominations (Academy Awards)", "width": 1}, {"arrows": "to", "from": "Academy Awards", "label": "Quantified By", "to": "Number of Wins (Academy Awards)", "width": 1}, {"arrows": "to", "from": "Domestic Box Office Gross", "label": "Is", "to": "Gross Amount (USD)", "width": 1}, {"arrows": "to", "from": "International Box Office Gross", "label": "Is", "to": "Gross Amount (USD)", "width": 1}, {"arrows": "to", "from": "Production Budget", "label": "Measured As", "to": "Budget Amount (USD)", "width": 1}, {"arrows": "to", "from": "Marketing Budget", "label": "Measured As", "to": "Budget Amount (USD)", "width": 1}, {"arrows": "to", "from": "Return on Investment (ROI)", "label": "Calculated As", "to": "Worldwide Gross to Budget Ratio", "width": 1}, {"arrows": "to", "from": "Net Profit", "label": "Is", "to": "Profit Amount (USD)", "width": 1}, {"arrows": "to", "from": "Sentiment Analysis", "label": "Reported As", "to": "Positive Sentiment Percentage", "width": 1}, {"arrows": "to", "from": "Sentiment Analysis", "label": "Reported As", "to": "Negative Sentiment Percentage", "width": 1}, {"arrows": "to", "from": "Sequel/Prequel/Spinoff Count", "label": "Is", "to": "Total Franchise Installment Count", "width": 1}, {"arrows": "to", "from": "Actor\u0027s Previous Box Office Performance", "label": "Measured By", "to": "Average Gross of Last 5 Films (USD)", "width": 1}, {"arrows": "to", "from": "Actor\u0027s Social Media Following", "label": "Quantified As", "to": "Combined Follower Count", "width": 1}, {"arrows": "to", "from": "Actor\u0027s Social Media Following", "label": "Quantified As", "to": "Average Engagement Rate", "width": 1}, {"arrows": "to", "from": "Actor\u0027s Previous Award Nominations", "label": "Counted As", "to": "Count of Major Award Nominations", "width": 1}, {"arrows": "to", "from": "Actor\u0027s Previous Award Nominations", "label": "Counted As", "to": "Count of Major Award Wins", "width": 1}, {"arrows": "to", "from": "Number of Nominations (Academy Awards)", "label": "Is", "to": "Total Oscar Nomination Count", "width": 1}, {"arrows": "to", "from": "Number of Wins (Academy Awards)", "label": "Is", "to": "Total Oscar Win Count", "width": 1}, {"arrows": "to", "from": "Budget Amount (USD)", "label": "Is", "to": "Budget in Millions (USD)", "width": 1}, {"arrows": "to", "from": "Worldwide Gross to Budget Ratio", "label": "Is", "title": "Is", "to": "Ratio Value", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.33,
+            "damping": 0.95,
+            "nodeDistance": 150,
+            "springConstant": 0.05,
+            "springLength": 200
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

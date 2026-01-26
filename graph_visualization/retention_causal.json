@@ -1,0 +1,331 @@
+{
+  "nodes": [
+    {
+      "id": "Turnover Intention",
+      "label": "Turnover Intention",
+      "definition": "The deliberate and conscious willingness of an employee to leave the organization within a certain time period",
+      "type": "Employee Retention",
+      "description": "This is the primary outcome we're trying to predict - understanding who is likely to leave allows for proactive retention efforts"
+    },
+    {
+      "id": "Human Capital Value",
+      "label": "Human Capital Value",
+      "definition": "The accumulated knowledge, skills, experience, and expertise that an employee brings to the organization",
+      "type": "Employee Background & Qualifications",
+      "description": "Employees with higher or more transferable human capital may have more external opportunities, affecting their likelihood to leave"
+    },
+    {
+      "id": "Professional Mobility",
+      "label": "Professional Mobility",
+      "definition": "The ease with which an employee can move between jobs, including their career flexibility and market demand for their skills",
+      "type": "Employee Background & Qualifications",
+      "description": "Higher mobility increases churn risk as employees have more alternatives and lower switching costs"
+    },
+    {
+      "id": "Organizational Tenure",
+      "label": "Organizational Tenure",
+      "definition": "The depth and duration of an employee's relationship with the organization, including their institutional knowledge and investment in the company",
+      "type": "Employment History",
+      "description": "Longer tenure typically correlates with lower turnover as employees have greater organizational investment"
+    },
+    {
+      "id": "Career Progression",
+      "label": "Career Progression",
+      "definition": "The trajectory and velocity of advancement through roles, responsibilities, and hierarchical levels within the organization",
+      "type": "Career Development",
+      "description": "Stagnant career progression is a key driver of turnover as ambitious employees seek growth opportunities elsewhere"
+    },
+    {
+      "id": "Job Embeddedness",
+      "label": "Job Embeddedness",
+      "definition": "The extent to which an employee is enmeshed in their job through links, fit, and potential sacrifices associated with leaving",
+      "type": "Work Environment & Culture",
+      "description": "Higher embeddedness creates 'sticky' factors that reduce likelihood of voluntary turnover"
+    },
+    {
+      "id": "Compensation Competitiveness",
+      "label": "Compensation Competitiveness",
+      "definition": "The perceived fairness and market alignment of total rewards relative to internal peers and external opportunities",
+      "type": "Compensation & Benefits",
+      "description": "Uncompetitive compensation is a primary driver of turnover, especially for high performers"
+    },
+    {
+      "id": "Total Rewards Satisfaction",
+      "label": "Total Rewards Satisfaction",
+      "definition": "Overall contentment with the complete package of monetary and non-monetary benefits received from employment",
+      "type": "Compensation & Benefits",
+      "description": "Dissatisfaction with total rewards package motivates employees to seek better opportunities"
+    },
+    {
+      "id": "Work-Life Integration",
+      "label": "Work-Life Integration",
+      "definition": "The degree to which work demands and personal life requirements are successfully balanced and mutually supportive",
+      "type": "Work Arrangements",
+      "description": "Poor work-life integration leads to burnout and turnover as employees prioritize personal wellbeing"
+    },
+    {
+      "id": "Job Role Fit",
+      "label": "Job Role Fit",
+      "definition": "The alignment between an employee's capabilities, interests, and values with their job requirements and responsibilities",
+      "type": "Job Characteristics",
+      "description": "Misalignment between employee and role characteristics increases dissatisfaction and turnover likelihood"
+    },
+    {
+      "id": "Workload Sustainability",
+      "label": "Workload Sustainability",
+      "definition": "The manageability of job demands relative to available resources, time, and employee capacity",
+      "type": "Job Characteristics",
+      "description": "Unsustainable workload leads to stress, burnout, and eventual departure from the organization"
+    },
+    {
+      "id": "Performance Standing",
+      "label": "Performance Standing",
+      "definition": "An employee's achievement level and contribution value relative to expectations and peer benchmarks",
+      "type": "Performance Management",
+      "description": "Both very high performers (who have options) and low performers (who face pressure) may have higher turnover risk"
+    },
+    {
+      "id": "Recognition Adequacy",
+      "label": "Recognition Adequacy",
+      "definition": "The extent to which employee contributions are appropriately acknowledged, valued, and rewarded by the organization",
+      "type": "Performance Management",
+      "description": "Insufficient recognition diminishes engagement and motivates employees to seek appreciation elsewhere"
+    },
+    {
+      "id": "Manager Relationship Quality",
+      "label": "Manager Relationship Quality",
+      "definition": "The strength, trust, and effectiveness of the relationship between an employee and their direct supervisor",
+      "type": "Leadership & Management",
+      "description": "Poor manager relationships are one of the top reasons employees leave organizations"
+    },
+    {
+      "id": "Team Cohesion",
+      "label": "Team Cohesion",
+      "definition": "The strength of interpersonal bonds, collaboration, and mutual support within the immediate work group",
+      "type": "Team Dynamics",
+      "description": "Strong team relationships create social ties that reduce turnover intention"
+    },
+    {
+      "id": "Organizational Commitment",
+      "label": "Organizational Commitment",
+      "definition": "The psychological attachment, identification, and loyalty an employee feels toward the organization",
+      "type": "Work Environment & Culture",
+      "description": "Higher organizational commitment directly reduces turnover intention through emotional and normative bonds"
+    },
+    {
+      "id": "Employee Engagement",
+      "label": "Employee Engagement",
+      "definition": "The emotional connection, enthusiasm, and discretionary effort an employee invests in their work and organization",
+      "type": "Employee Experience",
+      "description": "Disengaged employees are more likely to seek opportunities that reignite their passion and motivation"
+    },
+    {
+      "id": "Life Stage Factors",
+      "label": "Life Stage Factors",
+      "definition": "Personal circumstances related to age, family situation, and life priorities that influence career decisions",
+      "type": "Demographics",
+      "description": "Different life stages create varying levels of turnover risk based on changing priorities and constraints"
+    },
+    {
+      "id": "Geographic Mobility Constraints",
+      "label": "Geographic Mobility Constraints",
+      "definition": "Physical, family, or community factors that limit an employee's ability or willingness to relocate for work",
+      "type": "Demographics",
+      "description": "Lower geographic mobility may reduce turnover options and increase retention"
+    },
+    {
+      "id": "External Market Conditions",
+      "label": "External Market Conditions",
+      "definition": "The availability of alternative employment opportunities and labor market dynamics in relevant industries and geographies",
+      "type": "External Factors",
+      "description": "Favorable external market conditions increase turnover by expanding available alternatives"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Human Capital Value",
+      "to": "Professional Mobility",
+      "rationale": "Higher human capital (skills, experience, expertise) directly increases an employee's ability to move between jobs and makes them more attractive to other employers"
+    },
+    {
+      "from": "Human Capital Value",
+      "to": "Performance Standing",
+      "rationale": "Employees with greater knowledge, skills, and expertise are more likely to achieve higher performance levels"
+    },
+    {
+      "from": "Human Capital Value",
+      "to": "Compensation Competitiveness",
+      "rationale": "Higher human capital typically commands better compensation, affecting the perceived competitiveness of current pay"
+    },
+    {
+      "from": "Professional Mobility",
+      "to": "Turnover Intention",
+      "rationale": "Greater ease of finding alternative employment directly increases the likelihood of considering and pursuing exit options"
+    },
+    {
+      "from": "Organizational Tenure",
+      "to": "Job Embeddedness",
+      "rationale": "Longer tenure leads to deeper organizational links, better fit, and more accumulated benefits that would be sacrificed if leaving"
+    },
+    {
+      "from": "Organizational Tenure",
+      "to": "Organizational Commitment",
+      "rationale": "Time in the organization builds psychological attachment and identification with organizational values and goals"
+    },
+    {
+      "from": "Career Progression",
+      "to": "Employee Engagement",
+      "rationale": "Positive career advancement increases enthusiasm and emotional investment in work"
+    },
+    {
+      "from": "Career Progression",
+      "to": "Turnover Intention",
+      "rationale": "Lack of career advancement directly drives employees to seek growth opportunities elsewhere"
+    },
+    {
+      "from": "Job Embeddedness",
+      "to": "Turnover Intention",
+      "rationale": "Strong organizational links, good fit, and high sacrifice create barriers that directly reduce intention to leave"
+    },
+    {
+      "from": "Compensation Competitiveness",
+      "to": "Total Rewards Satisfaction",
+      "rationale": "Competitive compensation is a major component of overall satisfaction with the total rewards package"
+    },
+    {
+      "from": "Total Rewards Satisfaction",
+      "to": "Turnover Intention",
+      "rationale": "Dissatisfaction with rewards directly motivates employees to seek better compensation elsewhere"
+    },
+    {
+      "from": "Work-Life Integration",
+      "to": "Employee Engagement",
+      "rationale": "Better work-life balance enables employees to bring more energy and enthusiasm to their work"
+    },
+    {
+      "from": "Work-Life Integration",
+      "to": "Turnover Intention",
+      "rationale": "Poor work-life balance directly drives employees to seek positions that better support personal wellbeing"
+    },
+    {
+      "from": "Job Role Fit",
+      "to": "Performance Standing",
+      "rationale": "Better alignment between employee capabilities and job requirements leads to higher performance"
+    },
+    {
+      "from": "Job Role Fit",
+      "to": "Employee Engagement",
+      "rationale": "When employees' interests and values align with their role, they become more emotionally invested in their work"
+    },
+    {
+      "from": "Workload Sustainability",
+      "to": "Work-Life Integration",
+      "rationale": "Manageable workload enables better balance between work demands and personal life"
+    },
+    {
+      "from": "Workload Sustainability",
+      "to": "Employee Engagement",
+      "rationale": "Sustainable workload prevents burnout and maintains capacity for enthusiasm and discretionary effort"
+    },
+    {
+      "from": "Performance Standing",
+      "to": "Recognition Adequacy",
+      "rationale": "Performance level influences the amount and type of recognition received from the organization"
+    },
+    {
+      "from": "Performance Standing",
+      "to": "Career Progression",
+      "rationale": "Higher performance typically leads to faster advancement and better career opportunities within the organization"
+    },
+    {
+      "from": "Performance Standing",
+      "to": "Compensation Competitiveness",
+      "rationale": "Performance directly influences compensation through merit increases, bonuses, and market adjustments"
+    },
+    {
+      "from": "Recognition Adequacy",
+      "to": "Employee Engagement",
+      "rationale": "Appropriate recognition reinforces emotional connection and motivates continued discretionary effort"
+    },
+    {
+      "from": "Recognition Adequacy",
+      "to": "Organizational Commitment",
+      "rationale": "Being valued and acknowledged builds psychological attachment to the organization"
+    },
+    {
+      "from": "Manager Relationship Quality",
+      "to": "Recognition Adequacy",
+      "rationale": "Direct supervisors are primary sources of recognition, and relationship quality affects recognition frequency and authenticity"
+    },
+    {
+      "from": "Manager Relationship Quality",
+      "to": "Career Progression",
+      "rationale": "Managers directly influence advancement opportunities through recommendations, development support, and advocacy"
+    },
+    {
+      "from": "Manager Relationship Quality",
+      "to": "Employee Engagement",
+      "rationale": "Positive manager relationships foster trust and support that enhance emotional investment in work"
+    },
+    {
+      "from": "Manager Relationship Quality",
+      "to": "Workload Sustainability",
+      "rationale": "Managers control work assignment and resource allocation, directly affecting workload manageability"
+    },
+    {
+      "from": "Team Cohesion",
+      "to": "Job Embeddedness",
+      "rationale": "Strong team relationships create social links that embed employees in the organization"
+    },
+    {
+      "from": "Team Cohesion",
+      "to": "Employee Engagement",
+      "rationale": "Positive team dynamics increase enjoyment and emotional investment in daily work"
+    },
+    {
+      "from": "Organizational Commitment",
+      "to": "Turnover Intention",
+      "rationale": "Strong psychological attachment and loyalty directly reduce the willingness to leave the organization"
+    },
+    {
+      "from": "Employee Engagement",
+      "to": "Turnover Intention",
+      "rationale": "Disengaged employees are directly motivated to seek opportunities that reignite their passion"
+    },
+    {
+      "from": "Employee Engagement",
+      "to": "Performance Standing",
+      "rationale": "Engaged employees invest more discretionary effort, leading to higher performance outcomes"
+    },
+    {
+      "from": "Life Stage Factors",
+      "to": "Work-Life Integration",
+      "rationale": "Different life stages create varying demands for work-life balance based on family and personal priorities"
+    },
+    {
+      "from": "Life Stage Factors",
+      "to": "Professional Mobility",
+      "rationale": "Life stage affects willingness and ability to change jobs based on family obligations and career priorities"
+    },
+    {
+      "from": "Life Stage Factors",
+      "to": "Geographic Mobility Constraints",
+      "rationale": "Family situation and life stage directly determine ability to relocate for work opportunities"
+    },
+    {
+      "from": "Geographic Mobility Constraints",
+      "to": "Professional Mobility",
+      "rationale": "Limited ability to relocate reduces the pool of available job alternatives"
+    },
+    {
+      "from": "External Market Conditions",
+      "to": "Professional Mobility",
+      "rationale": "Favorable market conditions with many job openings increase the ease of finding alternative employment"
+    },
+    {
+      "from": "External Market Conditions",
+      "to": "Compensation Competitiveness",
+      "rationale": "Market conditions determine external salary benchmarks that affect perception of current compensation competitiveness"
+    }
+  ]
+}

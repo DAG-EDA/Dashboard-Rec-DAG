@@ -1,0 +1,665 @@
+{
+  "nodes": [
+    {
+      "id": "root_q1",
+      "type": "root_question",
+      "label": "Assess workforce composition",
+      "description": "Understanding the current state and structure of the organization's human capital",
+      "abstraction_level": 0
+    },
+    {
+      "id": "root_q2",
+      "type": "root_question",
+      "label": "Measure and predict employee churn",
+      "description": "Quantifying current turnover and forecasting future departures",
+      "abstraction_level": 0
+    },
+    {
+      "id": "sub_q1",
+      "type": "sub_question",
+      "label": "What defines workforce composition?",
+      "description": "Breaking down the abstract concept of composition into measurable aspects",
+      "abstraction_level": 1
+    },
+    {
+      "id": "sub_q2",
+      "type": "sub_question",
+      "label": "What is employee churn?",
+      "description": "Clarifying voluntary vs involuntary turnover and their different implications",
+      "abstraction_level": 1
+    },
+    {
+      "id": "sub_q3",
+      "type": "sub_question",
+      "label": "How do we predict future behavior?",
+      "description": "Understanding the difference between measuring current state and forecasting",
+      "abstraction_level": 1
+    },
+    {
+      "id": "dim_demo",
+      "type": "dimension",
+      "label": "Demographic diversity",
+      "description": "The variety and distribution of personal characteristics across the workforce",
+      "abstraction_level": 2
+    },
+    {
+      "id": "dim_skill",
+      "type": "dimension",
+      "label": "Skills and capabilities",
+      "description": "The technical and soft skills present in the organization",
+      "abstraction_level": 2
+    },
+    {
+      "id": "dim_org",
+      "type": "dimension",
+      "label": "Organizational structure",
+      "description": "How employees are distributed across roles, levels, and departments",
+      "abstraction_level": 2
+    },
+    {
+      "id": "dim_engage",
+      "type": "dimension",
+      "label": "Engagement and tenure",
+      "description": "Employee connection to the organization over time",
+      "abstraction_level": 2
+    },
+    {
+      "id": "dim_vol_churn",
+      "type": "dimension",
+      "label": "Voluntary churn",
+      "description": "Employees choosing to leave the organization",
+      "abstraction_level": 2
+    },
+    {
+      "id": "dim_invol_churn",
+      "type": "dimension",
+      "label": "Involuntary churn",
+      "description": "Organization-initiated separations",
+      "abstraction_level": 2
+    },
+    {
+      "id": "concept_age_dist",
+      "type": "concept",
+      "label": "Age distribution",
+      "description": "The spread of employee ages indicating generational diversity and succession planning needs",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_gender_bal",
+      "type": "concept",
+      "label": "Gender balance",
+      "description": "Representation across gender identities at different organizational levels",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_ethnic_div",
+      "type": "concept",
+      "label": "Ethnic diversity",
+      "description": "Representation of different ethnic and cultural backgrounds",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_skill_gap",
+      "type": "concept",
+      "label": "Skills gaps",
+      "description": "Difference between required and available skills in the workforce",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_hierarchy",
+      "type": "concept",
+      "label": "Hierarchical distribution",
+      "description": "How employees are spread across organizational levels",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_dept_size",
+      "type": "concept",
+      "label": "Department concentration",
+      "description": "Relative size and importance of different business units",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_tenure_profile",
+      "type": "concept",
+      "label": "Tenure profile",
+      "description": "Distribution of employee service lengths indicating institutional knowledge",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_satisfaction",
+      "type": "concept",
+      "label": "Employee satisfaction",
+      "description": "Overall contentment with job and workplace",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_resign_rate",
+      "type": "concept",
+      "label": "Resignation patterns",
+      "description": "Frequency and timing of voluntary departures",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_flight_risk",
+      "type": "concept",
+      "label": "Flight risk",
+      "description": "Likelihood of valuable employees leaving voluntarily",
+      "abstraction_level": 3
+    },
+    {
+      "id": "concept_termination",
+      "type": "concept",
+      "label": "Termination patterns",
+      "description": "Frequency and reasons for involuntary separations",
+      "abstraction_level": 3
+    },
+    {
+      "id": "metric_age_variance",
+      "type": "metric",
+      "label": "Age variance coefficient",
+      "description": "Statistical measure of age distribution spread",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_gender_ratio",
+      "type": "metric",
+      "label": "Gender representation ratio",
+      "description": "Percentage of each gender at each organizational level",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_diversity_index",
+      "type": "metric",
+      "label": "Simpson's Diversity Index",
+      "description": "Mathematical measure of ethnic diversity (0-1 scale)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_skill_coverage",
+      "type": "metric",
+      "label": "Critical skill coverage ratio",
+      "description": "Percentage of critical skills with adequate bench strength",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_span_control",
+      "type": "metric",
+      "label": "Average span of control",
+      "description": "Mean number of direct reports per manager",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_dept_headcount",
+      "type": "metric",
+      "label": "Department headcount percentage",
+      "description": "Each department's share of total workforce",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_avg_tenure",
+      "type": "metric",
+      "label": "Average tenure by level",
+      "description": "Mean years of service segmented by organizational level",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_enps",
+      "type": "metric",
+      "label": "Employee Net Promoter Score",
+      "description": "Likelihood to recommend organization as workplace (-100 to 100)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_turnover_rate",
+      "type": "metric",
+      "label": "Monthly turnover rate",
+      "description": "Percentage of workforce leaving voluntarily each month",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_churn_prob",
+      "type": "metric",
+      "label": "Individual churn probability",
+      "description": "ML model output predicting likelihood of departure (0-1)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "metric_termination_rate",
+      "type": "metric",
+      "label": "Involuntary separation rate",
+      "description": "Percentage of workforce terminated per period",
+      "abstraction_level": 4
+    },
+    {
+      "id": "data_birthdate",
+      "type": "data_point",
+      "label": "Employee birthdates",
+      "description": "Date of birth for each employee",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_gender",
+      "type": "data_point",
+      "label": "Gender identity",
+      "description": "Self-reported gender for each employee",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_ethnicity",
+      "type": "data_point",
+      "label": "Ethnic background",
+      "description": "Self-reported ethnicity categories",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_skills",
+      "type": "data_point",
+      "label": "Skill assessments",
+      "description": "Proficiency ratings for technical and soft skills",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_org_chart",
+      "type": "data_point",
+      "label": "Reporting relationships",
+      "description": "Manager-employee hierarchy data",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_job_level",
+      "type": "data_point",
+      "label": "Job grades",
+      "description": "Standardized organizational level for each position",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_department",
+      "type": "data_point",
+      "label": "Department codes",
+      "description": "Business unit assignment for each employee",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_hire_date",
+      "type": "data_point",
+      "label": "Hire dates",
+      "description": "Start date with the organization",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_survey",
+      "type": "data_point",
+      "label": "Engagement survey responses",
+      "description": "Periodic satisfaction and engagement ratings",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_exit_date",
+      "type": "data_point",
+      "label": "Termination dates",
+      "description": "Last day of employment",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_exit_reason",
+      "type": "data_point",
+      "label": "Exit reason codes",
+      "description": "Categorized reasons for departure",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_performance",
+      "type": "data_point",
+      "label": "Performance ratings",
+      "description": "Historical performance review scores",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_compensation",
+      "type": "data_point",
+      "label": "Compensation data",
+      "description": "Salary, bonus, and total compensation",
+      "abstraction_level": 5
+    },
+    {
+      "id": "data_promotion",
+      "type": "data_point",
+      "label": "Promotion history",
+      "description": "Dates and types of role changes",
+      "abstraction_level": 5
+    },
+    {
+      "id": "context_market",
+      "type": "contextual_factor",
+      "label": "Labor market conditions",
+      "description": "External job availability and competition for talent",
+      "abstraction_level": 3
+    },
+    {
+      "id": "context_industry",
+      "type": "contextual_factor",
+      "label": "Industry benchmarks",
+      "description": "Typical turnover rates for the sector",
+      "abstraction_level": 3
+    },
+    {
+      "id": "context_economy",
+      "type": "contextual_factor",
+      "label": "Economic climate",
+      "description": "Broader economic conditions affecting employment decisions",
+      "abstraction_level": 3
+    }
+  ],
+  "edges": [
+    {
+      "from": "root_q1",
+      "to": "sub_q1",
+      "relationship": "decomposes_into",
+      "note": "Breaking down the abstract concept of composition"
+    },
+    {
+      "from": "root_q2",
+      "to": "sub_q2",
+      "relationship": "decomposes_into",
+      "note": "Clarifying what churn means"
+    },
+    {
+      "from": "root_q2",
+      "to": "sub_q3",
+      "relationship": "decomposes_into",
+      "note": "Distinguishing measurement from prediction"
+    },
+    {
+      "from": "sub_q1",
+      "to": "dim_demo",
+      "relationship": "has_dimension"
+    },
+    {
+      "from": "sub_q1",
+      "to": "dim_skill",
+      "relationship": "has_dimension"
+    },
+    {
+      "from": "sub_q1",
+      "to": "dim_org",
+      "relationship": "has_dimension"
+    },
+    {
+      "from": "sub_q1",
+      "to": "dim_engage",
+      "relationship": "has_dimension"
+    },
+    {
+      "from": "sub_q2",
+      "to": "dim_vol_churn",
+      "relationship": "has_dimension"
+    },
+    {
+      "from": "sub_q2",
+      "to": "dim_invol_churn",
+      "relationship": "has_dimension"
+    },
+    {
+      "from": "dim_demo",
+      "to": "concept_age_dist",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_demo",
+      "to": "concept_gender_bal",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_demo",
+      "to": "concept_ethnic_div",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_skill",
+      "to": "concept_skill_gap",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_org",
+      "to": "concept_hierarchy",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_org",
+      "to": "concept_dept_size",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_engage",
+      "to": "concept_tenure_profile",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_engage",
+      "to": "concept_satisfaction",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_vol_churn",
+      "to": "concept_resign_rate",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_vol_churn",
+      "to": "concept_flight_risk",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "dim_invol_churn",
+      "to": "concept_termination",
+      "relationship": "defines_as"
+    },
+    {
+      "from": "concept_age_dist",
+      "to": "metric_age_variance",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_gender_bal",
+      "to": "metric_gender_ratio",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_ethnic_div",
+      "to": "metric_diversity_index",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_skill_gap",
+      "to": "metric_skill_coverage",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_hierarchy",
+      "to": "metric_span_control",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_dept_size",
+      "to": "metric_dept_headcount",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_tenure_profile",
+      "to": "metric_avg_tenure",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_satisfaction",
+      "to": "metric_enps",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_resign_rate",
+      "to": "metric_turnover_rate",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_flight_risk",
+      "to": "metric_churn_prob",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "concept_termination",
+      "to": "metric_termination_rate",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "metric_age_variance",
+      "to": "data_birthdate",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_gender_ratio",
+      "to": "data_gender",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_gender_ratio",
+      "to": "data_job_level",
+      "relationship": "requires_input",
+      "note": "Need level to calculate ratios by level"
+    },
+    {
+      "from": "metric_diversity_index",
+      "to": "data_ethnicity",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_skill_coverage",
+      "to": "data_skills",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_span_control",
+      "to": "data_org_chart",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_dept_headcount",
+      "to": "data_department",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_avg_tenure",
+      "to": "data_hire_date",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_avg_tenure",
+      "to": "data_job_level",
+      "relationship": "requires_input"
+    },
+    {
+      "from": "metric_enps",
+      "to": "data_survey",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_turnover_rate",
+      "to": "data_exit_date",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_turnover_rate",
+      "to": "data_exit_reason",
+      "relationship": "requires_input",
+      "note": "Filter for voluntary exits only"
+    },
+    {
+      "from": "metric_churn_prob",
+      "to": "data_performance",
+      "relationship": "requires_input",
+      "note": "Key predictor in ML model"
+    },
+    {
+      "from": "metric_churn_prob",
+      "to": "data_compensation",
+      "relationship": "requires_input",
+      "note": "Compensation relative to market affects flight risk"
+    },
+    {
+      "from": "metric_churn_prob",
+      "to": "data_promotion",
+      "relationship": "requires_input",
+      "note": "Time since last promotion predicts turnover"
+    },
+    {
+      "from": "metric_churn_prob",
+      "to": "data_survey",
+      "relationship": "requires_input",
+      "note": "Engagement scores predict voluntary turnover"
+    },
+    {
+      "from": "metric_termination_rate",
+      "to": "data_exit_date",
+      "relationship": "measured_by"
+    },
+    {
+      "from": "metric_termination_rate",
+      "to": "data_exit_reason",
+      "relationship": "requires_input",
+      "note": "Filter for involuntary exits"
+    },
+    {
+      "from": "concept_satisfaction",
+      "to": "concept_flight_risk",
+      "relationship": "influences",
+      "note": "Low satisfaction increases flight risk"
+    },
+    {
+      "from": "concept_tenure_profile",
+      "to": "concept_resign_rate",
+      "relationship": "influences",
+      "note": "Tenure distribution affects turnover patterns"
+    },
+    {
+      "from": "concept_skill_gap",
+      "to": "concept_satisfaction",
+      "relationship": "influences",
+      "note": "Skill mismatches reduce job satisfaction"
+    },
+    {
+      "from": "context_market",
+      "to": "concept_resign_rate",
+      "relationship": "moderates",
+      "note": "Hot job market increases voluntary turnover"
+    },
+    {
+      "from": "context_economy",
+      "to": "concept_flight_risk",
+      "relationship": "moderates",
+      "note": "Economic uncertainty reduces willingness to change jobs"
+    },
+    {
+      "from": "context_industry",
+      "to": "metric_turnover_rate",
+      "relationship": "enables",
+      "note": "Provides benchmark for interpreting rates"
+    },
+    {
+      "from": "data_performance",
+      "to": "concept_termination",
+      "relationship": "signals",
+      "note": "Poor performance may lead to termination"
+    },
+    {
+      "from": "concept_hierarchy",
+      "to": "concept_satisfaction",
+      "relationship": "influences",
+      "note": "Organizational structure affects employee experience"
+    },
+    {
+      "from": "sub_q3",
+      "to": "concept_flight_risk",
+      "relationship": "defines_as",
+      "note": "Prediction focuses on identifying at-risk employees"
+    }
+  ]
+}

@@ -1,0 +1,701 @@
+{
+  "nodes": [
+    {
+      "id": "root_question",
+      "type": "root_question",
+      "label": "Assess workforce composition to analyze and predict churn",
+      "description": "Understanding current workforce structure and using it to identify and forecast employee departures",
+      "abstraction_level": 0
+    },
+    {
+      "id": "sq_composition",
+      "type": "sub_question",
+      "label": "What defines workforce composition?",
+      "description": "Breaking down the abstract concept of workforce composition into measurable components",
+      "abstraction_level": 1
+    },
+    {
+      "id": "sq_churn_types",
+      "type": "sub_question",
+      "label": "What are the different types of employee churn?",
+      "description": "Clarifying voluntary vs involuntary departures and their distinct patterns",
+      "abstraction_level": 1
+    },
+    {
+      "id": "sq_prediction",
+      "type": "sub_question",
+      "label": "How can workforce composition predict future churn?",
+      "description": "Understanding which compositional factors serve as leading indicators of turnover",
+      "abstraction_level": 1
+    },
+    {
+      "id": "c_demographics",
+      "type": "concept",
+      "label": "Demographic composition",
+      "description": "The distribution of personal characteristics across the workforce that may influence retention",
+      "abstraction_level": 2
+    },
+    {
+      "id": "c_organizational",
+      "type": "concept",
+      "label": "Organizational structure",
+      "description": "How employees are distributed across the company hierarchy and departments",
+      "abstraction_level": 2
+    },
+    {
+      "id": "c_experience",
+      "type": "concept",
+      "label": "Experience and tenure distribution",
+      "description": "The spread of institutional knowledge and career stages in the workforce",
+      "abstraction_level": 2
+    },
+    {
+      "id": "c_engagement",
+      "type": "concept",
+      "label": "Employee engagement levels",
+      "description": "The degree of psychological investment and satisfaction across the workforce",
+      "abstraction_level": 2
+    },
+    {
+      "id": "c_voluntary_churn",
+      "type": "concept",
+      "label": "Voluntary turnover",
+      "description": "Employee-initiated departures driven by personal decisions",
+      "abstraction_level": 2
+    },
+    {
+      "id": "c_involuntary_churn",
+      "type": "concept",
+      "label": "Involuntary turnover",
+      "description": "Organization-initiated separations due to performance or restructuring",
+      "abstraction_level": 2
+    },
+    {
+      "id": "c_predictive_factors",
+      "type": "concept",
+      "label": "Churn risk indicators",
+      "description": "Workforce composition elements that signal likelihood of future departures",
+      "abstraction_level": 2
+    },
+    {
+      "id": "cv_age_distribution",
+      "type": "conceptual_variable",
+      "label": "Age distribution",
+      "description": "Statistical spread of employee ages indicating generational diversity",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_gender_balance",
+      "type": "conceptual_variable",
+      "label": "Gender representation",
+      "description": "Proportion of different genders across organizational levels",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_diversity_index",
+      "type": "conceptual_variable",
+      "label": "Ethnic diversity measure",
+      "description": "Quantified representation of different ethnic backgrounds",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_hierarchy_depth",
+      "type": "conceptual_variable",
+      "label": "Hierarchical distribution",
+      "description": "Number of employees at each organizational level",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_department_size",
+      "type": "conceptual_variable",
+      "label": "Department concentration",
+      "description": "Relative headcount across business units",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_span_control",
+      "type": "conceptual_variable",
+      "label": "Management span",
+      "description": "Average number of direct reports per manager",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_tenure_segments",
+      "type": "conceptual_variable",
+      "label": "Tenure distribution",
+      "description": "Proportion of employees in different service length categories",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_skill_coverage",
+      "type": "conceptual_variable",
+      "label": "Critical skill availability",
+      "description": "Percentage of key competencies with adequate bench strength",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_satisfaction_score",
+      "type": "conceptual_variable",
+      "label": "Employee satisfaction index",
+      "description": "Aggregate measure of workforce contentment",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_engagement_score",
+      "type": "conceptual_variable",
+      "label": "Engagement level",
+      "description": "Degree of emotional and psychological commitment",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_resignation_rate",
+      "type": "conceptual_variable",
+      "label": "Resignation frequency",
+      "description": "Rate of voluntary departures per time period",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_resignation_patterns",
+      "type": "conceptual_variable",
+      "label": "Resignation timing patterns",
+      "description": "Seasonal and cyclical trends in voluntary exits",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_termination_rate",
+      "type": "conceptual_variable",
+      "label": "Termination frequency",
+      "description": "Rate of involuntary separations",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_performance_distribution",
+      "type": "conceptual_variable",
+      "label": "Performance rating spread",
+      "description": "Distribution of employee performance scores",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_flight_risk_score",
+      "type": "conceptual_variable",
+      "label": "Individual flight risk",
+      "description": "Probability score for each employee's likelihood to leave",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_compensation_ratio",
+      "type": "conceptual_variable",
+      "label": "Pay competitiveness",
+      "description": "Employee compensation relative to market benchmarks",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_promotion_velocity",
+      "type": "conceptual_variable",
+      "label": "Career progression rate",
+      "description": "Average time between promotions by level",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cv_manager_quality",
+      "type": "conceptual_variable",
+      "label": "Manager effectiveness",
+      "description": "Aggregate rating of management quality",
+      "abstraction_level": 3
+    },
+    {
+      "id": "m_age_variance",
+      "type": "metric",
+      "label": "Age variance coefficient",
+      "description": "Statistical measure: (standard deviation of ages / mean age)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_gender_ratio_by_level",
+      "type": "metric",
+      "label": "Gender ratio per level",
+      "description": "Percentage of each gender at each organizational tier",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_simpson_diversity",
+      "type": "metric",
+      "label": "Simpson's Diversity Index",
+      "description": "1 - Σ(ni/N)² where ni is count of ethnicity i",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_org_layers",
+      "type": "metric",
+      "label": "Number of organizational layers",
+      "description": "Count of hierarchical levels from entry to CEO",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_dept_headcount_pct",
+      "type": "metric",
+      "label": "Department size percentage",
+      "description": "(Department headcount / Total headcount) × 100",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_avg_span_control",
+      "type": "metric",
+      "label": "Mean span of control",
+      "description": "Total direct reports / Total managers",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_tenure_buckets",
+      "type": "metric",
+      "label": "Tenure cohort percentages",
+      "description": "% in <1yr, 1-3yrs, 3-5yrs, 5-10yrs, >10yrs",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_skill_gap_ratio",
+      "type": "metric",
+      "label": "Critical skill gap",
+      "description": "(Required skills - Available skills) / Required skills",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_enps",
+      "type": "metric",
+      "label": "Employee Net Promoter Score",
+      "description": "% Promoters - % Detractors (range -100 to +100)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_engagement_index",
+      "type": "metric",
+      "label": "Gallup Q12 score",
+      "description": "Average of 12 engagement questions (1-5 scale)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_monthly_turnover",
+      "type": "metric",
+      "label": "Monthly voluntary turnover rate",
+      "description": "(Voluntary exits in month / Average headcount) × 100",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_seasonality_index",
+      "type": "metric",
+      "label": "Resignation seasonality",
+      "description": "Ratio of actual to expected resignations by month",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_involuntary_rate",
+      "type": "metric",
+      "label": "Involuntary separation rate",
+      "description": "(Terminations in period / Average headcount) × 100",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_performance_percentiles",
+      "type": "metric",
+      "label": "Performance distribution percentiles",
+      "description": "25th, 50th, 75th percentile of ratings",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_churn_probability",
+      "type": "metric",
+      "label": "ML churn probability",
+      "description": "Logistic regression output (0-1 probability)",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_compa_ratio",
+      "type": "metric",
+      "label": "Compensation ratio",
+      "description": "Employee salary / Market midpoint for role",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_time_since_promotion",
+      "type": "metric",
+      "label": "Months since last promotion",
+      "description": "Current date - Last promotion date",
+      "abstraction_level": 4
+    },
+    {
+      "id": "m_manager_score",
+      "type": "metric",
+      "label": "Manager effectiveness rating",
+      "description": "Average of direct report ratings of manager",
+      "abstraction_level": 4
+    },
+    {
+      "id": "cf_labor_market",
+      "type": "contextual_factor",
+      "label": "Labor market tightness",
+      "description": "Unemployment rate and job openings in relevant sectors",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cf_industry_benchmark",
+      "type": "contextual_factor",
+      "label": "Industry turnover norms",
+      "description": "Average turnover rates for similar companies",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cf_economic_climate",
+      "type": "contextual_factor",
+      "label": "Economic conditions",
+      "description": "GDP growth, inflation, and economic uncertainty indicators",
+      "abstraction_level": 3
+    },
+    {
+      "id": "cf_remote_work",
+      "type": "contextual_factor",
+      "label": "Remote work prevalence",
+      "description": "Industry adoption of flexible work arrangements",
+      "abstraction_level": 3
+    }
+  ],
+  "edges": [
+    {
+      "from": "root_question",
+      "to": "sq_composition",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "root_question",
+      "to": "sq_churn_types",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "root_question",
+      "to": "sq_prediction",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_composition",
+      "to": "c_demographics",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_composition",
+      "to": "c_organizational",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_composition",
+      "to": "c_experience",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_composition",
+      "to": "c_engagement",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_churn_types",
+      "to": "c_voluntary_churn",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_churn_types",
+      "to": "c_involuntary_churn",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "sq_prediction",
+      "to": "c_predictive_factors",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_demographics",
+      "to": "cv_age_distribution",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_demographics",
+      "to": "cv_gender_balance",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_demographics",
+      "to": "cv_diversity_index",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_organizational",
+      "to": "cv_hierarchy_depth",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_organizational",
+      "to": "cv_department_size",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_organizational",
+      "to": "cv_span_control",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_experience",
+      "to": "cv_tenure_segments",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_experience",
+      "to": "cv_skill_coverage",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_engagement",
+      "to": "cv_satisfaction_score",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_engagement",
+      "to": "cv_engagement_score",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_engagement",
+      "to": "cv_manager_quality",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_voluntary_churn",
+      "to": "cv_resignation_rate",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_voluntary_churn",
+      "to": "cv_resignation_patterns",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_involuntary_churn",
+      "to": "cv_termination_rate",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_involuntary_churn",
+      "to": "cv_performance_distribution",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_predictive_factors",
+      "to": "cv_flight_risk_score",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_predictive_factors",
+      "to": "cv_compensation_ratio",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "c_predictive_factors",
+      "to": "cv_promotion_velocity",
+      "relationship": "decomposes_into"
+    },
+    {
+      "from": "cv_age_distribution",
+      "to": "m_age_variance",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_gender_balance",
+      "to": "m_gender_ratio_by_level",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_diversity_index",
+      "to": "m_simpson_diversity",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_hierarchy_depth",
+      "to": "m_org_layers",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_department_size",
+      "to": "m_dept_headcount_pct",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_span_control",
+      "to": "m_avg_span_control",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_tenure_segments",
+      "to": "m_tenure_buckets",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_skill_coverage",
+      "to": "m_skill_gap_ratio",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_satisfaction_score",
+      "to": "m_enps",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_engagement_score",
+      "to": "m_engagement_index",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_resignation_rate",
+      "to": "m_monthly_turnover",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_resignation_patterns",
+      "to": "m_seasonality_index",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_termination_rate",
+      "to": "m_involuntary_rate",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_performance_distribution",
+      "to": "m_performance_percentiles",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_flight_risk_score",
+      "to": "m_churn_probability",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_compensation_ratio",
+      "to": "m_compa_ratio",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_promotion_velocity",
+      "to": "m_time_since_promotion",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_manager_quality",
+      "to": "m_manager_score",
+      "relationship": "operationalized_as"
+    },
+    {
+      "from": "cv_engagement_score",
+      "to": "cv_flight_risk_score",
+      "relationship": "influences",
+      "note": "Low engagement predicts higher flight risk"
+    },
+    {
+      "from": "cv_satisfaction_score",
+      "to": "cv_resignation_rate",
+      "relationship": "influences",
+      "note": "Dissatisfaction drives voluntary turnover"
+    },
+    {
+      "from": "cv_compensation_ratio",
+      "to": "cv_resignation_rate",
+      "relationship": "influences",
+      "note": "Below-market pay increases resignations"
+    },
+    {
+      "from": "cv_promotion_velocity",
+      "to": "cv_satisfaction_score",
+      "relationship": "influences",
+      "note": "Slow career progression reduces satisfaction"
+    },
+    {
+      "from": "cv_manager_quality",
+      "to": "cv_engagement_score",
+      "relationship": "influences",
+      "note": "Manager effectiveness drives team engagement"
+    },
+    {
+      "from": "cv_span_control",
+      "to": "cv_manager_quality",
+      "relationship": "influences",
+      "note": "Large spans reduce manager effectiveness"
+    },
+    {
+      "from": "cv_tenure_segments",
+      "to": "cv_resignation_patterns",
+      "relationship": "influences",
+      "note": "Tenure distribution affects turnover timing"
+    },
+    {
+      "from": "cv_performance_distribution",
+      "to": "cv_termination_rate",
+      "relationship": "signals",
+      "note": "Performance issues predict terminations"
+    },
+    {
+      "from": "cv_skill_coverage",
+      "to": "cv_flight_risk_score",
+      "relationship": "influences",
+      "note": "Skill gaps increase individual flight risk"
+    },
+    {
+      "from": "cf_labor_market",
+      "to": "cv_resignation_rate",
+      "relationship": "moderates",
+      "note": "Tight labor markets increase voluntary turnover"
+    },
+    {
+      "from": "cf_economic_climate",
+      "to": "cv_flight_risk_score",
+      "relationship": "moderates",
+      "note": "Economic uncertainty reduces job switching"
+    },
+    {
+      "from": "cf_industry_benchmark",
+      "to": "m_monthly_turnover",
+      "relationship": "moderates",
+      "note": "Industry norms contextualize turnover rates"
+    },
+    {
+      "from": "cf_remote_work",
+      "to": "cv_satisfaction_score",
+      "relationship": "moderates",
+      "note": "Flexible work options affect satisfaction"
+    },
+    {
+      "from": "m_engagement_index",
+      "to": "m_churn_probability",
+      "relationship": "influences",
+      "note": "Engagement score is key input to ML model"
+    },
+    {
+      "from": "m_compa_ratio",
+      "to": "m_churn_probability",
+      "relationship": "influences",
+      "note": "Pay competitiveness feeds prediction model"
+    },
+    {
+      "from": "m_time_since_promotion",
+      "to": "m_churn_probability",
+      "relationship": "influences",
+      "note": "Promotion timing predicts turnover"
+    },
+    {
+      "from": "m_manager_score",
+      "to": "m_churn_probability",
+      "relationship": "influences",
+      "note": "Manager quality affects retention probability"
+    },
+    {
+      "from": "m_performance_percentiles",
+      "to": "m_churn_probability",
+      "relationship": "influences",
+      "note": "Performance ratings predict voluntary and involuntary churn differently"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+You are a data analytics expert building a knowledge graph to answer an analytical question.
+
+Task: Starting from the question "What are the characteristics of successful movies?", construct a knowledge graph that shows:
+1. How the question decomposes into sub-questions and concepts
+2. How concepts relate to and influence each other
+3. What measurable data points operationalize abstract concepts
+4. The reasoning chains that justify including each element
+
+Instructions:
+- Start with the root question as the top node
+- Iteratively decompose concepts into more specific/measurable components
+- Use explicit relationship verbs to connect nodes (e.g., "decomposes_into", "measured_by", "influences", "requires", "moderates", "correlates_with", etc.)
+- Allow concepts to have multiple parents/children (this is a graph, not a tree)
+- Continue decomposition until you reach concrete, measurable data points
+- For each node, indicate its type (root_question, sub_question, concept, metric, data_point, contextual_factor, etc.)
+- Include cross-cutting relationships where concepts influence each other
+- Add brief notes to edges where the relationship needs clarification
+
+Output format: JSON with two main arrays:
+1. "nodes": Each with id, type, label, and optional description
+2. "edges": Each with from_id, to_id, relationship_type, and optional note
+
+The graph should make it possible to trace any data point back to the original question through a clear reasoning path, and show how different aspects of the analysis interconnect.

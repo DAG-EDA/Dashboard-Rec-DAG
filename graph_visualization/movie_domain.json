@@ -1,0 +1,243 @@
+{
+  "data_domains": {
+    "content_attributes": {
+      "description": "Core characteristics of the film content and production",
+      "attributes": [
+        {
+          "name": "genre",
+          "description": "Primary and secondary genre classifications",
+          "data_type": "categorical (multi-label)",
+          "business_meaning": "Content positioning and audience targeting"
+        },
+        {
+          "name": "runtime",
+          "description": "Film duration in minutes",
+          "data_type": "numeric (continuous)",
+          "business_meaning": "Content format and theatrical scheduling constraints"
+        },
+        {
+          "name": "rating",
+          "description": "MPAA/content rating (G, PG, PG-13, R, NC-17)",
+          "data_type": "categorical (ordinal)",
+          "business_meaning": "Audience accessibility and market reach"
+        },
+        {
+          "name": "language",
+          "description": "Primary language of dialogue",
+          "data_type": "categorical",
+          "business_meaning": "Market geography and localization requirements"
+        },
+        {
+          "name": "production_type",
+          "description": "Original, sequel, remake, adaptation, franchise",
+          "data_type": "categorical",
+          "business_meaning": "IP leverage and built-in audience expectations"
+        }
+      ]
+    },
+    "production_attributes": {
+      "description": "Investment, resources, and production entities involved",
+      "attributes": [
+        {
+          "name": "budget",
+          "description": "Production budget in USD",
+          "data_type": "numeric (currency)",
+          "business_meaning": "Investment risk and production scale"
+        },
+        {
+          "name": "studio",
+          "description": "Production company/distributor",
+          "data_type": "categorical",
+          "business_meaning": "Distribution power and marketing reach"
+        },
+        {
+          "name": "director",
+          "description": "Primary director name",
+          "data_type": "categorical (high cardinality)",
+          "business_meaning": "Creative brand and quality signal"
+        },
+        {
+          "name": "cast",
+          "description": "Lead actors/star power",
+          "data_type": "categorical (multi-label)",
+          "business_meaning": "Audience draw and marketing appeal"
+        },
+        {
+          "name": "production_country",
+          "description": "Country of production",
+          "data_type": "categorical",
+          "business_meaning": "Tax incentives, labor costs, cultural perspective"
+        }
+      ]
+    },
+    "financial_performance": {
+      "description": "Revenue generation and profitability metrics",
+      "attributes": [
+        {
+          "name": "domestic_gross",
+          "description": "Box office revenue in domestic market (US/Canada)",
+          "data_type": "numeric (currency)",
+          "business_meaning": "Primary market performance"
+        },
+        {
+          "name": "international_gross",
+          "description": "Box office revenue in international markets",
+          "data_type": "numeric (currency)",
+          "business_meaning": "Global appeal and market diversification"
+        },
+        {
+          "name": "opening_weekend",
+          "description": "Revenue in first weekend",
+          "data_type": "numeric (currency)",
+          "business_meaning": "Marketing effectiveness and immediate audience interest"
+        },
+        {
+          "name": "roi",
+          "description": "Return on investment (gross/budget)",
+          "data_type": "numeric (ratio)",
+          "business_meaning": "Profitability and investment efficiency"
+        },
+        {
+          "name": "total_gross",
+          "description": "Worldwide box office total",
+          "data_type": "numeric (currency)",
+          "business_meaning": "Overall commercial success"
+        }
+      ]
+    },
+    "audience_reception": {
+      "description": "Critical and audience response metrics",
+      "attributes": [
+        {
+          "name": "critic_score",
+          "description": "Aggregated critic ratings (e.g., Rotten Tomatoes, Metacritic)",
+          "data_type": "numeric (0-100 scale)",
+          "business_meaning": "Professional quality assessment and awards potential"
+        },
+        {
+          "name": "audience_score",
+          "description": "Aggregated user/audience ratings",
+          "data_type": "numeric (0-100 scale)",
+          "business_meaning": "Popular appeal and word-of-mouth potential"
+        },
+        {
+          "name": "num_reviews",
+          "description": "Volume of reviews/ratings",
+          "data_type": "numeric (count)",
+          "business_meaning": "Engagement level and statistical reliability"
+        },
+        {
+          "name": "awards",
+          "description": "Major awards won/nominated",
+          "data_type": "numeric (count) or categorical",
+          "business_meaning": "Prestige and long-term value"
+        },
+        {
+          "name": "social_media_buzz",
+          "description": "Social engagement metrics",
+          "data_type": "numeric (count/index)",
+          "business_meaning": "Marketing reach and cultural impact"
+        }
+      ]
+    },
+    "temporal_attributes": {
+      "description": "Time-based factors affecting performance",
+      "attributes": [
+        {
+          "name": "release_date",
+          "description": "Theatrical release date",
+          "data_type": "date",
+          "business_meaning": "Market timing and competitive landscape"
+        },
+        {
+          "name": "release_season",
+          "description": "Season/quarter of release",
+          "data_type": "categorical (Q1-Q4, or Summer/Fall/Winter/Spring)",
+          "business_meaning": "Strategic timing for audience availability"
+        },
+        {
+          "name": "year",
+          "description": "Release year",
+          "data_type": "numeric (year)",
+          "business_meaning": "Vintage effects, inflation adjustment needs, industry trends"
+        },
+        {
+          "name": "day_of_week",
+          "description": "Day of week for release",
+          "data_type": "categorical",
+          "business_meaning": "Release strategy (wide vs. limited)"
+        },
+        {
+          "name": "days_in_theaters",
+          "description": "Length of theatrical run",
+          "data_type": "numeric (days)",
+          "business_meaning": "Legs/longevity and sustained audience interest"
+        }
+      ]
+    },
+    "distribution_attributes": {
+      "description": "Market release and platform strategy",
+      "attributes": [
+        {
+          "name": "theater_count_opening",
+          "description": "Number of theaters in opening weekend",
+          "data_type": "numeric (count)",
+          "business_meaning": "Release scale and distribution investment"
+        },
+        {
+          "name": "theater_count_max",
+          "description": "Maximum theater count during run",
+          "data_type": "numeric (count)",
+          "business_meaning": "Distribution expansion and demand"
+        },
+        {
+          "name": "release_type",
+          "description": "Wide release, limited release, platform release",
+          "data_type": "categorical",
+          "business_meaning": "Distribution strategy and risk management"
+        },
+        {
+          "name": "distribution_territories",
+          "description": "Number/list of international markets",
+          "data_type": "numeric (count) or categorical (multi-label)",
+          "business_meaning": "Global distribution scope"
+        },
+        {
+          "name": "streaming_platform",
+          "description": "Digital distribution partner (if applicable)",
+          "data_type": "categorical",
+          "business_meaning": "Secondary revenue streams"
+        }
+      ]
+    },
+    "competitive_context": {
+      "description": "Market environment and competitive dynamics",
+      "attributes": [
+        {
+          "name": "competing_releases",
+          "description": "Number of films released same weekend/month",
+          "data_type": "numeric (count)",
+          "business_meaning": "Market crowding and audience fragmentation"
+        },
+        {
+          "name": "franchise_status",
+          "description": "Standalone, sequel number, or franchise installment",
+          "data_type": "categorical/ordinal",
+          "business_meaning": "Built-in audience and franchise fatigue risk"
+        },
+        {
+          "name": "tentpole_indicator",
+          "description": "Whether film is a major tentpole release",
+          "data_type": "boolean",
+          "business_meaning": "Strategic importance and marketing investment"
+        },
+        {
+          "name": "market_saturation",
+          "description": "Genre saturation in release window",
+          "data_type": "numeric (index/percentage)",
+          "business_meaning": "Competitive positioning within genre"
+        }
+      ]
+    }
+  }
+}

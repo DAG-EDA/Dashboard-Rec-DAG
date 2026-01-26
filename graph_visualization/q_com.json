@@ -1,0 +1,474 @@
+{
+  "attribute_combinations": [
+    {
+      "combination_id": "C001",
+      "name": "Star Power vs. Budget Efficiency",
+      "domains": ["creative_team", "financial_performance"],
+      "attributes": [
+        "actor_star_power_score",
+        "production_budget",
+        "total_box_office",
+        "roi"
+      ],
+      "business_question": "Do expensive A-list actors deliver proportional returns, or can mid-tier talent with lower budgets achieve better ROI?",
+      "analytical_approach": "Segment movies by star power quartiles and compare budget-to-revenue ratios; identify sweet spots where talent investment maximizes returns",
+      "actionable_insights": [
+        "Optimize casting decisions based on budget constraints",
+        "Identify undervalued talent that delivers outsized returns",
+        "Determine when star power premium is justified"
+      ],
+      "hypothesis": "Mid-tier star power with moderate budgets may achieve superior ROI compared to maximum star power with inflated budgets"
+    },
+    {
+      "combination_id": "C002",
+      "name": "Genre-Season-Budget Optimization",
+      "domains": ["movie_profile", "release_strategy", "financial_performance"],
+      "attributes": [
+        "genre",
+        "release_season",
+        "production_budget",
+        "opening_theater_count",
+        "domestic_box_office"
+      ],
+      "business_question": "Which genre-season-budget combinations historically perform best, and how should distribution scale accordingly?",
+      "analytical_approach": "Create performance matrices by genre-season combination; identify optimal budget ranges and theater counts for each pairing",
+      "actionable_insights": [
+        "Strategic release calendar planning by genre",
+        "Budget allocation based on genre-season fit",
+        "Theater distribution strategies tailored to genre-timing"
+      ],
+      "hypothesis": "Certain genres have optimal seasons (e.g., horror in October, family films in holidays) that amplify returns beyond budget size"
+    },
+    {
+      "combination_id": "C003",
+      "name": "Critical vs. Audience Reception Impact",
+      "domains": ["audience_reception", "financial_performance"],
+      "attributes": [
+        "critic_score",
+        "audience_score",
+        "cinemascore",
+        "total_box_office",
+        "theatrical_run_length"
+      ],
+      "business_question": "Which matters more for commercial success—critic approval or audience satisfaction? Do they interact?",
+      "analytical_approach": "Segment into four quadrants (high/low critic, high/low audience); analyze box office and longevity patterns; measure word-of-mouth effects",
+      "actionable_insights": [
+        "Prioritize audience testing over critic screenings for certain genres",
+        "Identify when strong CinemaScore predicts legs despite poor critics",
+        "Optimize marketing messaging based on reception split"
+      ],
+      "hypothesis": "Audience scores drive theatrical longevity and total revenue more than critic scores, especially for genre films"
+    },
+    {
+      "combination_id": "C004",
+      "name": "Franchise Premium Analysis",
+      "domains": ["production_attributes", "financial_performance", "marketing_indicators"],
+      "attributes": [
+        "franchise_status",
+        "source_material",
+        "marketing_budget",
+        "trailer_views",
+        "opening_theater_count",
+        "domestic_box_office",
+        "roi"
+      ],
+      "business_question": "What is the value of franchise/IP vs. original content, and how does it affect marketing efficiency?",
+      "analytical_approach": "Compare marketing spend, organic interest (trailer views), and returns across original vs. franchise content; calculate franchise premium",
+      "actionable_insights": [
+        "Justify IP acquisition costs vs. original development",
+        "Optimize marketing spend—franchises may need less",
+        "Identify when original content outperforms despite no built-in audience"
+      ],
+      "hypothesis": "Franchises achieve higher marketing efficiency (more trailer views per dollar) and wider openings, but original content occasionally delivers surprise ROI"
+    },
+    {
+      "combination_id": "C005",
+      "name": "Director Track Record Impact",
+      "domains": ["creative_team", "financial_performance", "audience_reception"],
+      "attributes": [
+        "director",
+        "director_previous_successes",
+        "production_budget",
+        "critic_score",
+        "total_box_office",
+        "roi"
+      ],
+      "business_question": "How much budget and trust should studios give directors based on track record? When do proven directors underperform?",
+      "analytical_approach": "Analyze correlation between previous successes and current performance; identify directors with consistent ROI; detect when increased budgets harm outcomes",
+      "actionable_insights": [
+        "Budget allocation guidelines based on director experience",
+        "Identify rising directors with consistent but lower-budget success",
+        "Recognize when auteur directors need creative constraints"
+      ],
+      "hypothesis": "Directors with 2-4 successful films deliver best risk-adjusted returns; mega-budgets for superstar directors may diminish ROI"
+    },
+    {
+      "combination_id": "C006",
+      "name": "Rating and Audience Reach Trade-off",
+      "domains": ["movie_profile", "audience_demographics", "financial_performance"],
+      "attributes": [
+        "rating",
+        "genre",
+        "target_age_group",
+        "actual_audience_age_breakdown",
+        "total_box_office",
+        "international_box_office"
+      ],
+      "business_question": "How does MPAA rating limit audience reach and revenue potential across different genres?",
+      "analytical_approach": "Compare revenue per rating tier within genres; measure actual vs. target audience achievement; assess international market impact",
+      "actionable_insights": [
+        "Determine when to edit for broader rating vs. artistic integrity",
+        "Identify genres where R-rating is acceptable or beneficial",
+        "Understand international market sensitivity to ratings"
+      ],
+      "hypothesis": "PG-13 maximizes total revenue in action/adventure, but R-ratings can be profitable in horror/thriller due to authenticity premium"
+    },
+    {
+      "combination_id": "C007",
+      "name": "Pre-Release Buzz Predictive Power",
+      "domains": ["marketing_indicators", "financial_performance", "release_strategy"],
+      "attributes": [
+        "trailer_views",
+        "social_media_mentions",
+        "pre_release_tracking",
+        "marketing_budget",
+        "opening_theater_count",
+        "domestic_box_office"
+      ],
+      "business_question": "Can pre-release metrics predict opening weekend success and optimize theater distribution decisions?",
+      "analytical_approach": "Build predictive models using pre-release data; identify leading indicators; compare organic vs. paid buzz effectiveness",
+      "actionable_insights": [
+        "Adjust theater counts based on pre-release signals",
+        "Optimize marketing spend allocation across channels",
+        "Identify when to increase/decrease distribution scale"
+      ],
+      "hypothesis": "Trailer views-to-marketing-spend ratio is a stronger predictor than absolute marketing budget, enabling data-driven distribution decisions"
+    },
+    {
+      "combination_id": "C008",
+      "name": "Runtime-Genre-Budget Sweet Spot",
+      "domains": ["movie_profile", "financial_performance", "audience_reception"],
+      "attributes": [
+        "runtime",
+        "genre",
+        "production_budget",
+        "audience_score",
+        "theatrical_run_length",
+        "total_box_office"
+      ],
+      "business_question": "What is the optimal runtime for each genre and budget level to maximize both satisfaction and revenue?",
+      "analytical_approach": "Analyze runtime distributions by genre; correlate with audience scores and box office; identify diminishing returns thresholds",
+      "actionable_insights": [
+        "Guide editing decisions to optimal length",
+        "Understand when longer runtimes limit showings and revenue",
+        "Balance artistic vision with commercial viability"
+      ],
+      "hypothesis": "Each genre has an optimal runtime range; exceeding it reduces showings per day and audience satisfaction, hurting total revenue"
+    },
+    {
+      "combination_id": "C009",
+      "name": "International Appeal Drivers",
+      "domains": ["geographic_performance", "movie_profile", "content_attributes", "creative_team"],
+      "attributes": [
+        "domestic_international_ratio",
+        "international_market_count",
+        "china_box_office",
+        "genre",
+        "language",
+        "themes",
+        "special_effects_intensity",
+        "actor_star_power_score"
+      ],
+      "business_question": "What content and creative attributes drive international success, especially in key growth markets like China?",
+      "analytical_approach": "Segment high vs. low international performers; identify universal appeal factors; analyze China-specific success patterns",
+      "actionable_insights": [
+        "Optimize content decisions for global markets during development",
+        "Identify when to invest in international co-productions",
+        "Guide casting for international appeal without sacrificing domestic performance"
+      ],
+      "hypothesis": "High special effects, universal themes, and international star power drive foreign revenue; dialogue-heavy dramas skew domestic"
+    },
+    {
+      "combination_id": "C010",
+      "name": "Competition and Counter-Programming",
+      "domains": ["release_strategy", "movie_profile", "financial_performance"],
+      "attributes": [
+        "release_date",
+        "release_season",
+        "competitive_landscape",
+        "genre",
+        "target_age_group",
+        "opening_theater_count",
+        "domestic_box_office"
+      ],
+      "business_question": "When should studios counter-program against competition vs. avoid crowded weekends entirely?",
+      "analytical_approach": "Analyze performance in high vs. low competition periods by genre; identify successful counter-programming examples; measure cannibalization effects",
+      "actionable_insights": [
+        "Strategic release date selection based on competitive landscape",
+        "Identify opportunities for counter-programming by genre",
+        "Understand when to delay vs. proceed with release"
+      ],
+      "hypothesis": "Counter-programming works when genre differentiation is strong; similar films in same weekend cannibalize each other significantly"
+    },
+    {
+      "combination_id": "C011",
+      "name": "Studio Scale vs. Independent Efficiency",
+      "domains": ["production_attributes", "financial_performance", "awards_recognition"],
+      "attributes": [
+        "studio",
+        "production_company",
+        "production_budget",
+        "marketing_budget",
+        "total_box_office",
+        "roi",
+        "oscar_nominations",
+        "oscar_wins"
+      ],
+      "business_question": "Do major studios achieve better absolute returns while independents deliver better ROI? What's the quality-commerce trade-off?",
+      "analytical_approach": "Compare studio vs. independent performance across budget tiers; analyze awards vs. commercial success correlation by studio type",
+      "actionable_insights": [
+        "Portfolio strategy—balance major releases with indie pickups",
+        "Identify when to greenlight vs. acquire finished films",
+        "Understand prestige vs. profit trade-offs"
+      ],
+      "hypothesis": "Major studios achieve scale but lower ROI; independents have higher variance with occasional massive ROI outliers and disproportionate awards"
+    },
+    {
+      "combination_id": "C012",
+      "name": "Awards Season Positioning Strategy",
+      "domains": ["release_strategy", "awards_recognition", "financial_performance", "audience_reception"],
+      "attributes": [
+        "release_date",
+        "release_season",
+        "release_type",
+        "oscar_nominations",
+        "oscar_wins",
+        "critic_score",
+        "theatrical_run_length",
+        "total_box_office"
+      ],
+      "business_question": "What release strategies maximize both awards potential and commercial returns? Can you have both?",
+      "analytical_approach": "Compare limited/platform releases vs. wide releases in Q4; measure awards boost to box office; analyze post-nomination revenue spikes",
+      "actionable_insights": [
+        "Optimal release strategy for awards-worthy content",
+        "Quantify box office value of Oscar nominations",
+        "Guide distribution strategy for prestige projects"
+      ],
+      "hypothesis": "Limited fall releases followed by expansion post-nominations maximize both awards and revenue for quality films; wide releases sacrifice awards"
+    },
+    {
+      "combination_id": "C013",
+      "name": "Sequel Performance Degradation",
+      "domains": ["production_attributes", "financial_performance", "audience_reception", "temporal_attributes"],
+      "attributes": [
+        "franchise_status",
+        "time_in_production",
+        "production_budget",
+        "audience_score",
+        "critic_score",
+        "total_box_office",
+        "roi"
+      ],
+      "business_question": "At what point do franchises experience diminishing returns? How does time between installments affect performance?",
+      "analytical_approach": "Track performance across franchise installments; measure audience/critic fatigue; analyze optimal gap between sequels",
+      "actionable_insights": [
+        "Determine when to end vs. continue franchises",
+        "Optimize release cadence for franchise longevity",
+        "Guide budget decisions for sequels—when to scale up/down"
+      ],
+      "hypothesis": "Third and fourth installments often show declining audience scores and ROI unless significant time passes or creative reinvention occurs"
+    },
+    {
+      "combination_id": "C014",
+      "name": "Marketing Efficiency by Content Type",
+      "domains": ["production_attributes", "marketing_indicators", "financial_performance"],
+      "attributes": [
+        "franchise_status",
+        "source_material",
+        "genre",
+        "marketing_budget",
+        "trailer_views",
+        "social_media_mentions",
+        "opening_theater_count",
+        "domestic_box_office"
+      ],
+      "business_question": "Which types of content achieve organic buzz requiring less paid marketing, and where should marketing dollars be concentrated?",
+      "analytical_approach": "Calculate marketing efficiency ratios (box office per marketing dollar); compare organic vs. paid engagement by content type",
+      "actionable_insights": [
+        "Optimize marketing budget allocation by content type",
+        "Identify high-efficiency marketing channels by genre",
+        "Determine when to invest in marketing vs. rely on organic buzz"
+      ],
+      "hypothesis": "Franchise and genre films (horror, superhero) achieve high organic engagement, while dramas require disproportionate marketing spend"
+    },
+    {
+      "combination_id": "C015",
+      "name": "Diversity Premium Analysis",
+      "domains": ["content_attributes", "creative_team", "financial_performance", "geographic_performance"],
+      "attributes": [
+        "diversity_representation",
+        "director",
+        "lead_actors",
+        "themes",
+        "domestic_box_office",
+        "international_box_office",
+        "audience_score"
+      ],
+      "business_question": "Does diverse representation impact commercial performance, audience satisfaction, and international appeal?",
+      "analytical_approach": "Segment by diversity metrics; compare performance controlling for budget and genre; analyze domestic vs. international reception",
+      "actionable_insights": [
+        "Understand commercial case for inclusive casting",
+        "Identify markets most responsive to diverse content",
+        "Guide development and casting decisions"
+      ],
+      "hypothesis": "Diverse representation expands audience reach without harming traditional demographics, potentially increasing total addressable market"
+    },
+    {
+      "combination_id": "C016",
+      "name": "Production Timeline vs. Quality",
+      "domains": ["temporal_attributes", "financial_performance", "audience_reception"],
+      "attributes": [
+        "time_in_production",
+        "production_year",
+        "release_year",
+        "production_budget",
+        "critic_score",
+        "audience_score",
+        "total_box_office"
+      ],
+      "business_question": "Is there an optimal production timeline? Do rushed or prolonged productions affect quality and returns?",
+      "analytical_approach": "Correlate production duration with quality metrics; identify outliers with very short/long timelines; control for budget and complexity",
+      "actionable_insights": [
+        "Set realistic production schedules by film type",
+        "Identify warning signs of troubled productions",
+        "Balance speed-to-market with quality requirements"
+      ],
+      "hypothesis": "Extremely short (<12 months) or long (>36 months) production cycles correlate with lower quality scores; optimal range exists by genre/budget"
+    },
+    {
+      "combination_id": "C017",
+      "name": "Theatrical Legs Predictors",
+      "domains": ["audience_reception", "financial_performance", "release_strategy"],
+      "attributes": [
+        "cinemascore",
+        "audience_score",
+        "opening_theater_count",
+        "release_type",
+        "competitive_landscape",
+        "theatrical_run_length",
+        "total_box_office"
+      ],
+      "business_question": "What predicts long theatrical runs vs. front-loaded openings, and how should this influence distribution strategy?",
+      "analytical_approach": "Calculate opening weekend as percentage of total; correlate with early audience metrics; identify 'legs' vs. 'sprint' patterns",
+      "actionable_insights": [
+        "Predict long-term potential from opening weekend data",
+        "Optimize theater retention strategies",
+        "Guide platforming vs. wide release decisions"
+      ],
+      "hypothesis": "High CinemaScore (A/A+) predicts strong legs; low scores suggest front-loaded runs requiring maximum opening weekend capture"
+    },
+    {
+      "combination_id": "C018",
+      "name": "Era Trends and Cultural Timing",
+      "domains": ["temporal_attributes", "content_attributes", "financial_performance"],
+      "attributes": [
+        "release_year",
+        "era_trends",
+        "themes",
+        "genre",
+        "tone",
+        "total_box_office",
+        "audience_score"
+      ],
+      "business_question": "Which themes and content resonate during different cultural moments, and how can studios time content to cultural zeitgeist?",
+      "analytical_approach": "Identify theme-era correlations; analyze outperformance vs. genre baseline by theme-timing alignment; detect cultural mood shifts",
+      "actionable_insights": [
+        "Time content releases to cultural relevance",
+        "Prioritize development of zeitgeist-aligned themes",
+        "Identify counter-cyclical opportunities"
+      ],
+      "hypothesis": "Films aligned with cultural moments (e.g., social movements, political climate) outperform baseline expectations; timing matters as much as quality"
+    },
+    {
+      "combination_id": "C019",
+      "name": "VFX Investment Returns",
+      "domains": ["content_attributes", "production_attributes", "financial_performance", "geographic_performance"],
+      "attributes": [
+        "special_effects_intensity",
+        "production_method",
+        "production_budget",
+        "genre",
+        "international_box_office",
+        "domestic_international_ratio",
+        "roi"
+      ],
+      "business_question": "When does heavy VFX investment pay off, and which genres/markets justify the cost?",
+      "analytical_approach": "Compare ROI by VFX intensity tier; analyze international vs. domestic performance for VFX-heavy films; identify genre-VFX fit",
+      "actionable_insights": [
+        "Optimize VFX budget allocation by genre and target market",
+        "Identify when practical effects may be more cost-effective",
+        "Guide international distribution strategy for VFX-heavy content"
+      ],
+      "hypothesis": "Heavy VFX disproportionately drives international revenue, especially in China, but may not improve ROI in dialogue-driven genres"
+    },
+    {
+      "combination_id": "C020",
+      "name": "Multi-Generational Appeal",
+      "domains": ["audience_demographics", "movie_profile", "financial_performance"],
+      "attributes": [
+        "target_age_group",
+        "actual_audience_age_breakdown",
+        "rating",
+        "genre",
+        "themes",
+        "total_box_office",
+        "theatrical_run_length"
+      ],
+      "business_question": "Which films successfully attract multiple generations, and what attributes enable this broad appeal?",
+      "analytical_approach": "Identify films with diverse age representation exceeding target; analyze common attributes; measure revenue premium from broad appeal",
+      "actionable_insights": [
+        "Design content for multi-generational appeal",
+        "Optimize marketing to reach multiple demographics",
+        "Identify 'four-quadrant' success factors"
+      ],
+      "hypothesis": "Films attracting all age groups (family, animation, adventure) achieve disproportionate total revenue and longer runs despite similar budgets"
+    }
+  ],
+  "cross_cutting_analyses": {
+    "description": "Higher-order analytical frameworks combining multiple attribute combinations",
+    "frameworks": [
+      {
+        "framework_name": "Risk-Adjusted Portfolio Optimization",
+        "combines_combinations": ["C001", "C005", "C011", "C013"],
+        "business_question": "How should studios balance their portfolio between safe franchise bets and risky original content with high potential?",
+        "strategic_value": "Guides annual slate planning and capital allocation across project types"
+      },
+      {
+        "framework_name": "Global Market Expansion Playbook",
+        "combines_combinations": ["C009", "C019", "C006"],
+        "business_question": "What content attributes maximize international revenue while maintaining domestic appeal?",
+        "strategic_value": "Informs development decisions for globally-oriented projects and co-production strategies"
+      },
+      {
+        "framework_name": "Predictive Success Model",
+        "combines_combinations": ["C007", "C003", "C017"],
+        "business_question": "Can we predict total box office from pre-release and opening weekend data with actionable accuracy?",
+        "strategic_value": "Enables real-time distribution adjustments and marketing optimization during release"
+      },
+      {
+        "framework_name": "Content-Market Fit Matrix",
+        "combines_combinations": ["C002", "C010", "C018"],
+        "business_question": "What is the optimal genre-budget-timing-theme combination for maximizing success probability?",
+        "strategic_value": "Strategic greenlight framework for evaluating project viability"
+      }
+    ]
+  },
+  "implementation_priority": {
+    "tier_1_critical": ["C001", "C004", "C007", "C017"],
+    "rationale": "Highest immediate ROI impact—affect casting, marketing, and distribution decisions with quick implementation",
+    "tier_2_strategic": ["C002", "C005", "C009", "C013"],
+    "rationale": "Inform medium-term planning—release calendars, director relationships, franchise management, international strategy",
+    "tier_3_developmental": ["C015", "C018", "C020"],
+    "rationale": "Long-term positioning—content development, cultural alignment, audience expansion"
+  }
+}

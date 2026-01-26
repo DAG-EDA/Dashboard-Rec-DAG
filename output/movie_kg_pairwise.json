@@ -1,0 +1,1671 @@
+{
+  "layers": {
+    "data": {
+      "nodes": {
+        "data_Title": {
+          "name": "Title",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "dimension",
+          "description": "The official title of the movie, used to uniquely identify each film in the dataset. It can be used for searching specific movies or as a primary identifier.",
+          "stats": {
+            "count": 3200,
+            "missing": 1,
+            "missing_pct": 0.00031240237425804435,
+            "n_unique": 3176,
+            "top_values": {
+              "Friday the 13th": 2,
+              "Dawn of the Dead": 2,
+              "20,000 Leagues Under the Sea": 2,
+              "Casino Royale": 2,
+              "Twilight": 2
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Title"
+        },
+        "data_US_Gross": {
+          "name": "US Gross",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "The total revenue generated from ticket sales in the United States, indicating a movie's domestic box office performance in USD. This measure can be used to assess financial success within the US market.",
+          "stats": {
+            "count": 3194,
+            "missing": 7,
+            "missing_pct": 0.0021868166198063107,
+            "min": 0.0,
+            "max": 760167650.0,
+            "mean": 44002085.163744524,
+            "median": 22019465.5
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_US_Gross"
+        },
+        "data_Worldwide_Gross": {
+          "name": "Worldwide Gross",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "identifier",
+          "description": "The total revenue generated from ticket sales across the globe, representing a movie's overall box office performance in USD. It serves as a key indicator of a film's global financial success.",
+          "stats": {
+            "count": 3194,
+            "missing": 7,
+            "missing_pct": 0.0021868166198063107,
+            "min": 0.0,
+            "max": 2767891499.0,
+            "mean": 85343400.14151534,
+            "median": 31168926.5
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Worldwide_Gross"
+        },
+        "data_US_DVD_Sales": {
+          "name": "US DVD Sales",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "The revenue generated from DVD sales within the United States in USD, reflecting a movie's performance in the home entertainment market. This attribute can be used to understand post-theatrical revenue streams, though it has many missing values.",
+          "stats": {
+            "count": 564,
+            "missing": 2637,
+            "missing_pct": 0.823805060918463,
+            "min": 618454.0,
+            "max": 352582053.0,
+            "mean": 34901546.81737588,
+            "median": 20331557.5
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_US_DVD_Sales"
+        },
+        "data_Production_Budget": {
+          "name": "Production Budget",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "The total financial investment made in producing the movie in USD, including costs for filming, cast, and crew. It is crucial for calculating a movie's profitability when compared to its gross revenues.",
+          "stats": {
+            "count": 3200,
+            "missing": 1,
+            "missing_pct": 0.00031240237425804435,
+            "min": 218.0,
+            "max": 300000000.0,
+            "mean": 31069171.4484375,
+            "median": 20000000.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Production_Budget"
+        },
+        "data_Release_Date": {
+          "name": "Release Date",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "temporal",
+          "description": "The date on which the movie was officially released, useful for analyzing release patterns, seasonal performance, or historical trends over time.",
+          "stats": {
+            "count": 3201,
+            "missing": 0,
+            "missing_pct": 0.0,
+            "n_unique": 1600,
+            "top_values": {
+              "Oct 11 2002": 9,
+              "Dec 31 1969": 8,
+              "Sep 16 2005": 8,
+              "Apr 28 2006": 8,
+              "Sep 23 2005": 7
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Release_Date"
+        },
+        "data_MPAA_Rating": {
+          "name": "MPAA Rating",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "The Motion Picture Association of America (MPAA) rating assigned to the movie, indicating its suitability for different age groups. This can be used to understand a film's target audience and its potential impact on box office performance.",
+          "stats": {
+            "count": 2596,
+            "missing": 605,
+            "missing_pct": 0.18900343642611683,
+            "n_unique": 7,
+            "top_values": {
+              "R": 1194,
+              "PG-13": 865,
+              "PG": 354,
+              "Not Rated": 94,
+              "G": 79
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_MPAA_Rating"
+        },
+        "data_Running_Time_min": {
+          "name": "Running Time min",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "temporal",
+          "description": "The total duration of the movie in minutes, providing insight into film length preferences or its relationship with genre and audience engagement. Note that this attribute has a significant number of missing values.",
+          "stats": {
+            "count": 1209,
+            "missing": 1992,
+            "missing_pct": 0.6223055295220243,
+            "min": 46.0,
+            "max": 222.0,
+            "mean": 110.19354838709677,
+            "median": 107.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Running_Time_min"
+        },
+        "data_Distributor": {
+          "name": "Distributor",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "dimension",
+          "description": "The company responsible for distributing the movie to theaters and other platforms, useful for analyzing market share, distributor performance, and industry trends.",
+          "stats": {
+            "count": 2969,
+            "missing": 232,
+            "missing_pct": 0.07247735082786629,
+            "n_unique": 174,
+            "top_values": {
+              "Warner Bros.": 318,
+              "Sony Pictures": 307,
+              "Paramount Pictures": 257,
+              "Universal": 254,
+              "Walt Disney Pictures": 232
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Distributor"
+        },
+        "data_Source": {
+          "name": "Source",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "The original material or inspiration for the movie's story, such as an 'Original Screenplay' or 'Based on Book/Short Story.' This helps in understanding creative origins and their potential influence on a film's development and reception.",
+          "stats": {
+            "count": 2836,
+            "missing": 365,
+            "missing_pct": 0.11402686660418619,
+            "n_unique": 18,
+            "top_values": {
+              "Original Screenplay": 1536,
+              "Based on Book/Short Story": 657,
+              "Based on Real Life Events": 186,
+              "Remake": 126,
+              "Based on TV": 106
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Source"
+        },
+        "data_Major_Genre": {
+          "name": "Major Genre",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "The primary categorical classification of the movie, such as 'Drama' or 'Comedy,' used to understand audience preferences and analyze performance across different film types.",
+          "stats": {
+            "count": 2926,
+            "missing": 275,
+            "missing_pct": 0.0859106529209622,
+            "n_unique": 12,
+            "top_values": {
+              "Drama": 789,
+              "Comedy": 675,
+              "Action": 420,
+              "Adventure": 274,
+              "Thriller/Suspense": 239
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Major_Genre"
+        },
+        "data_Creative_Type": {
+          "name": "Creative Type",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "Describes the creative style or narrative approach of the movie, like 'Contemporary Fiction' or 'Historical Fiction.' This attribute provides additional context beyond genre, helping to categorize films by their artistic and storytelling nature.",
+          "stats": {
+            "count": 2755,
+            "missing": 446,
+            "missing_pct": 0.1393314589190878,
+            "n_unique": 9,
+            "top_values": {
+              "Contemporary Fiction": 1453,
+              "Historical Fiction": 350,
+              "Fantasy": 265,
+              "Science Fiction": 243,
+              "Dramatization": 204
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Creative_Type"
+        },
+        "data_Director": {
+          "name": "Director",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "dimension",
+          "description": "The individual responsible for directing the movie, allowing for analysis of a director's filmography, critical success, and impact on box office performance. This attribute has a high percentage of missing values.",
+          "stats": {
+            "count": 1870,
+            "missing": 1331,
+            "missing_pct": 0.41580756013745707,
+            "n_unique": 550,
+            "top_values": {
+              "Steven Spielberg": 23,
+              "Woody Allen": 16,
+              "Martin Scorsese": 15,
+              "Spike Lee": 15,
+              "Ridley Scott": 14
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Director"
+        },
+        "data_Rotten_Tomatoes_Rating": {
+          "name": "Rotten Tomatoes Rating",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "The aggregate critical rating for the movie from Rotten Tomatoes, expressed as a percentage (0-100), indicating overall critical reception. It can be used to gauge critical acclaim and its potential relationship with commercial success.",
+          "stats": {
+            "count": 2321,
+            "missing": 880,
+            "missing_pct": 0.27491408934707906,
+            "min": 1.0,
+            "max": 100.0,
+            "mean": 54.33692373976734,
+            "median": 55.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Rotten_Tomatoes_Rating"
+        },
+        "data_IMDB_Rating": {
+          "name": "IMDB Rating",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "The average user rating for the movie from IMDB, on a scale of 1 to 10, reflecting audience perception and popularity. This rating can be compared with critical reviews to understand differences in reception.",
+          "stats": {
+            "count": 2988,
+            "missing": 213,
+            "missing_pct": 0.06654170571696345,
+            "min": 1.4,
+            "max": 9.2,
+            "mean": 6.283467202141901,
+            "median": 6.4
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_IMDB_Rating"
+        },
+        "data_IMDB_Votes": {
+          "name": "IMDB Votes",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "The total number of votes cast by users on IMDB for a particular movie, indicating the level of audience engagement and the statistical reliability of its IMDB Rating.",
+          "stats": {
+            "count": 2988,
+            "missing": 213,
+            "missing_pct": 0.06654170571696345,
+            "min": 18.0,
+            "max": 519541.0,
+            "mean": 29908.64457831325,
+            "median": 15106.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_IMDB_Votes"
+        }
+      },
+      "edges": [
+        {
+          "source": "data_US_Gross",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "computed_from",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 1.0,
+            "reasoning": "Worldwide Gross is mathematically computed by summing US Gross and International Gross. Therefore, US Gross is a direct component of Worldwide Gross."
+          }
+        },
+        {
+          "source": "data_US_Gross",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A higher US Gross (theatrical revenue) for a movie empirically indicates greater popularity and awareness, which typically leads to increased interest and thus higher subsequent US DVD Sales."
+          }
+        },
+        {
+          "source": "data_Worldwide_Gross",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.75,
+            "reasoning": "A movie's theatrical success, reflected in its Worldwide Gross, often empirically influences subsequent home video sales like US DVD Sales. A higher gross typically indicates greater popularity and awareness, which can drive demand for the DVD release."
+          }
+        },
+        {
+          "source": "data_Worldwide_Gross",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.85,
+            "reasoning": "A higher Worldwide Gross indicates that more people have seen the movie in theaters globally. Empirically, a larger audience base leads to more people being aware of the movie and thus more likely to cast votes on platforms like IMDB. Therefore, higher gross causally influences a higher number of IMDB Votes."
+          }
+        },
+        {
+          "source": "data_US_DVD_Sales",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Higher US DVD Sales indicate greater popularity and reach for a movie. This increased exposure can lead to more people being aware of the movie and subsequently casting votes on IMDB."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A larger production budget often allows for higher quality production, more prominent actors, and more extensive marketing, which can empirically lead to higher US box office gross."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A larger production budget often allows for higher quality production, more prominent actors, and more extensive marketing, which can empirically lead to higher worldwide box office gross."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "A larger production budget, contributing to a film's overall quality and marketing, can empirically influence its US DVD sales by increasing public awareness and demand."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_Rotten_Tomatoes_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "While a higher Production Budget can enable better production values, special effects, and talent, it does not directly or consistently cause a higher Rotten Tomatoes Rating. Quality of script, direction, and acting are more direct determinants. There might be a general correlation (e.g., very low budgets sometimes limit production quality), but it's not a clear causal link in this direction."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_IMDB_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Similar to Rotten Tomatoes Rating, a higher Production Budget does not directly or consistently cause a higher IMDB Rating. Audience reception is influenced by many factors beyond budget, such as story, acting, and entertainment value. There might be a weak association, but not a direct causal influence."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "A higher Production Budget often allows for more extensive marketing, wider distribution, and the hiring of bigger stars. These factors lead to greater public awareness and viewership, which in turn causes a higher number of IMDB Votes."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The choice of Release Date significantly influences US Gross. Strategic timing (e.g., holiday weekends, avoiding strong competition, aligning with school breaks) directly impacts audience availability and box office performance."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Similar to US Gross, the Release Date and global release strategy (e.g., staggered vs. simultaneous, aligning with international holidays) are critical factors that directly cause variations in Worldwide Gross."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The theatrical Release Date establishes the initial public awareness and critical/audience reception of a film. The success or failure of the theatrical run (heavily influenced by its release date) directly impacts the subsequent demand and sales of DVDs."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_MPAA_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "While the release date does not directly cause the MPAA rating, there can be historical trends and shifts in the prevalence or nature of MPAA ratings across different eras of film release, indicating an association."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_Running_Time_min",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Movie running times can exhibit historical trends, with average lengths or common film durations varying across different eras of film release, indicating an association with the release date."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_Release_Date",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "The 'Distributor' is primarily responsible for setting and executing the release strategy, which includes determining the 'Release Date'. The distributor's decision empirically causes the film to be released on a specific date."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Release_Date",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Assuming 'Source' refers to the source material (e.g., book, original screenplay), its type or theme can influence the strategic release window (e.g., holiday-themed source material for a Christmas release, popular IP for a summer blockbuster slot)."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Release_Date",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.85,
+            "reasoning": "The Major Genre of a film is a key factor in strategic decision-making regarding its optimal Release Date. Studios often target specific seasonal windows (e.g., summer for blockbusters, holidays for family films) based on the genre to maximize audience reach, thus empirically influencing the chosen release date."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_Creative_Type",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The types of creative approaches (e.g., original screenplay, adaptation, remake) that are prevalent in filmmaking show clear trends over different historical periods, associating them with the release date."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_Director",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's active career period is finite, meaning a film's release date strongly limits the set of individuals who could have directed it, establishing a strong association."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_Rotten_Tomatoes_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "While the release date doesn't directly cause a film's critical reception, there can be historical trends in critical standards, film styles, or audience expectations that lead to an association between release date and Rotten Tomatoes ratings."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_IMDB_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "User rating patterns and the types of films released can show trends over different periods, leading to an association between the release date and IMDB ratings, though the date itself doesn't cause the rating."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 1.0,
+            "reasoning": "The release date determines how long a movie has been available to the public, which directly influences the cumulative number of IMDB votes it can accrue over time. Older movies generally have had more time to gather votes."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The MPAA Rating directly influences the potential audience size for a film in the US (e.g., G/PG allows all ages, R restricts to adults), which in turn directly impacts the film's potential US box office gross."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Similar to US Gross, the MPAA Rating (or the content it reflects) influences how a film is perceived and rated internationally, affecting audience eligibility and thus impacting the film's potential worldwide box office gross."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The MPAA Rating directly influences who can legally purchase or rent a DVD in the US (e.g., R-rated DVDs are restricted to adults), thereby impacting the potential market and sales volume."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_Production_Budget",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "The MPAA Rating does not cause the Production Budget. However, there is an association: films with higher budgets often target broader audiences (e.g., PG-13) to maximize returns, while lower-budget films might take more creative risks leading to R-ratings. The relationship is driven by shared underlying factors like target audience and creative intent, not direct causation from rating to budget."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_Distributor",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The MPAA Rating does not cause a film to be distributed by a specific company. However, there is an association because many distributors specialize in certain types of films (e.g., family-friendly, indie, horror), which often correlate with specific MPAA ratings. This is a correlation based on business models and target markets, not direct causation from rating to distributor."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_MPAA_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Assuming 'Source' refers to the source material, its inherent content and themes (e.g., violence, mature subjects in a novel or comic) directly influence the film's content, which in turn determines its MPAA rating."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_MPAA_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The Major Genre of a film strongly influences the type of content (e.g., violence, language, themes) that will be present, which in turn empirically determines its likely MPAA Rating. For instance, a horror film is more likely to be R or PG-13, while a children's animation is likely G or PG."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_Rotten_Tomatoes_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "MPAA Rating and Rotten Tomatoes Rating are associated. Both are influenced by the film's content and target audience. While the rating is a characteristic of the film, it does not directly cause the critical reception; rather, the underlying content influences both."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_IMDB_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "MPAA Rating and IMDB Rating are associated. Both are influenced by the film's content and target audience. The rating is a characteristic of the film, but it does not directly cause user ratings; rather, the underlying content influences both."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "The MPAA rating directly influences the potential audience size and accessibility of a film (e.g., R-rated films exclude younger audiences), which in turn empirically causes changes in the number of IMDB votes it can accumulate."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Running time empirically influences US Gross. Longer films may have fewer showtimes per day, potentially limiting ticket sales, while very short films might be perceived as less valuable. This directly impacts box office revenue."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Running time empirically influences Worldwide Gross. Similar to US Gross, longer films can affect the number of daily showtimes globally and influence audience perception, thereby impacting total revenue."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Running time can empirically influence US DVD Sales. While less direct than box office, consumer perception of value (e.g., longer film for the price) or rewatchability can affect purchasing decisions for home media."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "Longer running times generally require more resources, such as extended filming schedules, more cast and crew hours, increased post-production work, and potentially more special effects, all of which directly cause a higher production budget."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_MPAA_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Running time does not cause the MPAA rating (which is based on content). However, there can be an association where certain film lengths might correlate with the likelihood of receiving particular ratings (e.g., longer films might have more mature content, or very short films might be more often G-rated). Causality is unclear or indirect, making it an association."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_Distributor",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Running time does not cause a film to be picked up by a specific distributor. However, distributors often specialize in certain types of films (e.g., blockbusters, independent, foreign) which may have characteristic running times. Thus, there can be an association between a distributor and the typical running times of the films they handle."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Running_Time_min",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Assuming 'Source' refers to the source material, the scope, complexity, and amount of narrative content within the source (e.g., a lengthy novel vs. a short story) often dictate the necessary running time for the film adaptation."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Running_Time_min",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The conventions and narrative scope associated with a Major Genre often influence the typical or expected Running Time of a film. Epics or historical dramas tend to be longer, while comedies or some horror films might be shorter, empirically causing variations in running time."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_Creative_Type",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Running time does not cause a film's creative type (e.g., 'Fantasy', 'Historical Fiction'). The creative type defines the story's nature. However, certain creative types may lend themselves to different running times (e.g., historical epics or fantasy films might be longer to build worlds). There is a strong statistical association, but causality is not in the specified direction."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_Running_Time_min",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's artistic and editorial decisions empirically determine the final running time of a film."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_Rotten_Tomatoes_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Running time does not directly cause a critical rating. However, a film's length can influence critical perception (e.g., a film perceived as 'bloated' or 'too short' for its story might receive lower ratings). This is an association where length is one of many factors contributing to overall critical reception, but not a direct cause."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_IMDB_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Running time does not directly cause an IMDB user rating. Similar to critical ratings, user satisfaction and perception of quality can be influenced by a film's length (e.g., feeling too long or too short). This is an association where length is a contributing factor to user experience, but not a direct cause."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "A 'Distributor's' marketing efforts, release strategy, and distribution network directly and empirically cause changes in a film's 'US Gross' revenue."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "A 'Distributor's' global marketing efforts, international release strategy, and distribution partnerships directly and empirically cause changes in a film's 'Worldwide Gross' revenue."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A 'Distributor' is responsible for home video distribution and marketing, and their strategies and efforts directly and empirically cause changes in 'US DVD Sales'."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "A distributor's marketing efforts and distribution reach directly influence the number of people who see a film, which in turn leads to more IMDB votes."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The 'Source' of a film (e.g., sequel, based on book, original) can significantly influence audience pre-awareness and commercial appeal, thereby impacting its US Gross."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The 'Source' of a film (e.g., sequel, based on book, original) can significantly influence global audience pre-awareness and commercial appeal, thereby impacting its Worldwide Gross."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The 'Source' of a film can influence its long-term appeal and home video demand; established intellectual properties (like sequels or adaptations) often have stronger fan bases leading to higher DVD sales."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The 'Source' of a film often dictates the scale and expectations of a project; for instance, films based on popular books or sequels typically command larger production budgets due to perceived market potential and fan expectations."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Distributor",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Assuming 'Source' refers to the source material, the commercial potential and target audience associated with the source (e.g., a major comic book franchise vs. an obscure independent novel) can influence which distributors are interested in acquiring and releasing the film."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Major_Genre",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Assuming 'Source' refers to the source material, the inherent nature and core narrative elements of the source (e.g., a sci-fi novel, a historical account) largely define the film's major genre."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Creative_Type",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 1.0,
+            "reasoning": "Assuming 'Source' refers to the origin of the story (e.g., 'Book', 'Original Screenplay'), then 'Creative Type' (e.g., 'Adaptation', 'Original Story') is a direct classification based on this origin. The nature of the source material directly determines the creative type of the film."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Director",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Assuming 'Source' refers to the source material, the specific demands and artistic challenges presented by the source (e.g., a complex literary adaptation, a visual effects-heavy comic book) can influence the selection of a director with relevant expertise and vision."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_Rotten_Tomatoes_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Assuming 'Source' refers to the source material, its inherent quality, critical reception, and potential for adaptation can significantly influence the quality of the resulting film and, consequently, its critical reception on platforms like Rotten Tomatoes."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_IMDB_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Assuming 'Source' refers to the source material, its inherent quality and appeal can influence the final film's quality and audience satisfaction, which is reflected in its IMDB rating."
+          }
+        },
+        {
+          "source": "data_Source",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Assuming 'Source' refers to the source material, films based on popular or well-known source material often benefit from a pre-existing fanbase, leading to higher audience awareness and engagement, and thus a greater number of votes on platforms like IMDB."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Title",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Major Genre and Title are associated. While the genre doesn't directly cause a specific title, titles are often chosen to reflect or be consistent with the film's genre. They are both attributes of the same entity (a movie) and are correlated, but there's no clear causal direction from genre to title."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The Major Genre of a film significantly influences its potential audience appeal and marketability within the US, which in turn empirically causes variations in its US Gross revenue. Certain genres typically attract larger audiences or command higher box office potential."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Similar to US Gross, the Major Genre of a film plays a substantial role in determining its global appeal and marketability, empirically causing variations in its Worldwide Gross revenue. Some genres translate better across international markets than others."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The Major Genre of a film influences consumer interest in purchasing it for home viewing, thus empirically affecting US DVD Sales. Certain genres may have a stronger or weaker home video market depending on rewatchability and target audience."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The Major Genre often dictates the scale, special effects requirements, and overall production demands of a film, which empirically causes variations in its Production Budget. For example, action or sci-fi genres typically require larger budgets than dramas."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Distributor",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "Major Genre and Distributor are strongly associated. Distributors often specialize in or prefer certain genres, and a film's genre is a significant factor in a distributor's decision to acquire it. However, the genre does not directly cause the existence or specific choice of a distributor; rather, it's a characteristic that influences the distributor's selection process. Causality is not in the specified direction."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Creative_Type",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "While a film's creative type (e.g., adaptation, original screenplay) can influence its genre, and vice-versa, there isn't a direct causal link from Major Genre to Creative Type. They are strongly associated, as certain creative types might be more prevalent in specific genres, but the causation is not strictly in the specified direction."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Director",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The genre of a movie does not cause a specific person to be its director. However, directors often specialize or are known for working within certain genres, creating a strong association between a director and the genres of films they make. The influence is often from the director's preferences/style to the genre, or they are co-determined, not genre causing director."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Rotten_Tomatoes_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "The Major Genre of a film can influence its Rotten Tomatoes rating. Different genres often have varying critical standards, audience expectations, and inherent appeal, which can lead to systematic differences in average ratings across genres (e.g., comedies vs. dramas)."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_IMDB_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Similar to Rotten Tomatoes, the Major Genre of a film can influence its IMDB rating. Audience preferences and expectations vary significantly by genre, which can lead to different average rating profiles for films in different genres."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_IMDB_Votes",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "The Major Genre of a film can influence the number of IMDB votes it receives. Certain genres (e.g., action, sci-fi blockbusters) tend to attract larger audiences and more active fanbases, leading to higher engagement and more votes compared to niche genres."
+          }
+        },
+        {
+          "source": "data_Creative_Type",
+          "target": "data_Title",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The Creative Type strongly influences the Title. For instance, an 'Adaptation' will often share the title of the source material (e.g., a book), and a 'Remake' might use the original film's title, possibly with a subtitle. An 'Original Screenplay' has more freedom in its title choice, but the fact of its originality dictates this freedom."
+          }
+        },
+        {
+          "source": "data_Creative_Type",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "The Creative Type can influence US Gross. Adaptations of popular intellectual property (IP) or remakes often benefit from pre-existing brand recognition and fanbases, which can lead to higher box office performance compared to original screenplays that need to build an audience from scratch."
+          }
+        },
+        {
+          "source": "data_Creative_Type",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Similar to US Gross, the Creative Type can influence Worldwide Gross. Global audiences also respond to established IPs (adaptations, remakes) or original concepts differently, with pre-existing recognition often boosting international box office."
+          }
+        },
+        {
+          "source": "data_Creative_Type",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "The Creative Type can influence US DVD Sales. Films that are adaptations or remakes of popular franchises may have stronger home video sales due to collector interest or sustained demand from fans, compared to original screenplays that might have to build a long-term audience."
+          }
+        },
+        {
+          "source": "data_Creative_Type",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "The Creative Type significantly influences the Production Budget. Adaptations of popular IP and remakes often come with higher expectations for production value, special effects, and star power to meet audience expectations for the established brand, leading to larger budgets than many original screenplays."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_Title",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director is associated with the titles of the films they direct; the director does not cause the title itself."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's artistic vision, reputation, and execution empirically influence a film's commercial success, including its US Gross."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's artistic vision, reputation, and execution empirically influence a film's commercial success, including its Worldwide Gross."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's artistic vision and the quality of their film empirically influence its post-theatrical revenue, such as US DVD Sales."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's reputation and track record empirically influence the size of the production budget allocated to their projects."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_MPAA_Rating",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.9,
+            "reasoning": "A director's creative choices and artistic vision empirically determine the content of the film, which in turn causes its MPAA rating."
+          }
+        },
+        {
+          "source": "data_Rotten_Tomatoes_Rating",
+          "target": "data_Distributor",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Rotten Tomatoes Rating and Distributor are likely associated. The rating does not cause the distributor, but different distributors often specialize in certain types of films that tend to receive varying levels of critical acclaim, leading to a correlation."
+          }
+        },
+        {
+          "source": "data_Rotten_Tomatoes_Rating",
+          "target": "data_Creative_Type",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Rotten Tomatoes Rating and Creative Type are likely associated. The rating does not cause the creative type, but different creative types (e.g., historical fiction, fantasy) may, on average, receive different critical receptions."
+          }
+        },
+        {
+          "source": "data_Rotten_Tomatoes_Rating",
+          "target": "data_Director",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "Rotten Tomatoes Rating and Director are strongly associated. The rating does not cause the director, but a director's reputation, style, and consistent quality often correlate strongly with the critical reception of their films."
+          }
+        },
+        {
+          "source": "data_Rotten_Tomatoes_Rating",
+          "target": "data_IMDB_Rating",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.99,
+            "reasoning": "Rotten Tomatoes Rating and IMDB Rating are very strongly associated. Both are measures of a film's reception (critical vs. audience) and tend to correlate highly, reflecting the overall perceived quality of a film. Causality is unclear or bidirectional, as both may influence each other or be influenced by shared underlying factors."
+          }
+        },
+        {
+          "source": "data_Rotten_Tomatoes_Rating",
+          "target": "data_IMDB_Votes",
+          "edge_type": "associated_with",
+          "metadata": {
+            "strategy": "pairwise",
+            "source": "llm_inference",
+            "confidence": 0.75,
+            "reasoning": "Rotten Tomatoes Rating and IMDB Votes are likely associated. While a high RT rating might increase a film's visibility and thus potentially lead to more IMDB votes, IMDB Votes are also heavily influenced by other factors like marketing, star power, and overall popularity. The relationship is more of an association than direct causation in the specified direction."
+          }
+        }
+      ]
+    },
+    "concept": {
+      "nodes": {
+        "concept_movie_profitability": {
+          "name": "movie_profitability",
+          "node_type": "data_concept",
+          "definition": "The overall financial gain or loss generated by a movie, calculated by comparing its total revenues (theatrical and home entertainment) against its production costs.",
+          "related_attributes": [
+            "US Gross",
+            "Worldwide Gross",
+            "US DVD Sales",
+            "Production Budget"
+          ],
+          "confidence": 0.95,
+          "abstraction_level": 8,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_movie_profitability"
+        },
+        "concept_audience_engagement_and_sentiment": {
+          "name": "audience_engagement_and_sentiment",
+          "node_type": "data_concept",
+          "definition": "The degree to which a movie captures public interest and receives positive feedback from viewers, measured by user ratings and participation.",
+          "related_attributes": [
+            "IMDB Rating",
+            "IMDB Votes"
+          ],
+          "confidence": 0.9,
+          "abstraction_level": 7,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_audience_engagement_and_sentiment"
+        },
+        "concept_critical_validation": {
+          "name": "critical_validation",
+          "node_type": "data_concept",
+          "definition": "The assessment of a movie's artistic and technical quality by professional critics, reflecting its standing within the film industry's critical discourse.",
+          "related_attributes": [
+            "Rotten Tomatoes Rating"
+          ],
+          "confidence": 0.9,
+          "abstraction_level": 7,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_critical_validation"
+        },
+        "concept_content_demographics_and_style": {
+          "name": "content_demographics_and_style",
+          "node_type": "data_concept",
+          "definition": "Characterizes a movie based on its genre, narrative approach, original source material, and suitability for different age groups, influencing its target audience.",
+          "related_attributes": [
+            "Major Genre",
+            "Creative Type",
+            "Source",
+            "MPAA Rating"
+          ],
+          "confidence": 0.9,
+          "abstraction_level": 8,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_content_demographics_and_style"
+        },
+        "concept_market_dynamics_and_distribution": {
+          "name": "market_dynamics_and_distribution",
+          "node_type": "data_concept",
+          "definition": "Explores the strategies and performance of companies responsible for bringing movies to market, including their reach and timing of releases.",
+          "related_attributes": [
+            "Distributor",
+            "Release Date",
+            "US Gross",
+            "Worldwide Gross"
+          ],
+          "confidence": 0.85,
+          "abstraction_level": 8,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_market_dynamics_and_distribution"
+        },
+        "concept_creative_leadership_impact": {
+          "name": "creative_leadership_impact",
+          "node_type": "data_concept",
+          "definition": "Assesses the influence and track record of the director on a movie's artistic direction and potential commercial success.",
+          "related_attributes": [
+            "Director"
+          ],
+          "confidence": 0.75,
+          "abstraction_level": 6,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_creative_leadership_impact"
+        },
+        "concept_film_runtime_characteristics": {
+          "name": "film_runtime_characteristics",
+          "node_type": "data_concept",
+          "definition": "Focuses on the duration of a movie, which can be a factor in audience preference, production costs, and scheduling.",
+          "related_attributes": [
+            "Running Time min"
+          ],
+          "confidence": 0.7,
+          "abstraction_level": 5,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_film_runtime_characteristics"
+        }
+      },
+      "edges": [
+        {
+          "source": "concept_audience_engagement_and_sentiment",
+          "target": "concept_movie_profitability",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "Strong audience engagement and positive sentiment are crucial drivers for a movie's financial success, as they lead to ticket sales and home entertainment revenue.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_market_dynamics_and_distribution",
+          "target": "concept_movie_profitability",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "Effective market strategies and distribution channels are essential for a movie to reach its audience and generate the revenue necessary for profitability.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_content_demographics_and_style",
+          "target": "concept_audience_engagement_and_sentiment",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "The inherent characteristics of a movie (genre, style, target audience) determine which audiences it will attract and how they will engage with it.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_content_demographics_and_style",
+          "target": "concept_market_dynamics_and_distribution",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "Distribution strategies and marketing efforts are tailored based on the movie's genre, target audience, and overall style.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_creative_leadership_impact",
+          "target": "concept_content_demographics_and_style",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "The director's vision and influence significantly shape the artistic direction, narrative style, and overall content characteristics of a movie.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_creative_leadership_impact",
+          "target": "concept_critical_validation",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "The reputation and artistic track record of the creative leadership (e.g., director) often influence how professional critics assess a film's quality.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_film_runtime_characteristics",
+          "target": "concept_audience_engagement_and_sentiment",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "A movie's duration can directly impact audience comfort, attention span, and overall viewing experience, thus influencing their engagement and sentiment.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_film_runtime_characteristics",
+          "target": "concept_market_dynamics_and_distribution",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "Film runtime is a practical consideration for scheduling screenings in cinemas and optimizing content delivery on streaming platforms, directly affecting distribution.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_critical_validation",
+          "target": "concept_audience_engagement_and_sentiment",
+          "edge_type": "similar_to",
+          "metadata": {
+            "reasoning": "Both concepts represent forms of external assessment of a movie's quality and appeal, albeit from different perspectives (professional critics vs. general public).",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        }
+      ]
+    },
+    "question": {
+      "nodes": {},
+      "edges": []
+    }
+  },
+  "bridge_edges": [
+    {
+      "source": "concept_movie_profitability",
+      "target": "data_US_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_movie_profitability",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_movie_profitability",
+      "target": "data_US_DVD_Sales",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_movie_profitability",
+      "target": "data_Production_Budget",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_audience_engagement_and_sentiment",
+      "target": "data_IMDB_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_audience_engagement_and_sentiment",
+      "target": "data_IMDB_Votes",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_critical_validation",
+      "target": "data_Rotten_Tomatoes_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_content_demographics_and_style",
+      "target": "data_Major_Genre",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_content_demographics_and_style",
+      "target": "data_Creative_Type",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_content_demographics_and_style",
+      "target": "data_Source",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_content_demographics_and_style",
+      "target": "data_MPAA_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_market_dynamics_and_distribution",
+      "target": "data_Distributor",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.85
+      }
+    },
+    {
+      "source": "concept_market_dynamics_and_distribution",
+      "target": "data_Release_Date",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.85
+      }
+    },
+    {
+      "source": "concept_market_dynamics_and_distribution",
+      "target": "data_US_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.85
+      }
+    },
+    {
+      "source": "concept_market_dynamics_and_distribution",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.85
+      }
+    },
+    {
+      "source": "concept_creative_leadership_impact",
+      "target": "data_Director",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.75
+      }
+    },
+    {
+      "source": "concept_film_runtime_characteristics",
+      "target": "data_Running_Time_min",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.7
+      }
+    }
+  ],
+  "metadata": {}
+}

@@ -1,0 +1,1071 @@
+{
+    "nodes": [
+      {
+        "id": "n1",
+        "type": "root_question",
+        "label": "What are the characteristics of successful movies?",
+        "description": "Primary analytical question seeking patterns and attributes of movie success"
+      },
+      {
+        "id": "n2",
+        "type": "sub_question",
+        "label": "How do we define success?",
+        "description": "Meta-question requiring operationalization of 'success'"
+      },
+      {
+        "id": "n3",
+        "type": "success_dimension",
+        "label": "Commercial success",
+        "description": "Financial performance and market impact"
+      },
+      {
+        "id": "n4",
+        "type": "success_dimension",
+        "label": "Critical success",
+        "description": "Professional evaluation and industry recognition"
+      },
+      {
+        "id": "n5",
+        "type": "success_dimension",
+        "label": "Audience success",
+        "description": "Viewer satisfaction and engagement"
+      },
+      {
+        "id": "n6",
+        "type": "success_dimension",
+        "label": "Cultural success",
+        "description": "Long-term impact and cultural resonance"
+      },
+      {
+        "id": "n7",
+        "type": "metric",
+        "label": "Return on investment (ROI)",
+        "description": "Profitability relative to cost"
+      },
+      {
+        "id": "n8",
+        "type": "metric",
+        "label": "Total revenue",
+        "description": "Absolute financial intake"
+      },
+      {
+        "id": "n9",
+        "type": "metric",
+        "label": "Critical ratings",
+        "description": "Aggregated professional review scores"
+      },
+      {
+        "id": "n10",
+        "type": "metric",
+        "label": "Awards recognition",
+        "description": "Industry honors and nominations"
+      },
+      {
+        "id": "n11",
+        "type": "metric",
+        "label": "Audience ratings",
+        "description": "Viewer-generated scores"
+      },
+      {
+        "id": "n12",
+        "type": "metric",
+        "label": "Engagement metrics",
+        "description": "Behavioral indicators of audience interest"
+      },
+      {
+        "id": "n13",
+        "type": "metric",
+        "label": "Cultural impact score",
+        "description": "Lasting influence on culture and media"
+      },
+      {
+        "id": "n14",
+        "type": "data_point",
+        "label": "Box office gross",
+        "description": "Theatrical revenue (domestic + international)"
+      },
+      {
+        "id": "n15",
+        "type": "data_point",
+        "label": "Production budget",
+        "description": "Cost to produce the film"
+      },
+      {
+        "id": "n16",
+        "type": "data_point",
+        "label": "Marketing budget",
+        "description": "Cost to promote the film"
+      },
+      {
+        "id": "n17",
+        "type": "data_point",
+        "label": "Streaming revenue",
+        "description": "Post-theatrical digital income"
+      },
+      {
+        "id": "n18",
+        "type": "data_point",
+        "label": "Home video sales",
+        "description": "Physical and digital media purchases"
+      },
+      {
+        "id": "n19",
+        "type": "data_point",
+        "label": "Metacritic score",
+        "description": "Weighted average of critic reviews"
+      },
+      {
+        "id": "n20",
+        "type": "data_point",
+        "label": "Rotten Tomatoes score",
+        "description": "Percentage of positive critic reviews"
+      },
+      {
+        "id": "n21",
+        "type": "data_point",
+        "label": "Oscar wins/nominations",
+        "description": "Academy Awards recognition"
+      },
+      {
+        "id": "n22",
+        "type": "data_point",
+        "label": "Other major awards",
+        "description": "Golden Globes, BAFTAs, etc."
+      },
+      {
+        "id": "n23",
+        "type": "data_point",
+        "label": "IMDb rating",
+        "description": "User-generated 10-point score"
+      },
+      {
+        "id": "n24",
+        "type": "data_point",
+        "label": "Audience Rotten Tomatoes score",
+        "description": "Percentage of positive audience reviews"
+      },
+      {
+        "id": "n25",
+        "type": "data_point",
+        "label": "Social media mentions",
+        "description": "Volume of discussion across platforms"
+      },
+      {
+        "id": "n26",
+        "type": "data_point",
+        "label": "Trailer views",
+        "description": "Pre-release promotional video engagement"
+      },
+      {
+        "id": "n27",
+        "type": "data_point",
+        "label": "Review count",
+        "description": "Number of user reviews submitted"
+      },
+      {
+        "id": "n28",
+        "type": "data_point",
+        "label": "Meme generation",
+        "description": "Viral content creation from film"
+      },
+      {
+        "id": "n29",
+        "type": "data_point",
+        "label": "Cultural references",
+        "description": "Citations in other media"
+      },
+      {
+        "id": "n30",
+        "type": "data_point",
+        "label": "Franchise spawning",
+        "description": "Sequels, spin-offs generated"
+      },
+      {
+        "id": "n31",
+        "type": "sub_question",
+        "label": "What movie characteristics drive success?",
+        "description": "Identifying causal or correlated attributes"
+      },
+      {
+        "id": "n32",
+        "type": "concept",
+        "label": "Content attributes",
+        "description": "Intrinsic properties of the film itself"
+      },
+      {
+        "id": "n33",
+        "type": "concept",
+        "label": "Creative talent",
+        "description": "People who create the film"
+      },
+      {
+        "id": "n34",
+        "type": "concept",
+        "label": "Production factors",
+        "description": "How the film was made"
+      },
+      {
+        "id": "n35",
+        "type": "concept",
+        "label": "Market strategy",
+        "description": "How the film reached audiences"
+      },
+      {
+        "id": "n36",
+        "type": "concept",
+        "label": "Context",
+        "description": "External conditions affecting performance"
+      },
+      {
+        "id": "n37",
+        "type": "concept",
+        "label": "Genre",
+        "description": "Category/type of film"
+      },
+      {
+        "id": "n38",
+        "type": "concept",
+        "label": "Runtime",
+        "description": "Length of film"
+      },
+      {
+        "id": "n39",
+        "type": "concept",
+        "label": "Content rating",
+        "description": "Age appropriateness classification"
+      },
+      {
+        "id": "n40",
+        "type": "concept",
+        "label": "Story type",
+        "description": "Original vs adaptation vs sequel"
+      },
+      {
+        "id": "n41",
+        "type": "data_point",
+        "label": "Primary genre",
+        "description": "Main categorical classification"
+      },
+      {
+        "id": "n42",
+        "type": "data_point",
+        "label": "Genre blend",
+        "description": "Secondary genres present"
+      },
+      {
+        "id": "n43",
+        "type": "data_point",
+        "label": "Minutes",
+        "description": "Total running time"
+      },
+      {
+        "id": "n44",
+        "type": "data_point",
+        "label": "MPAA rating",
+        "description": "G, PG, PG-13, R, NC-17"
+      },
+      {
+        "id": "n45",
+        "type": "data_point",
+        "label": "Source material type",
+        "description": "Book, comic, remake, original, etc."
+      },
+      {
+        "id": "n46",
+        "type": "data_point",
+        "label": "Franchise status",
+        "description": "Standalone, sequel number, or cinematic universe"
+      },
+      {
+        "id": "n47",
+        "type": "concept",
+        "label": "Director",
+        "description": "Creative vision leader"
+      },
+      {
+        "id": "n48",
+        "type": "concept",
+        "label": "Cast",
+        "description": "On-screen performers"
+      },
+      {
+        "id": "n49",
+        "type": "concept",
+        "label": "Writer",
+        "description": "Screenplay author"
+      },
+      {
+        "id": "n50",
+        "type": "data_point",
+        "label": "Director name",
+        "description": "Identity of director"
+      },
+      {
+        "id": "n51",
+        "type": "data_point",
+        "label": "Director previous films avg revenue",
+        "description": "Track record indicator"
+      },
+      {
+        "id": "n52",
+        "type": "data_point",
+        "label": "Director awards history",
+        "description": "Past recognition"
+      },
+      {
+        "id": "n53",
+        "type": "data_point",
+        "label": "Lead actors",
+        "description": "Primary cast members"
+      },
+      {
+        "id": "n54",
+        "type": "data_point",
+        "label": "Star power index",
+        "description": "Aggregate measure of cast drawing power"
+      },
+      {
+        "id": "n55",
+        "type": "data_point",
+        "label": "Ensemble size",
+        "description": "Number of significant roles"
+      },
+      {
+        "id": "n56",
+        "type": "data_point",
+        "label": "Writer credits",
+        "description": "Screenplay authors"
+      },
+      {
+        "id": "n57",
+        "type": "data_point",
+        "label": "Studio",
+        "description": "Production/distribution company"
+      },
+      {
+        "id": "n58",
+        "type": "data_point",
+        "label": "Production scale",
+        "description": "Major studio vs independent"
+      },
+      {
+        "id": "n59",
+        "type": "data_point",
+        "label": "Visual effects intensity",
+        "description": "VFX-heavy vs practical"
+      },
+      {
+        "id": "n60",
+        "type": "data_point",
+        "label": "Filming format",
+        "description": "Digital vs film, IMAX, etc."
+      },
+      {
+        "id": "n61",
+        "type": "concept",
+        "label": "Release strategy",
+        "description": "When and how film reaches market"
+      },
+      {
+        "id": "n62",
+        "type": "concept",
+        "label": "Marketing approach",
+        "description": "How film is promoted"
+      },
+      {
+        "id": "n63",
+        "type": "data_point",
+        "label": "Release date",
+        "description": "Specific date of theatrical release"
+      },
+      {
+        "id": "n64",
+        "type": "data_point",
+        "label": "Release season",
+        "description": "Summer, holiday, awards season, etc."
+      },
+      {
+        "id": "n65",
+        "type": "data_point",
+        "label": "Screen count",
+        "description": "Number of theaters at opening"
+      },
+      {
+        "id": "n66",
+        "type": "data_point",
+        "label": "Distribution model",
+        "description": "Wide vs limited release"
+      },
+      {
+        "id": "n67",
+        "type": "data_point",
+        "label": "Pre-release buzz volume",
+        "description": "Social media mentions before release"
+      },
+      {
+        "id": "n68",
+        "type": "data_point",
+        "label": "Marketing campaign elements",
+        "description": "Types of promotion used"
+      },
+      {
+        "id": "n69",
+        "type": "contextual_factor",
+        "label": "Competition",
+        "description": "Other films releasing simultaneously"
+      },
+      {
+        "id": "n70",
+        "type": "contextual_factor",
+        "label": "Market conditions",
+        "description": "Economic and industry state"
+      },
+      {
+        "id": "n71",
+        "type": "contextual_factor",
+        "label": "Cultural trends",
+        "description": "Zeitgeist and social movements"
+      },
+      {
+        "id": "n72",
+        "type": "data_point",
+        "label": "Concurrent releases",
+        "description": "Films opening same weekend"
+      },
+      {
+        "id": "n73",
+        "type": "data_point",
+        "label": "Genre saturation",
+        "description": "Recent similar films"
+      },
+      {
+        "id": "n74",
+        "type": "data_point",
+        "label": "Economic indicators",
+        "description": "GDP, unemployment at release"
+      },
+      {
+        "id": "n75",
+        "type": "data_point",
+        "label": "Theater availability",
+        "description": "Number of operating theaters"
+      },
+      {
+        "id": "n76",
+        "type": "data_point",
+        "label": "Trending topics",
+        "description": "What audiences care about at release time"
+      },
+      {
+        "id": "n77",
+        "type": "data_point",
+        "label": "Relevant social issues",
+        "description": "Movements aligned with film themes"
+      }
+    ],
+    "edges": [
+      {
+        "from": "n1",
+        "to": "n2",
+        "relationship": "decomposes_into",
+        "note": "Must operationalize 'success' before identifying characteristics"
+      },
+      {
+        "from": "n1",
+        "to": "n31",
+        "relationship": "decomposes_into",
+        "note": "After defining success, identify what drives it"
+      },
+      {
+        "from": "n2",
+        "to": "n3",
+        "relationship": "has_dimension"
+      },
+      {
+        "from": "n2",
+        "to": "n4",
+        "relationship": "has_dimension"
+      },
+      {
+        "from": "n2",
+        "to": "n5",
+        "relationship": "has_dimension"
+      },
+      {
+        "from": "n2",
+        "to": "n6",
+        "relationship": "has_dimension"
+      },
+      {
+        "from": "n3",
+        "to": "n7",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n3",
+        "to": "n8",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n4",
+        "to": "n9",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n4",
+        "to": "n10",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n5",
+        "to": "n11",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n5",
+        "to": "n12",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n6",
+        "to": "n13",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n7",
+        "to": "n14",
+        "relationship": "requires_input"
+      },
+      {
+        "from": "n7",
+        "to": "n15",
+        "relationship": "requires_input"
+      },
+      {
+        "from": "n7",
+        "to": "n16",
+        "relationship": "requires_input"
+      },
+      {
+        "from": "n8",
+        "to": "n14",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n8",
+        "to": "n17",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n8",
+        "to": "n18",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n9",
+        "to": "n19",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n9",
+        "to": "n20",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n10",
+        "to": "n21",
+        "relationship": "includes"
+      },
+      {
+        "from": "n10",
+        "to": "n22",
+        "relationship": "includes"
+      },
+      {
+        "from": "n11",
+        "to": "n23",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n11",
+        "to": "n24",
+        "relationship": "aggregates"
+      },
+      {
+        "from": "n12",
+        "to": "n25",
+        "relationship": "includes"
+      },
+      {
+        "from": "n12",
+        "to": "n26",
+        "relationship": "includes"
+      },
+      {
+        "from": "n12",
+        "to": "n27",
+        "relationship": "includes"
+      },
+      {
+        "from": "n13",
+        "to": "n28",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n13",
+        "to": "n29",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n13",
+        "to": "n30",
+        "relationship": "measured_by"
+      },
+      {
+        "from": "n31",
+        "to": "n32",
+        "relationship": "investigates"
+      },
+      {
+        "from": "n31",
+        "to": "n33",
+        "relationship": "investigates"
+      },
+      {
+        "from": "n31",
+        "to": "n34",
+        "relationship": "investigates"
+      },
+      {
+        "from": "n31",
+        "to": "n35",
+        "relationship": "investigates"
+      },
+      {
+        "from": "n31",
+        "to": "n36",
+        "relationship": "investigates"
+      },
+      {
+        "from": "n32",
+        "to": "n37",
+        "relationship": "includes"
+      },
+      {
+        "from": "n32",
+        "to": "n38",
+        "relationship": "includes"
+      },
+      {
+        "from": "n32",
+        "to": "n39",
+        "relationship": "includes"
+      },
+      {
+        "from": "n32",
+        "to": "n40",
+        "relationship": "includes"
+      },
+      {
+        "from": "n33",
+        "to": "n47",
+        "relationship": "includes"
+      },
+      {
+        "from": "n33",
+        "to": "n48",
+        "relationship": "includes"
+      },
+      {
+        "from": "n33",
+        "to": "n49",
+        "relationship": "includes"
+      },
+      {
+        "from": "n34",
+        "to": "n15",
+        "relationship": "includes",
+        "note": "Production budget is both a cost input and production characteristic"
+      },
+      {
+        "from": "n34",
+        "to": "n57",
+        "relationship": "includes"
+      },
+      {
+        "from": "n34",
+        "to": "n58",
+        "relationship": "includes"
+      },
+      {
+        "from": "n34",
+        "to": "n59",
+        "relationship": "includes"
+      },
+      {
+        "from": "n34",
+        "to": "n60",
+        "relationship": "includes"
+      },
+      {
+        "from": "n35",
+        "to": "n61",
+        "relationship": "includes"
+      },
+      {
+        "from": "n35",
+        "to": "n62",
+        "relationship": "includes"
+      },
+      {
+        "from": "n36",
+        "to": "n69",
+        "relationship": "includes"
+      },
+      {
+        "from": "n36",
+        "to": "n70",
+        "relationship": "includes"
+      },
+      {
+        "from": "n36",
+        "to": "n71",
+        "relationship": "includes"
+      },
+      {
+        "from": "n37",
+        "to": "n41",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n37",
+        "to": "n42",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n38",
+        "to": "n43",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n39",
+        "to": "n44",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n40",
+        "to": "n45",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n40",
+        "to": "n46",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n47",
+        "to": "n50",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n47",
+        "to": "n51",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n47",
+        "to": "n52",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n48",
+        "to": "n53",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n48",
+        "to": "n54",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n48",
+        "to": "n55",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n49",
+        "to": "n56",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n61",
+        "to": "n63",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n61",
+        "to": "n64",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n61",
+        "to": "n65",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n61",
+        "to": "n66",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n62",
+        "to": "n16",
+        "relationship": "operationalized_as",
+        "note": "Marketing budget is both a cost and strategy indicator"
+      },
+      {
+        "from": "n62",
+        "to": "n67",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n62",
+        "to": "n68",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n69",
+        "to": "n72",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n69",
+        "to": "n73",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n70",
+        "to": "n74",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n70",
+        "to": "n75",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n71",
+        "to": "n76",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n71",
+        "to": "n77",
+        "relationship": "operationalized_as"
+      },
+      {
+        "from": "n37",
+        "to": "n3",
+        "relationship": "influences",
+        "note": "Genre affects revenue expectations and performance"
+      },
+      {
+        "from": "n37",
+        "to": "n4",
+        "relationship": "influences",
+        "note": "Genre has different critical reception norms"
+      },
+      {
+        "from": "n37",
+        "to": "n15",
+        "relationship": "influences",
+        "note": "Genre determines typical budget ranges"
+      },
+      {
+        "from": "n39",
+        "to": "n3",
+        "relationship": "influences",
+        "note": "Rating affects potential audience size"
+      },
+      {
+        "from": "n15",
+        "to": "n34",
+        "relationship": "signals",
+        "note": "Budget level indicates production scale and studio confidence"
+      },
+      {
+        "from": "n15",
+        "to": "n59",
+        "relationship": "enables",
+        "note": "Higher budgets allow more VFX"
+      },
+      {
+        "from": "n47",
+        "to": "n4",
+        "relationship": "influences",
+        "note": "Director reputation affects critical reception"
+      },
+      {
+        "from": "n47",
+        "to": "n3",
+        "relationship": "influences",
+        "note": "Proven directors drive box office"
+      },
+      {
+        "from": "n48",
+        "to": "n3",
+        "relationship": "influences",
+        "note": "Star power drives opening weekend revenue"
+      },
+      {
+        "from": "n48",
+        "to": "n16",
+        "relationship": "justifies",
+        "note": "Bigger stars warrant larger marketing budgets"
+      },
+      {
+        "from": "n57",
+        "to": "n16",
+        "relationship": "determines",
+        "note": "Studio size affects marketing resources"
+      },
+      {
+        "from": "n57",
+        "to": "n65",
+        "relationship": "determines",
+        "note": "Studio power affects screen access"
+      },
+      {
+        "from": "n61",
+        "to": "n3",
+        "relationship": "moderates",
+        "note": "Release timing significantly affects revenue potential"
+      },
+      {
+        "from": "n64",
+        "to": "n69",
+        "relationship": "determines",
+        "note": "Release season affects competitive landscape"
+      },
+      {
+        "from": "n16",
+        "to": "n67",
+        "relationship": "drives",
+        "note": "Marketing spend creates pre-release awareness"
+      },
+      {
+        "from": "n67",
+        "to": "n14",
+        "relationship": "predicts",
+        "note": "Pre-release buzz correlates with opening weekend"
+      },
+      {
+        "from": "n69",
+        "to": "n3",
+        "relationship": "moderates",
+        "note": "Competition reduces individual film performance"
+      },
+      {
+        "from": "n70",
+        "to": "n3",
+        "relationship": "moderates",
+        "note": "Economic conditions affect discretionary spending on entertainment"
+      },
+      {
+        "from": "n71",
+        "to": "n5",
+        "relationship": "moderates",
+        "note": "Cultural alignment increases audience resonance"
+      },
+      {
+        "from": "n71",
+        "to": "n6",
+        "relationship": "enables",
+        "note": "Cultural relevance drives lasting impact"
+      },
+      {
+        "from": "n46",
+        "to": "n3",
+        "relationship": "influences",
+        "note": "Sequels have built-in audiences but franchise fatigue risk"
+      },
+      {
+        "from": "n46",
+        "to": "n6",
+        "relationship": "enables",
+        "note": "Successful franchises have extended cultural presence"
+      },
+      {
+        "from": "n4",
+        "to": "n10",
+        "relationship": "leads_to",
+        "note": "Strong critical reception often results in awards"
+      },
+      {
+        "from": "n10",
+        "to": "n6",
+        "relationship": "contributes_to",
+        "note": "Awards increase long-term cultural status"
+      },
+      {
+        "from": "n10",
+        "to": "n17",
+        "relationship": "boosts",
+        "note": "Awards recognition drives catalog sales"
+      },
+      {
+        "from": "n5",
+        "to": "n25",
+        "relationship": "drives",
+        "note": "Audience satisfaction generates organic social buzz"
+      },
+      {
+        "from": "n25",
+        "to": "n6",
+        "relationship": "contributes_to",
+        "note": "Social conversation extends cultural footprint"
+      },
+      {
+        "from": "n3",
+        "to": "n30",
+        "relationship": "enables",
+        "note": "Commercial success justifies franchise expansion"
+      },
+      {
+        "from": "n5",
+        "to": "n30",
+        "relationship": "enables",
+        "note": "Audience love justifies franchise expansion"
+      },
+      {
+        "from": "n14",
+        "to": "n63",
+        "relationship": "time_dependent_on",
+        "note": "Opening weekend timing affects total gross trajectory"
+      },
+      {
+        "from": "n11",
+        "to": "n9",
+        "relationship": "may_diverge_from",
+        "note": "Audience and critic success don't always align"
+      },
+      {
+        "from": "n43",
+        "to": "n5",
+        "relationship": "influences",
+        "note": "Runtime affects viewer satisfaction and word-of-mouth"
+      },
+      {
+        "from": "n43",
+        "to": "n65",
+        "relationship": "constrains",
+        "note": "Longer runtimes limit daily showings per screen"
+      }
+    ],
+    "meta": {
+      "total_nodes": 77,
+      "total_edges": 113,
+      "graph_depth": 4,
+      "reasoning_note": "This graph shows how the question decomposes hierarchically while capturing lateral influences. Multiple paths exist from data points back to the root question, and cross-cutting relationships reveal how different aspects of moviemaking interact. For example, 'budget' appears in multiple contexts: as ROI input, production characteristic, and genre determinant."
+    }
+  }

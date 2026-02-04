@@ -1084,7 +1084,7 @@ if __name__ == '__main__':
     builder = KGBuilder(llm)
 
     # Load summary
-    summary_path = Path('output/test_summary.json')
+    summary_path = Path('graph_generation/output/test_summary.json') # concerned about where this is going
     with open(summary_path, 'r') as f:
         summary = json.load(f)
 
@@ -1092,6 +1092,6 @@ if __name__ == '__main__':
     kg = builder.build_initial_kg(summary, domain_hint='movies')
 
     # Save
-    builder.save_kg(kg, Path('output/initial_kg.json'))
+    builder.save_kg(kg, Path('graph_generation/output/initial_kg.json')) # concerned about where this is going
 
     print("\n✨ Knowledge graph construction complete!")

@@ -877,7 +877,7 @@ if __name__ == '__main__':
     import json
 
     # Load existing KG
-    kg_path = Path('output/initial_kg.json')
+    kg_path = Path('graph_generation/output/initial_kg.json') # Hopefully doesn't break anything
     if kg_path.exists():
         with open(kg_path, 'r') as f:
             kg_data = json.load(f)
@@ -888,8 +888,8 @@ if __name__ == '__main__':
 
         # Generate visualizations
         viz.generate_html_with_toggles(
-            Path('output/kg_interactive.html'),
+            Path('graph_visualization/output/kg_interactive.html'),
             title="Movie Knowledge Graph"
         )
 
-        print("\n✨ Open output/kg_interactive.html in your browser!")
+        print("\n✨ Open graph_visualization/output/kg_interactive.html in your browser!")

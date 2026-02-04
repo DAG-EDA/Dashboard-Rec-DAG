@@ -11,8 +11,9 @@ load_dotenv()
 
 class GeminiClient:
     def __init__(self):
-        genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
-        
+        #genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
+        self.client = genai.Client(api_key=os.getenv('GOOGLE_API_KEY'))
+
         # Configure model
         self.generation_config = {
             "temperature": 0.3,  # Lower for more consistent output
@@ -20,27 +21,35 @@ class GeminiClient:
             "top_k": 40,
             "max_output_tokens": 8192,
         }
+
+        self.model_name = "gemini-2.5-flash" #  or "gemini-1.5-pro"
         
+        '''
         # Use Gemini 1.5 Pro or 2.0 Flash
-        self.model = genai.GenerativeModel(
-            model_name="gemini-2.5-flash",  # or "gemini-1.5-pro"
-            generation_config=self.generation_config,
-        )
+        self.model = self.client.models.generate_content(
+            model="gemini-2.5-flash", #  or "gemini-1.5-pro"
+            config=self.generation_config,
+        )'''
     
     def call_gemini(self, prompt, system_instruction=None, return_json=True):
         """Make API call to Gemini"""
+    
         try:
             # Create model with system instruction if provided
             if system_instruction:
-                model = genai.GenerativeModel(
-                    model_name="gemini-2.5-flash",
-                    generation_config=self.generation_config,
+                client = genai.Client(api_key=os.getenv('GOOGLE_API_KEY'))
+                model = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    config=self.generation_config,
                     system_instruction=system_instruction
                 )
             else:
-                model = self.model
+                client = self.client
 
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model=self.model_name,
+                config=self.generation_config,
+                contents=prompt)
 
             # Parse JSON if requested
             if return_json:
@@ -150,7 +159,7 @@ class GeminiClient:
 
 # Test the client
 if __name__ == "__main__":
-    client = GeminiClient()
+    client = GeminiClient(api_key=os.getenv('GOOGLE_API_KEY'))
     
     # Simple test
     response = client.call_gemini(

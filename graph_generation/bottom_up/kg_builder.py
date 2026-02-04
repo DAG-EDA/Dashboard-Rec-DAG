@@ -8,8 +8,8 @@ import json
 import time
 from typing import Dict, List, Any, Optional, Tuple, Set
 from pathlib import Path
-from src.graph_utils import KnowledgeGraph, CANONICAL_EDGE_TYPES
-from src.llm_client import GeminiClient
+from graph_utils import KnowledgeGraph, CANONICAL_EDGE_TYPES
+from llm_client import GeminiClient
 
 
 class KGBuilder:
@@ -23,7 +23,7 @@ class KGBuilder:
             llm_client: LLM client for inference tasks
         """
         self.llm = llm_client
-        self.prompts_dir = Path(__file__).parent.parent / 'prompts'
+        self.prompts_dir = Path(__file__).parent.parent / '/bottom_up/prompts'
 
     def build_data_layer(self, summary: Dict[str, Any]) -> Tuple[KnowledgeGraph, Dict[str, str]]:
         """
@@ -1084,7 +1084,7 @@ if __name__ == '__main__':
     builder = KGBuilder(llm)
 
     # Load summary
-    summary_path = Path('graph_generation/output/test_summary.json') # concerned about where this is going
+    summary_path = Path('graph_generation/bottom_up/output/movie_data_summary.json')
     with open(summary_path, 'r') as f:
         summary = json.load(f)
 
@@ -1092,6 +1092,5 @@ if __name__ == '__main__':
     kg = builder.build_initial_kg(summary, domain_hint='movies')
 
     # Save
-    builder.save_kg(kg, Path('graph_generation/output/initial_kg.json')) # concerned about where this is going
-
+    builder.save_kg(kg, Path('graph_generation/bottom_up/output/initial_kg.json')) 
     print("\n✨ Knowledge graph construction complete!")

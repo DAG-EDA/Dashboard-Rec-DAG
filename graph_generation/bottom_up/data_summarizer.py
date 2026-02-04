@@ -2,12 +2,12 @@ import pandas as pd
 import json
 from typing import Dict, List, Any, Optional
 from pathlib import Path
-from src.llm_client import GeminiClient
+from llm_client import GeminiClient
 
 class DataSummarizer:
     def __init__(self, llm_client: GeminiClient):
         self.llm = llm_client
-        self.prompts_dir = Path(__file__).parent.parent / 'prompts'
+        self.prompts_dir = Path(__file__).parent.parent / 'bottom_up/prompts'
     
     def analyze_attributes(self, df: pd.DataFrame) -> List[Dict[str, Any]]:
         """Analyze each attribute in the dataset."""
@@ -262,14 +262,14 @@ if __name__ == '__main__':
     summarizer = DataSummarizer(llm)
     
     # Load dataset
-    df = pd.read_csv('data/movie_data.csv')
+    df = pd.read_csv('datasets/movies.csv')
     
     # Summarize
     summary = summarizer.summarize_dataset(
         df=df,
         dataset_name='movie_data',
         domain_hint='movies and entertainment',
-        output_path=Path('output/movie_data_summary.json')
+        output_path=Path('graph_generation/bottom_up/output/movie_data_summary.json')
     )
     
     print("\n" + "="*50)

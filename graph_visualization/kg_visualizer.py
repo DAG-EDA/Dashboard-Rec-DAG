@@ -2,7 +2,11 @@
 Knowledge Graph Visualizer
 
 Interactive visualization with layer toggling using Pyvis and Plotly.
+
 """
+import sys
+
+sys.path.append('../src')
 
 import json
 from pathlib import Path
@@ -877,7 +881,7 @@ if __name__ == '__main__':
     import json
 
     # Load existing KG
-    kg_path = Path('graph_generation/output/initial_kg.json') # Hopefully doesn't break anything
+    kg_path = Path('graph_generation/bottom_up/output/initial_kg.json') # Hopefully doesn't break anything
     if kg_path.exists():
         with open(kg_path, 'r') as f:
             kg_data = json.load(f)

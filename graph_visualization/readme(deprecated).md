@@ -1,1 +1,0 @@
-- `index.html`: visualize the knowledge graph in `movie_graph.json` generate by prompt in `prompt.txt`.

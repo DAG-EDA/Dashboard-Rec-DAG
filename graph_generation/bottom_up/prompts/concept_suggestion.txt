@@ -1,0 +1,36 @@
+You are analyzing a dataset in the domain of: {domain_hint}
+
+Attributes:
+{attributes}
+
+Attribute clusters:
+{clusters}
+
+Based on this dataset, suggest 5-10 high-level analytical concepts that would be useful for exploring and analyzing this data. These concepts should:
+1. Represent meaningful analytical dimensions
+2. Be operationalizable using available attributes
+3. Cover different aspects of analysis (not all financial, not all descriptive)
+4. Be at a higher abstraction level than individual attributes
+
+Output JSON format:
+{{
+  "concepts": [
+    {{
+      "name": "Concept_Name",
+      "definition": "Clear definition of what this concept represents",
+      "related_attributes": ["attr1", "attr2"],
+      "confidence": 0.85,
+      "abstraction_level": 6
+    }},
+    ...
+  ]
+}}
+
+Requirements:
+- Use CamelCase or snake_case for concept names
+- Definition should be 1-2 sentences
+- related_attributes: list attributes that could measure/operationalize this concept
+- confidence: 0-1 score for how confident you are this concept is useful
+- abstraction_level: 1-10 where 1=concrete data attribute, 10=very abstract
+
+Output only valid JSON, no additional text.

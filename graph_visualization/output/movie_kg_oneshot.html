@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Movie Knowledge Graph (Oneshot Strategy)</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .control-group {
+            margin-bottom: 10px;
+        }
+
+        .control-group label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .checkbox-group {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+
+        #graph {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+        }
+
+        .legend {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 5px;
+        }
+
+        .legend-color {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .stats {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f4f8;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 12px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            width: 60%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+        }
+
+        .edge-label {
+            font-size: 8px;
+            fill: #666;
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Knowledge Graph (Oneshot Strategy)</h1>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Layers:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="layer-data" checked>
+                    <label for="layer-data">Data Layer</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="layer-concept" checked>
+                    <label for="layer-concept">Concept Layer</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="layer-question" checked>
+                    <label for="layer-question">Question Layer</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="layer-bridge" checked>
+                    <label for="layer-bridge">Bridge Edges</label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Edge Types:</label>
+                <button onclick="toggleAllEdgeTypes(true)" style="margin-left: 10px;">Select All</button>
+                <button onclick="toggleAllEdgeTypes(false)">Deselect All</button>
+                <div id="edge-type-filters" style="margin-top: 10px;">
+                    <!-- Edge type checkboxes will be generated here -->
+                </div>
+            </div>
+
+            <div class="stats" id="stats"></div>
+        </div>
+
+        <svg id="graph" width="1360" height="700"></svg>
+
+        <div class="legend">
+            <div style="margin-bottom: 15px;">
+                <strong>Node Layers:</strong><br>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #3498db"></span>
+                    Data Layer
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #e74c3c"></span>
+                    Concept Layer
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #2ecc71"></span>
+                    Question Layer
+                </div>
+            </div>
+            <div>
+                <strong>Edge Types:</strong> <span style="font-size: 12px; color: #666;">(Click edge for details)</span><br>
+                <div id="edge-legend">
+                    <!-- Edge type legend will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip" style="display: none;"></div>
+
+    <!-- Modal for edge details -->
+    <div id="edge-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEdgeModal()">&times;</span>
+            <h2 id="modal-title">Edge Details</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Graph data
+        const graphData = {"nodes": [{"id": "data_Title", "label": "Title", "layer": "data", "color": "#3498db", "description": "The official title of the movie, used to uniquely identify each film in the dataset. It can be used for searching specific movies or as a primary identifier.", "data": {"name": "Title", "node_type": "raw_variable", "data_type": "text", "role": "dimension", "description": "The official title of the movie, used to uniquely identify each film in the dataset. It can be used for searching specific movies or as a primary identifier.", "stats": {"count": 3200, "missing": 1, "missing_pct": 0.00031240237425804435, "n_unique": 3176, "top_values": {"Friday the 13th": 2, "Dawn of the Dead": 2, "20,000 Leagues Under the Sea": 2, "Casino Royale": 2, "Twilight": 2}}, "activated": false, "layer": "data", "node_id": "data_Title"}}, {"id": "data_US_Gross", "label": "US Gross", "layer": "data", "color": "#3498db", "description": "The total revenue generated from ticket sales in the United States, indicating a movie's domestic box office performance in USD. This measure can be used to assess financial success within the US market.", "data": {"name": "US Gross", "node_type": "raw_variable", "data_type": "numerical", "role": "measure", "description": "The total revenue generated from ticket sales in the United States, indicating a movie's domestic box office performance in USD. This measure can be used to assess financial success within the US market.", "stats": {"count": 3194, "missing": 7, "missing_pct": 0.0021868166198063107, "min": 0.0, "max": 760167650.0, "mean": 44002085.163744524, "median": 22019465.5}, "activated": false, "layer": "data", "node_id": "data_US_Gross"}}, {"id": "data_Worldwide_Gross", "label": "Worldwide Gross", "layer": "data", "color": "#3498db", "description": "The total revenue generated from ticket sales across the globe, representing a movie's overall box office performance in USD. It serves as a key indicator of a film's global financial success.", "data": {"name": "Worldwide Gross", "node_type": "raw_variable", "data_type": "numerical", "role": "identifier", "description": "The total revenue generated from ticket sales across the globe, representing a movie's overall box office performance in USD. It serves as a key indicator of a film's global financial success.", "stats": {"count": 3194, "missing": 7, "missing_pct": 0.0021868166198063107, "min": 0.0, "max": 2767891499.0, "mean": 85343400.14151534, "median": 31168926.5}, "activated": false, "layer": "data", "node_id": "data_Worldwide_Gross"}}, {"id": "data_US_DVD_Sales", "label": "US DVD Sales", "layer": "data", "color": "#3498db", "description": "The revenue generated from DVD sales within the United States in USD, reflecting a movie's performance in the home entertainment market. This attribute can be used to understand post-theatrical revenue streams, though it has many missing values.", "data": {"name": "US DVD Sales", "node_type": "raw_variable", "data_type": "numerical", "role": "measure", "description": "The revenue generated from DVD sales within the United States in USD, reflecting a movie's performance in the home entertainment market. This attribute can be used to understand post-theatrical revenue streams, though it has many missing values.", "stats": {"count": 564, "missing": 2637, "missing_pct": 0.823805060918463, "min": 618454.0, "max": 352582053.0, "mean": 34901546.81737588, "median": 20331557.5}, "activated": false, "layer": "data", "node_id": "data_US_DVD_Sales"}}, {"id": "data_Production_Budget", "label": "Production Budget", "layer": "data", "color": "#3498db", "description": "The total financial investment made in producing the movie in USD, including costs for filming, cast, and crew. It is crucial for calculating a movie's profitability when compared to its gross revenues.", "data": {"name": "Production Budget", "node_type": "raw_variable", "data_type": "numerical", "role": "measure", "description": "The total financial investment made in producing the movie in USD, including costs for filming, cast, and crew. It is crucial for calculating a movie's profitability when compared to its gross revenues.", "stats": {"count": 3200, "missing": 1, "missing_pct": 0.00031240237425804435, "min": 218.0, "max": 300000000.0, "mean": 31069171.4484375, "median": 20000000.0}, "activated": false, "layer": "data", "node_id": "data_Production_Budget"}}, {"id": "data_Release_Date", "label": "Release Date", "layer": "data", "color": "#3498db", "description": "The date on which the movie was officially released, useful for analyzing release patterns, seasonal performance, or historical trends over time.", "data": {"name": "Release Date", "node_type": "raw_variable", "data_type": "text", "role": "temporal", "description": "The date on which the movie was officially released, useful for analyzing release patterns, seasonal performance, or historical trends over time.", "stats": {"count": 3201, "missing": 0, "missing_pct": 0.0, "n_unique": 1600, "top_values": {"Oct 11 2002": 9, "Dec 31 1969": 8, "Sep 16 2005": 8, "Apr 28 2006": 8, "Sep 23 2005": 7}}, "activated": false, "layer": "data", "node_id": "data_Release_Date"}}, {"id": "data_MPAA_Rating", "label": "MPAA Rating", "layer": "data", "color": "#3498db", "description": "The Motion Picture Association of America (MPAA) rating assigned to the movie, indicating its suitability for different age groups. This can be used to understand a film's target audience and its potential impact on box office performance.", "data": {"name": "MPAA Rating", "node_type": "raw_variable", "data_type": "categorical", "role": "dimension", "description": "The Motion Picture Association of America (MPAA) rating assigned to the movie, indicating its suitability for different age groups. This can be used to understand a film's target audience and its potential impact on box office performance.", "stats": {"count": 2596, "missing": 605, "missing_pct": 0.18900343642611683, "n_unique": 7, "top_values": {"R": 1194, "PG-13": 865, "PG": 354, "Not Rated": 94, "G": 79}}, "activated": false, "layer": "data", "node_id": "data_MPAA_Rating"}}, {"id": "data_Running_Time_min", "label": "Running Time min", "layer": "data", "color": "#3498db", "description": "The total duration of the movie in minutes, providing insight into film length preferences or its relationship with genre and audience engagement. Note that this attribute has a significant number of missing values.", "data": {"name": "Running Time min", "node_type": "raw_variable", "data_type": "numerical", "role": "temporal", "description": "The total duration of the movie in minutes, providing insight into film length preferences or its relationship with genre and audience engagement. Note that this attribute has a significant number of missing values.", "stats": {"count": 1209, "missing": 1992, "missing_pct": 0.6223055295220243, "min": 46.0, "max": 222.0, "mean": 110.19354838709677, "median": 107.0}, "activated": false, "layer": "data", "node_id": "data_Running_Time_min"}}, {"id": "data_Distributor", "label": "Distributor", "layer": "data", "color": "#3498db", "description": "The company responsible for distributing the movie to theaters and other platforms, useful for analyzing market share, distributor performance, and industry trends.", "data": {"name": "Distributor", "node_type": "raw_variable", "data_type": "text", "role": "dimension", "description": "The company responsible for distributing the movie to theaters and other platforms, useful for analyzing market share, distributor performance, and industry trends.", "stats": {"count": 2969, "missing": 232, "missing_pct": 0.07247735082786629, "n_unique": 174, "top_values": {"Warner Bros.": 318, "Sony Pictures": 307, "Paramount Pictures": 257, "Universal": 254, "Walt Disney Pictures": 232}}, "activated": false, "layer": "data", "node_id": "data_Distributor"}}, {"id": "data_Source", "label": "Source", "layer": "data", "color": "#3498db", "description": "The original material or inspiration for the movie's story, such as an 'Original Screenplay' or 'Based on Book/Short Story.' This helps in understanding creative origins and their potential influence on a film's development and reception.", "data": {"name": "Source", "node_type": "raw_variable", "data_type": "categorical", "role": "dimension", "description": "The original material or inspiration for the movie's story, such as an 'Original Screenplay' or 'Based on Book/Short Story.' This helps in understanding creative origins and their potential influence on a film's development and reception.", "stats": {"count": 2836, "missing": 365, "missing_pct": 0.11402686660418619, "n_unique": 18, "top_values": {"Original Screenplay": 1536, "Based on Book/Short Story": 657, "Based on Real Life Events": 186, "Remake": 126, "Based on TV": 106}}, "activated": false, "layer": "data", "node_id": "data_Source"}}, {"id": "data_Major_Genre", "label": "Major Genre", "layer": "data", "color": "#3498db", "description": "The primary categorical classification of the movie, such as 'Drama' or 'Comedy,' used to understand audience preferences and analyze performance across different film types.", "data": {"name": "Major Genre", "node_type": "raw_variable", "data_type": "categorical", "role": "dimension", "description": "The primary categorical classification of the movie, such as 'Drama' or 'Comedy,' used to understand audience preferences and analyze performance across different film types.", "stats": {"count": 2926, "missing": 275, "missing_pct": 0.0859106529209622, "n_unique": 12, "top_values": {"Drama": 789, "Comedy": 675, "Action": 420, "Adventure": 274, "Thriller/Suspense": 239}}, "activated": false, "layer": "data", "node_id": "data_Major_Genre"}}, {"id": "data_Creative_Type", "label": "Creative Type", "layer": "data", "color": "#3498db", "description": "Describes the creative style or narrative approach of the movie, like 'Contemporary Fiction' or 'Historical Fiction.' This attribute provides additional context beyond genre, helping to categorize films by their artistic and storytelling nature.", "data": {"name": "Creative Type", "node_type": "raw_variable", "data_type": "categorical", "role": "dimension", "description": "Describes the creative style or narrative approach of the movie, like 'Contemporary Fiction' or 'Historical Fiction.' This attribute provides additional context beyond genre, helping to categorize films by their artistic and storytelling nature.", "stats": {"count": 2755, "missing": 446, "missing_pct": 0.1393314589190878, "n_unique": 9, "top_values": {"Contemporary Fiction": 1453, "Historical Fiction": 350, "Fantasy": 265, "Science Fiction": 243, "Dramatization": 204}}, "activated": false, "layer": "data", "node_id": "data_Creative_Type"}}, {"id": "data_Director", "label": "Director", "layer": "data", "color": "#3498db", "description": "The individual responsible for directing the movie, allowing for analysis of a director's filmography, critical success, and impact on box office performance. This attribute has a high percentage of missing values.", "data": {"name": "Director", "node_type": "raw_variable", "data_type": "text", "role": "dimension", "description": "The individual responsible for directing the movie, allowing for analysis of a director's filmography, critical success, and impact on box office performance. This attribute has a high percentage of missing values.", "stats": {"count": 1870, "missing": 1331, "missing_pct": 0.41580756013745707, "n_unique": 550, "top_values": {"Steven Spielberg": 23, "Woody Allen": 16, "Martin Scorsese": 15, "Spike Lee": 15, "Ridley Scott": 14}}, "activated": false, "layer": "data", "node_id": "data_Director"}}, {"id": "data_Rotten_Tomatoes_Rating", "label": "Rotten Tomatoes Rating", "layer": "data", "color": "#3498db", "description": "The aggregate critical rating for the movie from Rotten Tomatoes, expressed as a percentage (0-100), indicating overall critical reception. It can be used to gauge critical acclaim and its potential relationship with commercial success.", "data": {"name": "Rotten Tomatoes Rating", "node_type": "raw_variable", "data_type": "numerical", "role": "measure", "description": "The aggregate critical rating for the movie from Rotten Tomatoes, expressed as a percentage (0-100), indicating overall critical reception. It can be used to gauge critical acclaim and its potential relationship with commercial success.", "stats": {"count": 2321, "missing": 880, "missing_pct": 0.27491408934707906, "min": 1.0, "max": 100.0, "mean": 54.33692373976734, "median": 55.0}, "activated": false, "layer": "data", "node_id": "data_Rotten_Tomatoes_Rating"}}, {"id": "data_IMDB_Rating", "label": "IMDB Rating", "layer": "data", "color": "#3498db", "description": "The average user rating for the movie from IMDB, on a scale of 1 to 10, reflecting audience perception and popularity. This rating can be compared with critical reviews to understand differences in reception.", "data": {"name": "IMDB Rating", "node_type": "raw_variable", "data_type": "numerical", "role": "measure", "description": "The average user rating for the movie from IMDB, on a scale of 1 to 10, reflecting audience perception and popularity. This rating can be compared with critical reviews to understand differences in reception.", "stats": {"count": 2988, "missing": 213, "missing_pct": 0.06654170571696345, "min": 1.4, "max": 9.2, "mean": 6.283467202141901, "median": 6.4}, "activated": false, "layer": "data", "node_id": "data_IMDB_Rating"}}, {"id": "data_IMDB_Votes", "label": "IMDB Votes", "layer": "data", "color": "#3498db", "description": "The total number of votes cast by users on IMDB for a particular movie, indicating the level of audience engagement and the statistical reliability of its IMDB Rating.", "data": {"name": "IMDB Votes", "node_type": "raw_variable", "data_type": "numerical", "role": "measure", "description": "The total number of votes cast by users on IMDB for a particular movie, indicating the level of audience engagement and the statistical reliability of its IMDB Rating.", "stats": {"count": 2988, "missing": 213, "missing_pct": 0.06654170571696345, "min": 18.0, "max": 519541.0, "mean": 29908.64457831325, "median": 15106.0}, "activated": false, "layer": "data", "node_id": "data_IMDB_Votes"}}, {"id": "concept_movie_profitability", "label": "movie_profitability", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "movie_profitability", "node_type": "data_concept", "definition": "The overall financial gain or loss generated by a movie, calculated by comparing its total revenues (theatrical and home entertainment) against its production costs.", "related_attributes": ["US Gross", "Worldwide Gross", "US DVD Sales", "Production Budget"], "confidence": 0.95, "abstraction_level": 8, "activated": false, "layer": "concept", "node_id": "concept_movie_profitability"}}, {"id": "concept_audience_engagement_and_sentiment", "label": "audience_engagement_and_sentiment", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "audience_engagement_and_sentiment", "node_type": "data_concept", "definition": "The degree to which a movie captures public interest and receives positive feedback from viewers, measured by user ratings and participation.", "related_attributes": ["IMDB Rating", "IMDB Votes"], "confidence": 0.9, "abstraction_level": 7, "activated": false, "layer": "concept", "node_id": "concept_audience_engagement_and_sentiment"}}, {"id": "concept_critical_validation", "label": "critical_validation", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "critical_validation", "node_type": "data_concept", "definition": "The assessment of a movie's artistic and technical quality by professional critics, reflecting its standing within the film industry's critical discourse.", "related_attributes": ["Rotten Tomatoes Rating"], "confidence": 0.9, "abstraction_level": 7, "activated": false, "layer": "concept", "node_id": "concept_critical_validation"}}, {"id": "concept_content_demographics_and_style", "label": "content_demographics_and_style", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "content_demographics_and_style", "node_type": "data_concept", "definition": "Characterizes a movie based on its genre, narrative approach, original source material, and suitability for different age groups, influencing its target audience.", "related_attributes": ["Major Genre", "Creative Type", "Source", "MPAA Rating"], "confidence": 0.9, "abstraction_level": 8, "activated": false, "layer": "concept", "node_id": "concept_content_demographics_and_style"}}, {"id": "concept_market_dynamics_and_distribution", "label": "market_dynamics_and_distribution", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "market_dynamics_and_distribution", "node_type": "data_concept", "definition": "Explores the strategies and performance of companies responsible for bringing movies to market, including their reach and timing of releases.", "related_attributes": ["Distributor", "Release Date", "US Gross", "Worldwide Gross"], "confidence": 0.85, "abstraction_level": 8, "activated": false, "layer": "concept", "node_id": "concept_market_dynamics_and_distribution"}}, {"id": "concept_creative_leadership_impact", "label": "creative_leadership_impact", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "creative_leadership_impact", "node_type": "data_concept", "definition": "Assesses the influence and track record of the director on a movie's artistic direction and potential commercial success.", "related_attributes": ["Director"], "confidence": 0.75, "abstraction_level": 6, "activated": false, "layer": "concept", "node_id": "concept_creative_leadership_impact"}}, {"id": "concept_film_runtime_characteristics", "label": "film_runtime_characteristics", "layer": "concept", "color": "#e74c3c", "description": "", "data": {"name": "film_runtime_characteristics", "node_type": "data_concept", "definition": "Focuses on the duration of a movie, which can be a factor in audience preference, production costs, and scheduling.", "related_attributes": ["Running Time min"], "confidence": 0.7, "abstraction_level": 5, "activated": false, "layer": "concept", "node_id": "concept_film_runtime_characteristics"}}], "edges": [{"source": "data_US_Gross", "target": "data_Worldwide_Gross", "type": "computed_from", "layer": "data", "color": "#9b59b6", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 1.0, "reasoning": "Worldwide Gross is the total global revenue, which includes the US Gross as a component. Therefore, Worldwide Gross is mathematically computed from US Gross (and international gross)."}}, {"source": "data_Production_Budget", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.9, "reasoning": "A larger production budget often allows for higher production quality, more extensive marketing campaigns, and the hiring of more prominent talent, all of which can attract a larger audience and lead to higher domestic box office revenue."}}, {"source": "data_Production_Budget", "target": "data_Worldwide_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.9, "reasoning": "Similar to US Gross, a substantial production budget contributes to a film's overall quality and marketing reach, directly impacting its global financial success."}}, {"source": "data_Rotten_Tomatoes_Rating", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.85, "reasoning": "A higher Rotten Tomatoes Rating indicates positive critical reception, which can generate positive buzz, influence audience perception, and encourage more people to see the movie in theaters, leading to higher domestic gross."}}, {"source": "data_IMDB_Rating", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.85, "reasoning": "A higher IMDB Rating reflects strong audience approval and positive word-of-mouth, which can drive further ticket sales and increase domestic box office revenue."}}, {"source": "data_US_Gross", "target": "data_US_DVD_Sales", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.9, "reasoning": "A movie's success at the domestic box office (US Gross) often creates significant demand and interest for its home entertainment release, leading to higher US DVD Sales."}}, {"source": "data_MPAA_Rating", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.8, "reasoning": "The MPAA rating determines the target audience. A more restrictive rating (e.g., R) limits the potential audience size, which can negatively impact domestic box office performance compared to a broader rating (e.g., PG)."}}, {"source": "data_Distributor", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.85, "reasoning": "The distributor's marketing power, release strategy, and theatrical reach significantly influence a movie's visibility and accessibility, directly impacting its domestic box office performance."}}, {"source": "data_Source", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.75, "reasoning": "Movies based on popular existing intellectual property (e.g., 'Based on Book/Short Story,' 'Remake') often come with a pre-existing fanbase, which can provide a significant boost to initial domestic box office revenue."}}, {"source": "data_Director", "target": "data_Production_Budget", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.8, "reasoning": "Renowned or successful directors often command larger production budgets due to their proven track record, artistic vision, and ability to attract talent and funding for their projects."}}, {"source": "data_Director", "target": "data_Rotten_Tomatoes_Rating", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.75, "reasoning": "A director's artistic vision, skill, and creative choices are primary factors in shaping the quality and critical reception of a film, as reflected in the Rotten Tomatoes Rating."}}, {"source": "data_Release_Date", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.8, "reasoning": "The timing of a movie's release (e.g., during a holiday season, a competitive summer blockbuster window, or a less crowded period) can significantly impact its domestic box office performance."}}, {"source": "data_Major_Genre", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.75, "reasoning": "Certain genres (e.g., action, superhero, family films) historically have broader audience appeal and higher commercial potential, influencing a movie's domestic box office performance."}}, {"source": "data_IMDB_Votes", "target": "data_US_Gross", "type": "causal_influence", "layer": "data", "color": "#e67e22", "metadata": {"strategy": "oneshot", "source": "llm_inference", "confidence": 0.75, "reasoning": "A high number of IMDB votes indicates significant audience engagement and interest in a movie, which often translates into higher box office performance due to strong word-of-mouth and popularity."}}, {"source": "concept_movie_profitability", "target": "data_US_Gross", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.95}, "dashed": true}, {"source": "concept_movie_profitability", "target": "data_Worldwide_Gross", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.95}, "dashed": true}, {"source": "concept_movie_profitability", "target": "data_US_DVD_Sales", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.95}, "dashed": true}, {"source": "concept_movie_profitability", "target": "data_Production_Budget", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.95}, "dashed": true}, {"source": "concept_audience_engagement_and_sentiment", "target": "data_IMDB_Rating", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_audience_engagement_and_sentiment", "target": "data_IMDB_Votes", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_critical_validation", "target": "data_Rotten_Tomatoes_Rating", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_content_demographics_and_style", "target": "data_Major_Genre", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_content_demographics_and_style", "target": "data_Creative_Type", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_content_demographics_and_style", "target": "data_Source", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_content_demographics_and_style", "target": "data_MPAA_Rating", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.9}, "dashed": true}, {"source": "concept_market_dynamics_and_distribution", "target": "data_Distributor", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.85}, "dashed": true}, {"source": "concept_market_dynamics_and_distribution", "target": "data_Release_Date", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.85}, "dashed": true}, {"source": "concept_market_dynamics_and_distribution", "target": "data_US_Gross", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.85}, "dashed": true}, {"source": "concept_market_dynamics_and_distribution", "target": "data_Worldwide_Gross", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.85}, "dashed": true}, {"source": "concept_creative_leadership_impact", "target": "data_Director", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.75}, "dashed": true}, {"source": "concept_film_runtime_characteristics", "target": "data_Running_Time_min", "type": "operationalized_by", "layer": "bridge", "color": "#34495e", "metadata": {"source": "concept_definition", "concept_confidence": 0.7}, "dashed": true}], "edge_types": ["causal_influence", "computed_from", "operationalized_by"]};
+
+        // SVG setup
+        const svg = d3.select("#graph");
+        const width = +svg.attr("width");
+        const height = +svg.attr("height");
+
+        const g = svg.append("g");
+
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Simulation
+        const simulation = d3.forceSimulation()
+            .force("link", d3.forceLink().id(d => d.id).distance(150))
+            .force("charge", d3.forceManyBody().strength(-400))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(30));
+
+        // State
+        let visibleLayers = {
+            'data': true,
+            'concept': true,
+            'question': true,
+            'bridge': true
+        };
+
+        // Initialize edge type filters
+        let visibleEdgeTypes = {};
+        graphData.edge_types.forEach(type => {
+            visibleEdgeTypes[type] = true;
+        });
+
+        // Generate edge type filters and legend
+        function initializeEdgeTypeControls() {
+            const filterContainer = document.getElementById('edge-type-filters');
+            const legendContainer = document.getElementById('edge-legend');
+
+            graphData.edge_types.forEach(type => {
+                // Create checkbox
+                const checkboxGroup = document.createElement('div');
+                checkboxGroup.className = 'checkbox-group';
+                checkboxGroup.innerHTML = `
+                    <input type="checkbox" id="edge-type-${type}" checked>
+                    <label for="edge-type-${type}">${type.replace(/_/g, ' ')}</label>
+                `;
+                filterContainer.appendChild(checkboxGroup);
+
+                // Add event listener
+                const checkbox = checkboxGroup.querySelector('input');
+                checkbox.addEventListener('change', (e) => {
+                    visibleEdgeTypes[type] = e.target.checked;
+                    updateGraph();
+                });
+
+                // Create legend item
+                const edgeColor = graphData.edges.find(e => e.type === type)?.color || '#999';
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                legendItem.innerHTML = `
+                    <span class="legend-color" style="background-color: ${edgeColor}"></span>
+                    ${type.replace(/_/g, ' ')}
+                `;
+                legendContainer.appendChild(legendItem);
+            });
+        }
+
+        function toggleAllEdgeTypes(checked) {
+            graphData.edge_types.forEach(type => {
+                visibleEdgeTypes[type] = checked;
+                document.getElementById(`edge-type-${type}`).checked = checked;
+            });
+            updateGraph();
+        }
+
+        // Initialize
+        function updateGraph() {
+            // Filter nodes and edges
+            const visibleNodes = graphData.nodes.filter(n => visibleLayers[n.layer]);
+            const visibleNodeIds = new Set(visibleNodes.map(n => n.id));
+
+            const visibleEdges = graphData.edges.filter(e =>
+                visibleNodeIds.has(e.source.id || e.source) &&
+                visibleNodeIds.has(e.target.id || e.target) &&
+                (e.layer !== 'bridge' || visibleLayers.bridge) &&
+                visibleEdgeTypes[e.type]
+            );
+
+            // Update stats
+            updateStats(visibleNodes, visibleEdges);
+
+            // Clear
+            g.selectAll("*").remove();
+
+            // Add arrow markers
+            const defs = g.append("defs");
+            defs.selectAll("marker")
+                .data(["arrow"])
+                .enter().append("marker")
+                .attr("id", d => d)
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 20)
+                .attr("refY", 0)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#999");
+
+            // Create links
+            const link = g.append("g")
+                .selectAll("line")
+                .data(visibleEdges)
+                .enter().append("line")
+                .attr("stroke", d => d.color)
+                .attr("stroke-width", 2)
+                .attr("stroke-dasharray", d => d.dashed ? "5,5" : "0")
+                .attr("marker-end", "url(#arrow)")
+                .style("cursor", "pointer")
+                .on("click", showEdgeDetails)
+                .on("mouseover", function(event, d) {
+                    d3.select(this).attr("stroke-width", 4);
+                })
+                .on("mouseout", function(event, d) {
+                    d3.select(this).attr("stroke-width", 2);
+                });
+
+            // Create nodes
+            const node = g.append("g")
+                .selectAll("circle")
+                .data(visibleNodes)
+                .enter().append("circle")
+                .attr("r", 10)
+                .attr("fill", d => d.color)
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 2)
+                .call(drag(simulation))
+                .on("mouseover", showTooltip)
+                .on("mouseout", hideTooltip);
+
+            // Create node labels
+            const label = g.append("g")
+                .selectAll("text")
+                .data(visibleNodes)
+                .enter().append("text")
+                .text(d => d.label)
+                .attr("font-size", "10px")
+                .attr("dx", 12)
+                .attr("dy", 4);
+
+            // Create edge labels (with improved positioning to reduce overlap)
+            const edgeLabel = g.append("g")
+                .selectAll("text")
+                .data(visibleEdges)
+                .enter().append("text")
+                .text(d => d.type.replace(/_/g, ' '))
+                .attr("class", "edge-label")
+                .attr("text-anchor", "middle")
+                .style("cursor", "pointer")
+                .on("click", showEdgeDetails);
+
+            // Update simulation
+            simulation.nodes(visibleNodes);
+            simulation.force("link").links(visibleEdges);
+            simulation.alpha(1).restart();
+
+            simulation.on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                node
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+
+                label
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y);
+
+                edgeLabel
+                    .attr("x", d => (d.source.x + d.target.x) / 2)
+                    .attr("y", d => (d.source.y + d.target.y) / 2);
+            });
+        }
+
+        function updateStats(nodes, edges) {
+            const stats = document.getElementById('stats');
+            const byLayer = {};
+
+            nodes.forEach(n => {
+                byLayer[n.layer] = (byLayer[n.layer] || 0) + 1;
+            });
+
+            stats.innerHTML = `<strong>Visible:</strong> ${nodes.length} nodes, ${edges.length} edges | ` +
+                `Data: ${byLayer.data || 0}, Concept: ${byLayer.concept || 0}, Question: ${byLayer.question || 0}`;
+        }
+
+        function showTooltip(event, d) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'block';
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.top = (event.pageY - 10) + 'px';
+            tooltip.innerHTML = `<strong>${d.label}</strong><br>Layer: ${d.layer}<br>${d.description.substring(0, 100)}`;
+        }
+
+        function hideTooltip() {
+            document.getElementById('tooltip').style.display = 'none';
+        }
+
+        function showEdgeDetails(event, d) {
+            event.stopPropagation();
+            const modal = document.getElementById('edge-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+
+            // Get source and target node names
+            const sourceNode = graphData.nodes.find(n => n.id === (d.source.id || d.source));
+            const targetNode = graphData.nodes.find(n => n.id === (d.target.id || d.target));
+
+            modalTitle.textContent = `Edge: ${d.type.replace(/_/g, ' ')}`;
+
+            let bodyHTML = `
+                <p><strong>From:</strong> ${sourceNode?.label || 'Unknown'}</p>
+                <p><strong>To:</strong> ${targetNode?.label || 'Unknown'}</p>
+                <p><strong>Type:</strong> ${d.type.replace(/_/g, ' ')}</p>
+                <p><strong>Layer:</strong> ${d.layer}</p>
+            `;
+
+            // Add metadata
+            if (d.metadata) {
+                if (d.metadata.confidence !== undefined) {
+                    bodyHTML += `<p><strong>Confidence:</strong> ${d.metadata.confidence}</p>`;
+                }
+                if (d.metadata.reasoning) {
+                    bodyHTML += `<p><strong>Reasoning:</strong></p><p style="background: #f5f5f5; padding: 10px; border-radius: 5px;">${d.metadata.reasoning}</p>`;
+                }
+                if (d.metadata.strategy) {
+                    bodyHTML += `<p><strong>Strategy:</strong> ${d.metadata.strategy}</p>`;
+                }
+            }
+
+            modalBody.innerHTML = bodyHTML;
+            modal.style.display = 'block';
+        }
+
+        function closeEdgeModal() {
+            document.getElementById('edge-modal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('edge-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+
+        // Event listeners
+        document.getElementById('layer-data').addEventListener('change', (e) => {
+            visibleLayers.data = e.target.checked;
+            updateGraph();
+        });
+
+        document.getElementById('layer-concept').addEventListener('change', (e) => {
+            visibleLayers.concept = e.target.checked;
+            updateGraph();
+        });
+
+        document.getElementById('layer-question').addEventListener('change', (e) => {
+            visibleLayers.question = e.target.checked;
+            updateGraph();
+        });
+
+        document.getElementById('layer-bridge').addEventListener('change', (e) => {
+            visibleLayers.bridge = e.target.checked;
+            updateGraph();
+        });
+
+        // Initialize edge type controls and legend
+        initializeEdgeTypeControls();
+
+        // Initial render
+        updateGraph();
+    </script>
+</body>
+</html>

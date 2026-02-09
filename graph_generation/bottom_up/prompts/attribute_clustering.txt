@@ -1,0 +1,28 @@
+You are analyzing attributes from a dataset. Your task is to group related attributes into semantic clusters.
+
+Attributes:
+{attributes}
+
+Create 3-7 meaningful clusters where each cluster contains attributes that:
+- Measure or describe related concepts
+- Would typically be analyzed together
+- Share a common analytical purpose
+
+Output JSON format:
+{{
+  "clusters": [
+    {{
+      "cluster_name": "Short descriptive name",
+      "attributes": ["attr1", "attr2", "attr3"],
+      "rationale": "Why these attributes belong together"
+    }},
+    ...
+  ]
+}}
+
+Requirements:
+- Cluster names should be analytical concepts (e.g., "Financial Metrics", "Quality Indicators")
+- Each attribute should appear in exactly one cluster
+- Rationale should be 1-2 sentences
+
+Output only valid JSON, no additional text.

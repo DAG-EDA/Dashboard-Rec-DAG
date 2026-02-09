@@ -1,0 +1,25 @@
+You are analyzing a dataset in the domain of: {domain_hint}
+
+Here are the attributes with their metadata:
+{attributes}
+
+For each attribute, generate a clear, concise, human-readable description (1-2 sentences) that explains what the attribute represents and how it might be used in analysis.
+
+Output JSON format:
+{{
+  "attributes": [
+    {{
+      "name": "attribute_name",
+      "description": "Clear description of what this attribute represents"
+    }},
+    ...
+  ]
+}}
+
+Requirements:
+- Be specific and concrete
+- Use domain-appropriate terminology
+- Mention units if applicable (e.g., "in USD", "as percentage")
+- Be consistent in style
+
+Output only valid JSON, no additional text.

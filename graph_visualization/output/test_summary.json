@@ -1,0 +1,517 @@
+{
+  "dataset_info": {
+    "name": "test_movies",
+    "n_rows": 3201,
+    "n_columns": 16,
+    "domain": "movies"
+  },
+  "attributes": [
+    {
+      "name": "Title",
+      "type": "text",
+      "role": "dimension",
+      "stats": {
+        "count": 3200,
+        "missing": 1,
+        "missing_pct": 0.00031240237425804435,
+        "n_unique": 3176,
+        "top_values": {
+          "Friday the 13th": 2,
+          "Dawn of the Dead": 2,
+          "20,000 Leagues Under the Sea": 2,
+          "Casino Royale": 2,
+          "Twilight": 2
+        }
+      },
+      "sample_values": [
+        "The Land Girls",
+        "First Love, Last Rites",
+        "I Married a Strange Person",
+        "Let's Talk About Sex",
+        "Slam"
+      ],
+      "description": "The official title of the movie, used to uniquely identify each film in the dataset. It can be used for searching specific movies or as a primary identifier."
+    },
+    {
+      "name": "US Gross",
+      "type": "numerical",
+      "role": "measure",
+      "stats": {
+        "count": 3194,
+        "missing": 7,
+        "missing_pct": 0.0021868166198063107,
+        "min": 0.0,
+        "max": 760167650.0,
+        "mean": 44002085.163744524,
+        "median": 22019465.5
+      },
+      "sample_values": [
+        146083.0,
+        10876.0,
+        203134.0,
+        373615.0,
+        1009819.0
+      ],
+      "description": "The total revenue generated from ticket sales in the United States, indicating a movie's domestic box office performance in USD. This measure can be used to assess financial success within the US market."
+    },
+    {
+      "name": "Worldwide Gross",
+      "type": "numerical",
+      "role": "identifier",
+      "stats": {
+        "count": 3194,
+        "missing": 7,
+        "missing_pct": 0.0021868166198063107,
+        "min": 0.0,
+        "max": 2767891499.0,
+        "mean": 85343400.14151534,
+        "median": 31168926.5
+      },
+      "sample_values": [
+        146083.0,
+        10876.0,
+        203134.0,
+        373615.0,
+        1087521.0
+      ],
+      "description": "The total revenue generated from ticket sales across the globe, representing a movie's overall box office performance in USD. It serves as a key indicator of a film's global financial success."
+    },
+    {
+      "name": "US DVD Sales",
+      "type": "numerical",
+      "role": "measure",
+      "stats": {
+        "count": 564,
+        "missing": 2637,
+        "missing_pct": 0.823805060918463,
+        "min": 618454.0,
+        "max": 352582053.0,
+        "mean": 34901546.81737588,
+        "median": 20331557.5
+      },
+      "sample_values": [
+        3479242.0,
+        10027926.0,
+        19339789.0,
+        18998388.0,
+        18740425.0
+      ],
+      "description": "The revenue generated from DVD sales within the United States in USD, reflecting a movie's performance in the home entertainment market. This attribute can be used to understand post-theatrical revenue streams, though it has many missing values."
+    },
+    {
+      "name": "Production Budget",
+      "type": "numerical",
+      "role": "measure",
+      "stats": {
+        "count": 3200,
+        "missing": 1,
+        "missing_pct": 0.00031240237425804435,
+        "min": 218.0,
+        "max": 300000000.0,
+        "mean": 31069171.4484375,
+        "median": 20000000.0
+      },
+      "sample_values": [
+        8000000.0,
+        300000.0,
+        250000.0,
+        300000.0,
+        1000000.0
+      ],
+      "description": "The total financial investment made in producing the movie in USD, including costs for filming, cast, and crew. It is crucial for calculating a movie's profitability when compared to its gross revenues."
+    },
+    {
+      "name": "Release Date",
+      "type": "text",
+      "role": "temporal",
+      "stats": {
+        "count": 3201,
+        "missing": 0,
+        "missing_pct": 0.0,
+        "n_unique": 1600,
+        "top_values": {
+          "Oct 11 2002": 9,
+          "Dec 31 1969": 8,
+          "Sep 16 2005": 8,
+          "Apr 28 2006": 8,
+          "Sep 23 2005": 7
+        }
+      },
+      "sample_values": [
+        "Jun 12 1998",
+        "Aug 07 1998",
+        "Aug 28 1998",
+        "Sep 11 1998",
+        "Oct 09 1998"
+      ],
+      "description": "The date on which the movie was officially released, useful for analyzing release patterns, seasonal performance, or historical trends over time."
+    },
+    {
+      "name": "MPAA Rating",
+      "type": "categorical",
+      "role": "dimension",
+      "stats": {
+        "count": 2596,
+        "missing": 605,
+        "missing_pct": 0.18900343642611683,
+        "n_unique": 7,
+        "top_values": {
+          "R": 1194,
+          "PG-13": 865,
+          "PG": 354,
+          "Not Rated": 94,
+          "G": 79
+        }
+      },
+      "sample_values": [
+        "R",
+        "R",
+        "R",
+        "R",
+        "R"
+      ],
+      "description": "The Motion Picture Association of America (MPAA) rating assigned to the movie, indicating its suitability for different age groups. This can be used to understand a film's target audience and its potential impact on box office performance."
+    },
+    {
+      "name": "Running Time min",
+      "type": "numerical",
+      "role": "temporal",
+      "stats": {
+        "count": 1209,
+        "missing": 1992,
+        "missing_pct": 0.6223055295220243,
+        "min": 46.0,
+        "max": 222.0,
+        "mean": 110.19354838709677,
+        "median": 107.0
+      },
+      "sample_values": [
+        104.0,
+        108.0,
+        136.0,
+        109.0,
+        95.0
+      ],
+      "description": "The total duration of the movie in minutes, providing insight into film length preferences or its relationship with genre and audience engagement. Note that this attribute has a significant number of missing values."
+    },
+    {
+      "name": "Distributor",
+      "type": "text",
+      "role": "dimension",
+      "stats": {
+        "count": 2969,
+        "missing": 232,
+        "missing_pct": 0.07247735082786629,
+        "n_unique": 174,
+        "top_values": {
+          "Warner Bros.": 318,
+          "Sony Pictures": 307,
+          "Paramount Pictures": 257,
+          "Universal": 254,
+          "Walt Disney Pictures": 232
+        }
+      },
+      "sample_values": [
+        "Gramercy",
+        "Strand",
+        "Lionsgate",
+        "Fine Line",
+        "Trimark"
+      ],
+      "description": "The company responsible for distributing the movie to theaters and other platforms, useful for analyzing market share, distributor performance, and industry trends."
+    },
+    {
+      "name": "Source",
+      "type": "categorical",
+      "role": "dimension",
+      "stats": {
+        "count": 2836,
+        "missing": 365,
+        "missing_pct": 0.11402686660418619,
+        "n_unique": 18,
+        "top_values": {
+          "Original Screenplay": 1536,
+          "Based on Book/Short Story": 657,
+          "Based on Real Life Events": 186,
+          "Remake": 126,
+          "Based on TV": 106
+        }
+      },
+      "sample_values": [
+        "Original Screenplay",
+        "Original Screenplay",
+        "Original Screenplay",
+        "Based on Short Film",
+        "Based on Play"
+      ],
+      "description": "The original material or inspiration for the movie's story, such as an 'Original Screenplay' or 'Based on Book/Short Story.' This helps in understanding creative origins and their potential influence on a film's development and reception."
+    },
+    {
+      "name": "Major Genre",
+      "type": "categorical",
+      "role": "dimension",
+      "stats": {
+        "count": 2926,
+        "missing": 275,
+        "missing_pct": 0.0859106529209622,
+        "n_unique": 12,
+        "top_values": {
+          "Drama": 789,
+          "Comedy": 675,
+          "Action": 420,
+          "Adventure": 274,
+          "Thriller/Suspense": 239
+        }
+      },
+      "sample_values": [
+        "Drama",
+        "Comedy",
+        "Comedy",
+        "Drama",
+        "Comedy"
+      ],
+      "description": "The primary categorical classification of the movie, such as 'Drama' or 'Comedy,' used to understand audience preferences and analyze performance across different film types."
+    },
+    {
+      "name": "Creative Type",
+      "type": "categorical",
+      "role": "dimension",
+      "stats": {
+        "count": 2755,
+        "missing": 446,
+        "missing_pct": 0.1393314589190878,
+        "n_unique": 9,
+        "top_values": {
+          "Contemporary Fiction": 1453,
+          "Historical Fiction": 350,
+          "Fantasy": 265,
+          "Science Fiction": 243,
+          "Dramatization": 204
+        }
+      },
+      "sample_values": [
+        "Contemporary Fiction",
+        "Contemporary Fiction",
+        "Science Fiction",
+        "Historical Fiction",
+        "Historical Fiction"
+      ],
+      "description": "Describes the creative style or narrative approach of the movie, like 'Contemporary Fiction' or 'Historical Fiction.' This attribute provides additional context beyond genre, helping to categorize films by their artistic and storytelling nature."
+    },
+    {
+      "name": "Director",
+      "type": "text",
+      "role": "dimension",
+      "stats": {
+        "count": 1870,
+        "missing": 1331,
+        "missing_pct": 0.41580756013745707,
+        "n_unique": 550,
+        "top_values": {
+          "Steven Spielberg": 23,
+          "Woody Allen": 16,
+          "Martin Scorsese": 15,
+          "Spike Lee": 15,
+          "Ridley Scott": 14
+        }
+      },
+      "sample_values": [
+        "Christopher Nolan",
+        "Roman Polanski",
+        "Richard Fleischer",
+        "Blake Edwards",
+        "Sidney Lumet"
+      ],
+      "description": "The individual responsible for directing the movie, allowing for analysis of a director's filmography, critical success, and impact on box office performance. This attribute has a high percentage of missing values."
+    },
+    {
+      "name": "Rotten Tomatoes Rating",
+      "type": "numerical",
+      "role": "measure",
+      "stats": {
+        "count": 2321,
+        "missing": 880,
+        "missing_pct": 0.27491408934707906,
+        "min": 1.0,
+        "max": 100.0,
+        "mean": 54.33692373976734,
+        "median": 55.0
+      },
+      "sample_values": [
+        13.0,
+        62.0,
+        25.0,
+        86.0,
+        81.0
+      ],
+      "description": "The aggregate critical rating for the movie from Rotten Tomatoes, expressed as a percentage (0-100), indicating overall critical reception. It can be used to gauge critical acclaim and its potential relationship with commercial success."
+    },
+    {
+      "name": "IMDB Rating",
+      "type": "numerical",
+      "role": "measure",
+      "stats": {
+        "count": 2988,
+        "missing": 213,
+        "missing_pct": 0.06654170571696345,
+        "min": 1.4,
+        "max": 9.2,
+        "mean": 6.283467202141901,
+        "median": 6.4
+      },
+      "sample_values": [
+        6.1,
+        6.9,
+        6.8,
+        3.4,
+        7.7
+      ],
+      "description": "The average user rating for the movie from IMDB, on a scale of 1 to 10, reflecting audience perception and popularity. This rating can be compared with critical reviews to understand differences in reception."
+    },
+    {
+      "name": "IMDB Votes",
+      "type": "numerical",
+      "role": "measure",
+      "stats": {
+        "count": 2988,
+        "missing": 213,
+        "missing_pct": 0.06654170571696345,
+        "min": 18.0,
+        "max": 519541.0,
+        "mean": 29908.64457831325,
+        "median": 15106.0
+      },
+      "sample_values": [
+        1071.0,
+        207.0,
+        865.0,
+        165.0,
+        15133.0
+      ],
+      "description": "The total number of votes cast by users on IMDB for a particular movie, indicating the level of audience engagement and the statistical reliability of its IMDB Rating."
+    }
+  ],
+  "attribute_clusters": [
+    {
+      "cluster_name": "Financial Performance",
+      "attributes": [
+        "US Gross",
+        "Worldwide Gross",
+        "US DVD Sales",
+        "Production Budget"
+      ],
+      "rationale": "These attributes quantify a movie's financial investment and various revenue streams, essential for assessing its economic success and profitability."
+    },
+    {
+      "cluster_name": "Core Movie Information",
+      "attributes": [
+        "Title",
+        "Release Date",
+        "Running Time min"
+      ],
+      "rationale": "This cluster groups fundamental identifying and descriptive details about the movie itself, crucial for basic cataloging, searching, and temporal analysis."
+    },
+    {
+      "cluster_name": "Audience & Critical Reception",
+      "attributes": [
+        "Rotten Tomatoes Rating",
+        "IMDB Rating",
+        "IMDB Votes"
+      ],
+      "rationale": "These attributes measure how a movie is perceived by both critics and the general audience, providing insights into its quality, popularity, and engagement levels."
+    },
+    {
+      "cluster_name": "Creative & Content Characteristics",
+      "attributes": [
+        "Major Genre",
+        "Creative Type",
+        "Source",
+        "MPAA Rating"
+      ],
+      "rationale": "This cluster describes the intrinsic creative elements of a film, including its genre, narrative style, origin, and suitability for different audiences."
+    },
+    {
+      "cluster_name": "Production & Distribution Entities",
+      "attributes": [
+        "Distributor",
+        "Director"
+      ],
+      "rationale": "These attributes identify the key individuals and companies responsible for the creation and market delivery of the movie, useful for analyzing industry roles and influence."
+    }
+  ],
+  "suggested_concepts": [
+    {
+      "name": "movie_profitability",
+      "definition": "The overall financial gain or loss generated by a movie, calculated by comparing its total revenues (theatrical and home entertainment) against its production costs.",
+      "related_attributes": [
+        "US Gross",
+        "Worldwide Gross",
+        "US DVD Sales",
+        "Production Budget"
+      ],
+      "confidence": 0.95,
+      "abstraction_level": 8
+    },
+    {
+      "name": "audience_engagement_and_sentiment",
+      "definition": "The degree to which a movie captures public interest and receives positive feedback from viewers, measured by user ratings and participation.",
+      "related_attributes": [
+        "IMDB Rating",
+        "IMDB Votes"
+      ],
+      "confidence": 0.9,
+      "abstraction_level": 7
+    },
+    {
+      "name": "critical_validation",
+      "definition": "The assessment of a movie's artistic and technical quality by professional critics, reflecting its standing within the film industry's critical discourse.",
+      "related_attributes": [
+        "Rotten Tomatoes Rating"
+      ],
+      "confidence": 0.9,
+      "abstraction_level": 7
+    },
+    {
+      "name": "content_demographics_and_style",
+      "definition": "Characterizes a movie based on its genre, narrative approach, original source material, and suitability for different age groups, influencing its target audience.",
+      "related_attributes": [
+        "Major Genre",
+        "Creative Type",
+        "Source",
+        "MPAA Rating"
+      ],
+      "confidence": 0.9,
+      "abstraction_level": 8
+    },
+    {
+      "name": "market_dynamics_and_distribution",
+      "definition": "Explores the strategies and performance of companies responsible for bringing movies to market, including their reach and timing of releases.",
+      "related_attributes": [
+        "Distributor",
+        "Release Date",
+        "US Gross",
+        "Worldwide Gross"
+      ],
+      "confidence": 0.85,
+      "abstraction_level": 8
+    },
+    {
+      "name": "creative_leadership_impact",
+      "definition": "Assesses the influence and track record of the director on a movie's artistic direction and potential commercial success.",
+      "related_attributes": [
+        "Director"
+      ],
+      "confidence": 0.75,
+      "abstraction_level": 6
+    },
+    {
+      "name": "film_runtime_characteristics",
+      "definition": "Focuses on the duration of a movie, which can be a factor in audience preference, production costs, and scheduling.",
+      "related_attributes": [
+        "Running Time min"
+      ],
+      "confidence": 0.7,
+      "abstraction_level": 5
+    }
+  ]
+}

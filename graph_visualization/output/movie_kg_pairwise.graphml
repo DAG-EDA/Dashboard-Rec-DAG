@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <graph id="KG" edgedefault="directed">
+    <node id="data_Title">
+      <data key="layer">data</data>
+      <data key="name">Title</data>
+    </node>
+    <node id="data_US_Gross">
+      <data key="layer">data</data>
+      <data key="name">US Gross</data>
+    </node>
+    <node id="data_Worldwide_Gross">
+      <data key="layer">data</data>
+      <data key="name">Worldwide Gross</data>
+    </node>
+    <node id="data_US_DVD_Sales">
+      <data key="layer">data</data>
+      <data key="name">US DVD Sales</data>
+    </node>
+    <node id="data_Production_Budget">
+      <data key="layer">data</data>
+      <data key="name">Production Budget</data>
+    </node>
+    <node id="data_Release_Date">
+      <data key="layer">data</data>
+      <data key="name">Release Date</data>
+    </node>
+    <node id="data_MPAA_Rating">
+      <data key="layer">data</data>
+      <data key="name">MPAA Rating</data>
+    </node>
+    <node id="data_Running_Time_min">
+      <data key="layer">data</data>
+      <data key="name">Running Time min</data>
+    </node>
+    <node id="data_Distributor">
+      <data key="layer">data</data>
+      <data key="name">Distributor</data>
+    </node>
+    <node id="data_Source">
+      <data key="layer">data</data>
+      <data key="name">Source</data>
+    </node>
+    <node id="data_Major_Genre">
+      <data key="layer">data</data>
+      <data key="name">Major Genre</data>
+    </node>
+    <node id="data_Creative_Type">
+      <data key="layer">data</data>
+      <data key="name">Creative Type</data>
+    </node>
+    <node id="data_Director">
+      <data key="layer">data</data>
+      <data key="name">Director</data>
+    </node>
+    <node id="data_Rotten_Tomatoes_Rating">
+      <data key="layer">data</data>
+      <data key="name">Rotten Tomatoes Rating</data>
+    </node>
+    <node id="data_IMDB_Rating">
+      <data key="layer">data</data>
+      <data key="name">IMDB Rating</data>
+    </node>
+    <node id="data_IMDB_Votes">
+      <data key="layer">data</data>
+      <data key="name">IMDB Votes</data>
+    </node>
+    <node id="concept_movie_profitability">
+      <data key="layer">concept</data>
+      <data key="name">movie_profitability</data>
+    </node>
+    <node id="concept_audience_engagement_and_sentiment">
+      <data key="layer">concept</data>
+      <data key="name">audience_engagement_and_sentiment</data>
+    </node>
+    <node id="concept_critical_validation">
+      <data key="layer">concept</data>
+      <data key="name">critical_validation</data>
+    </node>
+    <node id="concept_content_demographics_and_style">
+      <data key="layer">concept</data>
+      <data key="name">content_demographics_and_style</data>
+    </node>
+    <node id="concept_market_dynamics_and_distribution">
+      <data key="layer">concept</data>
+      <data key="name">market_dynamics_and_distribution</data>
+    </node>
+    <node id="concept_creative_leadership_impact">
+      <data key="layer">concept</data>
+      <data key="name">creative_leadership_impact</data>
+    </node>
+    <node id="concept_film_runtime_characteristics">
+      <data key="layer">concept</data>
+      <data key="name">film_runtime_characteristics</data>
+    </node>
+    <edge id="e0" source="data_US_Gross" target="data_Worldwide_Gross">
+      <data key="type">computed_from</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e1" source="data_US_Gross" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e2" source="data_Worldwide_Gross" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e3" source="data_Worldwide_Gross" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e4" source="data_US_DVD_Sales" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e5" source="data_Production_Budget" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e6" source="data_Production_Budget" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e7" source="data_Production_Budget" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e8" source="data_Production_Budget" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e9" source="data_Production_Budget" target="data_IMDB_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e10" source="data_Production_Budget" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e11" source="data_Release_Date" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e12" source="data_Release_Date" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e13" source="data_Release_Date" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e14" source="data_Release_Date" target="data_MPAA_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e15" source="data_Release_Date" target="data_Running_Time_min">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e16" source="data_Distributor" target="data_Release_Date">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e17" source="data_Source" target="data_Release_Date">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e18" source="data_Major_Genre" target="data_Release_Date">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e19" source="data_Release_Date" target="data_Creative_Type">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e20" source="data_Release_Date" target="data_Director">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e21" source="data_Release_Date" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e22" source="data_Release_Date" target="data_IMDB_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e23" source="data_Release_Date" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e24" source="data_MPAA_Rating" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e25" source="data_MPAA_Rating" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e26" source="data_MPAA_Rating" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e27" source="data_MPAA_Rating" target="data_Production_Budget">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e28" source="data_MPAA_Rating" target="data_Distributor">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e29" source="data_Source" target="data_MPAA_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e30" source="data_Major_Genre" target="data_MPAA_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e31" source="data_MPAA_Rating" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e32" source="data_MPAA_Rating" target="data_IMDB_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e33" source="data_MPAA_Rating" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e34" source="data_Running_Time_min" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e35" source="data_Running_Time_min" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e36" source="data_Running_Time_min" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e37" source="data_Running_Time_min" target="data_Production_Budget">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e38" source="data_Running_Time_min" target="data_MPAA_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e39" source="data_Running_Time_min" target="data_Distributor">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e40" source="data_Source" target="data_Running_Time_min">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e41" source="data_Major_Genre" target="data_Running_Time_min">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e42" source="data_Running_Time_min" target="data_Creative_Type">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e43" source="data_Director" target="data_Running_Time_min">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e44" source="data_Running_Time_min" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e45" source="data_Running_Time_min" target="data_IMDB_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e46" source="data_Distributor" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e47" source="data_Distributor" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e48" source="data_Distributor" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e49" source="data_Distributor" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e50" source="data_Source" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e51" source="data_Source" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e52" source="data_Source" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e53" source="data_Source" target="data_Production_Budget">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e54" source="data_Source" target="data_Distributor">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e55" source="data_Source" target="data_Major_Genre">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e56" source="data_Source" target="data_Creative_Type">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e57" source="data_Source" target="data_Director">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e58" source="data_Source" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e59" source="data_Source" target="data_IMDB_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e60" source="data_Source" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e61" source="data_Major_Genre" target="data_Title">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e62" source="data_Major_Genre" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e63" source="data_Major_Genre" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e64" source="data_Major_Genre" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e65" source="data_Major_Genre" target="data_Production_Budget">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e66" source="data_Major_Genre" target="data_Distributor">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e67" source="data_Major_Genre" target="data_Creative_Type">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e68" source="data_Major_Genre" target="data_Director">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e69" source="data_Major_Genre" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e70" source="data_Major_Genre" target="data_IMDB_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e71" source="data_Major_Genre" target="data_IMDB_Votes">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e72" source="data_Creative_Type" target="data_Title">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e73" source="data_Creative_Type" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e74" source="data_Creative_Type" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e75" source="data_Creative_Type" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e76" source="data_Creative_Type" target="data_Production_Budget">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e77" source="data_Director" target="data_Title">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e78" source="data_Director" target="data_US_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e79" source="data_Director" target="data_Worldwide_Gross">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e80" source="data_Director" target="data_US_DVD_Sales">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e81" source="data_Director" target="data_Production_Budget">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e82" source="data_Director" target="data_MPAA_Rating">
+      <data key="type">causal_influence</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e83" source="data_Rotten_Tomatoes_Rating" target="data_Distributor">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e84" source="data_Rotten_Tomatoes_Rating" target="data_Creative_Type">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e85" source="data_Rotten_Tomatoes_Rating" target="data_Director">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e86" source="data_Rotten_Tomatoes_Rating" target="data_IMDB_Rating">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e87" source="data_Rotten_Tomatoes_Rating" target="data_IMDB_Votes">
+      <data key="type">associated_with</data>
+      <data key="layer">data</data>
+    </edge>
+    <edge id="e88" source="concept_audience_engagement_and_sentiment" target="concept_movie_profitability">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e89" source="concept_market_dynamics_and_distribution" target="concept_movie_profitability">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e90" source="concept_content_demographics_and_style" target="concept_audience_engagement_and_sentiment">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e91" source="concept_content_demographics_and_style" target="concept_market_dynamics_and_distribution">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e92" source="concept_creative_leadership_impact" target="concept_content_demographics_and_style">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e93" source="concept_creative_leadership_impact" target="concept_critical_validation">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e94" source="concept_film_runtime_characteristics" target="concept_audience_engagement_and_sentiment">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e95" source="concept_film_runtime_characteristics" target="concept_market_dynamics_and_distribution">
+      <data key="type">prerequisite_for</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e96" source="concept_critical_validation" target="concept_audience_engagement_and_sentiment">
+      <data key="type">similar_to</data>
+      <data key="layer">concept</data>
+    </edge>
+    <edge id="e97" source="concept_movie_profitability" target="data_US_Gross">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e98" source="concept_movie_profitability" target="data_Worldwide_Gross">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e99" source="concept_movie_profitability" target="data_US_DVD_Sales">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e100" source="concept_movie_profitability" target="data_Production_Budget">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e101" source="concept_audience_engagement_and_sentiment" target="data_IMDB_Rating">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e102" source="concept_audience_engagement_and_sentiment" target="data_IMDB_Votes">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e103" source="concept_critical_validation" target="data_Rotten_Tomatoes_Rating">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e104" source="concept_content_demographics_and_style" target="data_Major_Genre">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e105" source="concept_content_demographics_and_style" target="data_Creative_Type">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e106" source="concept_content_demographics_and_style" target="data_Source">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e107" source="concept_content_demographics_and_style" target="data_MPAA_Rating">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e108" source="concept_market_dynamics_and_distribution" target="data_Distributor">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e109" source="concept_market_dynamics_and_distribution" target="data_Release_Date">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e110" source="concept_market_dynamics_and_distribution" target="data_US_Gross">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e111" source="concept_market_dynamics_and_distribution" target="data_Worldwide_Gross">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e112" source="concept_creative_leadership_impact" target="data_Director">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+    <edge id="e113" source="concept_film_runtime_characteristics" target="data_Running_Time_min">
+      <data key="type">operationalized_by</data>
+      <data key="layer">bridge</data>
+    </edge>
+  </graph>
+</graphml>

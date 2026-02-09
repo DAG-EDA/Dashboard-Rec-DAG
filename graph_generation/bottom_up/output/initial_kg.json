@@ -1,0 +1,1019 @@
+{
+  "layers": {
+    "data": {
+      "nodes": {
+        "data_Title": {
+          "name": "Title",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "dimension",
+          "description": "This attribute represents the official title of the movie. It serves as a primary identifier for each film in the dataset.",
+          "stats": {
+            "count": 3200,
+            "missing": 1,
+            "missing_pct": 0.00031240237425804435,
+            "n_unique": 3176,
+            "top_values": {
+              "20,000 Leagues Under the Sea": 2,
+              "Alice in Wonderland": 2,
+              "The Alamo": 2,
+              "Around the World in 80 Days": 2,
+              "Ben-Hur": 2
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Title"
+        },
+        "data_US_Gross": {
+          "name": "US Gross",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "This attribute indicates the total revenue a movie generated from ticket sales in the United States. It's a key measure of a film's domestic box office success, expressed in USD.",
+          "stats": {
+            "count": 3194,
+            "missing": 7,
+            "missing_pct": 0.0021868166198063107,
+            "min": 0.0,
+            "max": 760167650.0,
+            "mean": 44002085.163744524,
+            "median": 22019465.5
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_US_Gross"
+        },
+        "data_Worldwide_Gross": {
+          "name": "Worldwide Gross",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "identifier",
+          "description": "This attribute represents the total global revenue a movie earned from ticket sales across all markets worldwide. It's a crucial metric for assessing a film's overall financial performance, expressed in USD.",
+          "stats": {
+            "count": 3194,
+            "missing": 7,
+            "missing_pct": 0.0021868166198063107,
+            "min": 0.0,
+            "max": 2767891499.0,
+            "mean": 85343400.14151534,
+            "median": 31168926.5
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Worldwide_Gross"
+        },
+        "data_US_DVD_Sales": {
+          "name": "US DVD Sales",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "This attribute records the revenue generated from DVD sales of the movie specifically within the United States. It provides insight into a film's post-theatrical home entertainment performance, expressed in USD.",
+          "stats": {
+            "count": 564,
+            "missing": 2637,
+            "missing_pct": 0.823805060918463,
+            "min": 618454.0,
+            "max": 352582053.0,
+            "mean": 34901546.81737588,
+            "median": 20331557.5
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_US_DVD_Sales"
+        },
+        "data_Production_Budget": {
+          "name": "Production Budget",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "This represents the total cost incurred to produce the movie, including filming, cast, crew, and post-production expenses. It's a fundamental measure of the investment made in a film, expressed in USD.",
+          "stats": {
+            "count": 3200,
+            "missing": 1,
+            "missing_pct": 0.00031240237425804435,
+            "min": 218.0,
+            "max": 300000000.0,
+            "mean": 31069171.4484375,
+            "median": 20000000.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Production_Budget"
+        },
+        "data_Release_Date": {
+          "name": "Release Date",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "temporal",
+          "description": "This attribute specifies the initial theatrical release date of the movie. It can be used to analyze trends over time or compare films released in similar periods.",
+          "stats": {
+            "count": 3201,
+            "missing": 0,
+            "missing_pct": 0.0,
+            "n_unique": 1600,
+            "top_values": {
+              "Oct 11 2002": 9,
+              "Sep 16 2005": 8,
+              "Dec 31 1969": 8,
+              "Apr 28 2006": 8,
+              "Sep 30 2005": 7
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Release_Date"
+        },
+        "data_MPAA_Rating": {
+          "name": "MPAA Rating",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "This indicates the Motion Picture Association of America (MPAA) rating assigned to the movie, which advises parents about the film's content and suitability for different age groups. It helps categorize films by their intended audience.",
+          "stats": {
+            "count": 2596,
+            "missing": 605,
+            "missing_pct": 0.18900343642611683,
+            "n_unique": 7,
+            "top_values": {
+              "R": 1194,
+              "PG-13": 865,
+              "PG": 354,
+              "Not Rated": 94,
+              "G": 79
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_MPAA_Rating"
+        },
+        "data_Running_Time_min": {
+          "name": "Running Time min",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "temporal",
+          "description": "This attribute denotes the total duration of the movie in minutes. It can be used to understand the typical length of films or analyze its correlation with other metrics.",
+          "stats": {
+            "count": 1209,
+            "missing": 1992,
+            "missing_pct": 0.6223055295220243,
+            "min": 46.0,
+            "max": 222.0,
+            "mean": 110.19354838709677,
+            "median": 107.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Running_Time_min"
+        },
+        "data_Distributor": {
+          "name": "Distributor",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "dimension",
+          "description": "This identifies the company responsible for marketing and distributing the movie to theaters and other platforms. It helps analyze the market share and performance of different distribution studios.",
+          "stats": {
+            "count": 2969,
+            "missing": 232,
+            "missing_pct": 0.07247735082786629,
+            "n_unique": 174,
+            "top_values": {
+              "Warner Bros.": 318,
+              "Sony Pictures": 307,
+              "Paramount Pictures": 257,
+              "Universal": 254,
+              "Walt Disney Pictures": 232
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Distributor"
+        },
+        "data_Source": {
+          "name": "Source",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "This attribute describes the origin of the movie's story or concept, such as an original screenplay, a book adaptation, or real-life events. It provides insight into the creative foundation of the film.",
+          "stats": {
+            "count": 2836,
+            "missing": 365,
+            "missing_pct": 0.11402686660418619,
+            "n_unique": 18,
+            "top_values": {
+              "Original Screenplay": 1536,
+              "Based on Book/Short Story": 657,
+              "Based on Real Life Events": 186,
+              "Remake": 126,
+              "Based on TV": 106
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Source"
+        },
+        "data_Major_Genre": {
+          "name": "Major Genre",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "This categorizes the primary genre of the movie, such as Drama, Comedy, or Action. It's essential for understanding audience preferences and thematic classifications of films.",
+          "stats": {
+            "count": 2926,
+            "missing": 275,
+            "missing_pct": 0.0859106529209622,
+            "n_unique": 12,
+            "top_values": {
+              "Drama": 789,
+              "Comedy": 675,
+              "Action": 420,
+              "Adventure": 274,
+              "Thriller/Suspense": 239
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Major_Genre"
+        },
+        "data_Creative_Type": {
+          "name": "Creative Type",
+          "node_type": "raw_variable",
+          "data_type": "categorical",
+          "role": "dimension",
+          "description": "This attribute describes the creative style or setting of the movie, like Contemporary Fiction, Historical Fiction, or Fantasy. It offers a deeper understanding of the film's narrative approach and world-building.",
+          "stats": {
+            "count": 2755,
+            "missing": 446,
+            "missing_pct": 0.1393314589190878,
+            "n_unique": 9,
+            "top_values": {
+              "Contemporary Fiction": 1453,
+              "Historical Fiction": 350,
+              "Fantasy": 265,
+              "Science Fiction": 243,
+              "Dramatization": 204
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Creative_Type"
+        },
+        "data_Director": {
+          "name": "Director",
+          "node_type": "raw_variable",
+          "data_type": "text",
+          "role": "dimension",
+          "description": "This identifies the primary director of the movie. It can be used to analyze the filmography and impact of individual filmmakers.",
+          "stats": {
+            "count": 1870,
+            "missing": 1331,
+            "missing_pct": 0.41580756013745707,
+            "n_unique": 550,
+            "top_values": {
+              "Steven Spielberg": 23,
+              "Woody Allen": 16,
+              "Martin Scorsese": 15,
+              "Spike Lee": 15,
+              "Ridley Scott": 14
+            }
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Director"
+        },
+        "data_Rotten_Tomatoes_Rating": {
+          "name": "Rotten Tomatoes Rating",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "This represents the Tomatometer score from Rotten Tomatoes, indicating the percentage of professional critics who gave the movie a positive review. It serves as a popular measure of critical reception, as a percentage.",
+          "stats": {
+            "count": 2321,
+            "missing": 880,
+            "missing_pct": 0.27491408934707906,
+            "min": 1.0,
+            "max": 100.0,
+            "mean": 54.33692373976734,
+            "median": 55.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_Rotten_Tomatoes_Rating"
+        },
+        "data_IMDB_Rating": {
+          "name": "IMDB Rating",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "This attribute provides the average user rating for the movie on IMDb, typically on a scale from 1 to 10. It reflects general audience sentiment and popularity.",
+          "stats": {
+            "count": 2988,
+            "missing": 213,
+            "missing_pct": 0.06654170571696345,
+            "min": 1.4,
+            "max": 9.2,
+            "mean": 6.283467202141901,
+            "median": 6.4
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_IMDB_Rating"
+        },
+        "data_IMDB_Votes": {
+          "name": "IMDB Votes",
+          "node_type": "raw_variable",
+          "data_type": "numerical",
+          "role": "measure",
+          "description": "This indicates the total number of user votes contributing to the IMDB Rating. It can be used as a proxy for the movie's popularity and the reliability of its IMDB Rating.",
+          "stats": {
+            "count": 2988,
+            "missing": 213,
+            "missing_pct": 0.06654170571696345,
+            "min": 18.0,
+            "max": 519541.0,
+            "mean": 29908.64457831325,
+            "median": 15106.0
+          },
+          "activated": false,
+          "layer": "data",
+          "node_id": "data_IMDB_Votes"
+        }
+      },
+      "edges": [
+        {
+          "source": "data_Production_Budget",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "A larger production budget often allows for higher production values, more extensive marketing, and bigger stars, which can attract a wider audience globally and lead to higher gross."
+          }
+        },
+        {
+          "source": "data_Production_Budget",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.8,
+            "reasoning": "Similar to worldwide gross, a higher production budget contributes to the quality of the film and marketing efforts, directly impacting domestic box office performance."
+          }
+        },
+        {
+          "source": "data_Rotten_Tomatoes_Rating",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.75,
+            "reasoning": "Positive critical reception (high Rotten Tomatoes score) often generates positive buzz and encourages more people to watch the movie, leading to higher global box office."
+          }
+        },
+        {
+          "source": "data_IMDB_Rating",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.75,
+            "reasoning": "Strong positive audience reception (high IMDB Rating) indicates good word-of-mouth, which can significantly boost ticket sales globally as more people are encouraged to see it."
+          }
+        },
+        {
+          "source": "data_US_Gross",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "computed_from",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "Worldwide Gross is the total global revenue, which by definition includes the US Gross as a component. (Worldwide Gross = US Gross + International Gross)."
+          }
+        },
+        {
+          "source": "data_US_Gross",
+          "target": "data_US_DVD_Sales",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Movies that perform well at the domestic box office often have higher demand for subsequent home entertainment releases like DVDs, as they've already established popularity."
+          }
+        },
+        {
+          "source": "data_IMDB_Votes",
+          "target": "data_IMDB_Rating",
+          "edge_type": "computed_from",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.95,
+            "reasoning": "The IMDB Rating is an average score calculated directly from the total number of individual user votes. The votes are the raw data from which the rating is derived."
+          }
+        },
+        {
+          "source": "data_Director",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Renowned or in-demand directors often command higher salaries and can attract larger investments for their projects, leading to higher production budgets."
+          }
+        },
+        {
+          "source": "data_MPAA_Rating",
+          "target": "data_US_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "A more restrictive MPAA rating (e.g., R) limits the potential audience size, which can negatively impact domestic box office revenue compared to a broader rating (e.g., PG-13)."
+          }
+        },
+        {
+          "source": "data_Release_Date",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Strategic release dates (e.g., during holidays, summer, or avoiding major competition) are chosen to maximize a film's box office potential globally."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.65,
+            "reasoning": "Major distributors often have the financial capacity and market leverage to fund or secure larger production budgets for the films they back."
+          }
+        },
+        {
+          "source": "data_Distributor",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.75,
+            "reasoning": "A powerful and well-resourced distributor can execute more effective marketing campaigns and secure wider theatrical releases, leading to higher global box office."
+          }
+        },
+        {
+          "source": "data_Major_Genre",
+          "target": "data_Production_Budget",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.7,
+            "reasoning": "Certain genres (e.g., sci-fi, action, fantasy) inherently require larger budgets for special effects, sets, and stunts compared to others (e.g., drama, independent films)."
+          }
+        },
+        {
+          "source": "data_Running_Time_min",
+          "target": "data_Worldwide_Gross",
+          "edge_type": "causal_influence",
+          "metadata": {
+            "strategy": "oneshot",
+            "source": "llm_inference",
+            "confidence": 0.6,
+            "reasoning": "Very long running times can limit the number of daily showtimes in theaters, potentially reducing overall ticket sales and thus worldwide gross."
+          }
+        }
+      ]
+    },
+    "concept": {
+      "nodes": {
+        "concept_MovieProfitability": {
+          "name": "MovieProfitability",
+          "node_type": "data_concept",
+          "definition": "The financial success of a movie, measured by its revenue streams relative to its production cost, indicating its overall economic viability.",
+          "related_attributes": [
+            "US Gross",
+            "Worldwide Gross",
+            "US DVD Sales",
+            "Production Budget"
+          ],
+          "confidence": 1.0,
+          "abstraction_level": 7,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_MovieProfitability"
+        },
+        "concept_AudienceEngagementAndReach": {
+          "name": "AudienceEngagementAndReach",
+          "node_type": "data_concept",
+          "definition": "The extent to which a movie captures public interest and viewership, reflecting its popularity and broad appeal across different markets.",
+          "related_attributes": [
+            "IMDB Votes",
+            "Worldwide Gross",
+            "US Gross",
+            "IMDB Rating"
+          ],
+          "confidence": 0.95,
+          "abstraction_level": 6,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_AudienceEngagementAndReach"
+        },
+        "concept_CriticalReception": {
+          "name": "CriticalReception",
+          "node_type": "data_concept",
+          "definition": "The assessment of a movie's quality and artistic merit by professional film critics, reflecting its standing within the industry.",
+          "related_attributes": [
+            "Rotten Tomatoes Rating"
+          ],
+          "confidence": 1.0,
+          "abstraction_level": 5,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_CriticalReception"
+        },
+        "concept_CreativeOriginAndNarrativeStyle": {
+          "name": "CreativeOriginAndNarrativeStyle",
+          "node_type": "data_concept",
+          "definition": "The foundational source of a movie's story and its overarching creative approach or genre classification, defining its artistic identity.",
+          "related_attributes": [
+            "Source",
+            "Major Genre",
+            "Creative Type"
+          ],
+          "confidence": 0.95,
+          "abstraction_level": 7,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_CreativeOriginAndNarrativeStyle"
+        },
+        "concept_DistributorPerformance": {
+          "name": "DistributorPerformance",
+          "node_type": "data_concept",
+          "definition": "The overall effectiveness of a distribution company in bringing movies to market and achieving financial and critical success across its portfolio.",
+          "related_attributes": [
+            "Distributor",
+            "US Gross",
+            "Worldwide Gross",
+            "Production Budget",
+            "Rotten Tomatoes Rating",
+            "IMDB Rating"
+          ],
+          "confidence": 0.95,
+          "abstraction_level": 7,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_DistributorPerformance"
+        },
+        "concept_FilmmakerInfluence": {
+          "name": "FilmmakerInfluence",
+          "node_type": "data_concept",
+          "definition": "The impact and consistent performance of individual directors on a movie's creative style, critical reception, and financial outcomes over their career.",
+          "related_attributes": [
+            "Director",
+            "Major Genre",
+            "Creative Type",
+            "Rotten Tomatoes Rating",
+            "IMDB Rating",
+            "Worldwide Gross",
+            "Production Budget"
+          ],
+          "confidence": 0.9,
+          "abstraction_level": 8,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_FilmmakerInfluence"
+        },
+        "concept_ContentSuitabilityAndDemographics": {
+          "name": "ContentSuitabilityAndDemographics",
+          "node_type": "data_concept",
+          "definition": "The classification of a movie's content for different age groups and its potential appeal to specific audience segments based on its thematic elements.",
+          "related_attributes": [
+            "MPAA Rating",
+            "Major Genre"
+          ],
+          "confidence": 0.9,
+          "abstraction_level": 6,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_ContentSuitabilityAndDemographics"
+        },
+        "concept_TemporalTrendsInMovieProduction": {
+          "name": "TemporalTrendsInMovieProduction",
+          "node_type": "data_concept",
+          "definition": "Analysis of how movie characteristics, financial performance, or audience/critical reception evolve over different release periods or historical contexts.",
+          "related_attributes": [
+            "Release Date",
+            "Running Time min",
+            "Production Budget",
+            "Worldwide Gross",
+            "Rotten Tomatoes Rating",
+            "IMDB Rating"
+          ],
+          "confidence": 0.95,
+          "abstraction_level": 8,
+          "activated": false,
+          "layer": "concept",
+          "node_id": "concept_TemporalTrendsInMovieProduction"
+        }
+      },
+      "edges": [
+        {
+          "source": "concept_AudienceEngagementAndReach",
+          "target": "concept_MovieProfitability",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "Understanding how audiences engage with a movie is a foundational step to comprehending its financial success, as engagement directly drives revenue streams.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_MovieProfitability",
+          "target": "concept_DistributorPerformance",
+          "edge_type": "requires",
+          "metadata": {
+            "reasoning": "A movie's financial success inherently depends on and necessitates effective strategies and execution by its distribution company.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_ContentSuitabilityAndDemographics",
+          "target": "concept_AudienceEngagementAndReach",
+          "edge_type": "part_of",
+          "metadata": {
+            "reasoning": "The alignment of a movie's content with specific demographics is a constituent element that contributes to its overall audience engagement and reach.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_CreativeOriginAndNarrativeStyle",
+          "target": "concept_FilmmakerInfluence",
+          "edge_type": "part_of",
+          "metadata": {
+            "reasoning": "The distinctive creative approach and storytelling style a filmmaker consistently employs are core components that define their overall impact and legacy.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_CriticalReception",
+          "target": "concept_FilmmakerInfluence",
+          "edge_type": "part_of",
+          "metadata": {
+            "reasoning": "The consistent critical assessment of a filmmaker's body of work is a significant factor contributing to and shaping their long-term influence within the industry.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_MovieProfitability",
+          "target": "concept_TemporalTrendsInMovieProduction",
+          "edge_type": "part_of",
+          "metadata": {
+            "reasoning": "Movie profitability is a specific characteristic whose historical evolution and patterns are analyzed as part of understanding broader temporal trends in movie production.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_CriticalReception",
+          "target": "concept_AudienceEngagementAndReach",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "Understanding how critics assess a movie's quality is often a necessary precursor to fully grasping the dynamics of its public interest and viewership.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        },
+        {
+          "source": "concept_CreativeOriginAndNarrativeStyle",
+          "target": "concept_ContentSuitabilityAndDemographics",
+          "edge_type": "prerequisite_for",
+          "metadata": {
+            "reasoning": "The foundational story and artistic style of a movie must be established and understood before its content can be effectively classified for suitability and demographic appeal.",
+            "confidence": 0.5,
+            "source": "llm_inference"
+          }
+        }
+      ]
+    },
+    "question": {
+      "nodes": {},
+      "edges": []
+    }
+  },
+  "bridge_edges": [
+    {
+      "source": "concept_MovieProfitability",
+      "target": "data_US_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 1.0
+      }
+    },
+    {
+      "source": "concept_MovieProfitability",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 1.0
+      }
+    },
+    {
+      "source": "concept_MovieProfitability",
+      "target": "data_US_DVD_Sales",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 1.0
+      }
+    },
+    {
+      "source": "concept_MovieProfitability",
+      "target": "data_Production_Budget",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 1.0
+      }
+    },
+    {
+      "source": "concept_AudienceEngagementAndReach",
+      "target": "data_IMDB_Votes",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_AudienceEngagementAndReach",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_AudienceEngagementAndReach",
+      "target": "data_US_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_AudienceEngagementAndReach",
+      "target": "data_IMDB_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_CriticalReception",
+      "target": "data_Rotten_Tomatoes_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 1.0
+      }
+    },
+    {
+      "source": "concept_CreativeOriginAndNarrativeStyle",
+      "target": "data_Source",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_CreativeOriginAndNarrativeStyle",
+      "target": "data_Major_Genre",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_CreativeOriginAndNarrativeStyle",
+      "target": "data_Creative_Type",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_DistributorPerformance",
+      "target": "data_Distributor",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_DistributorPerformance",
+      "target": "data_US_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_DistributorPerformance",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_DistributorPerformance",
+      "target": "data_Production_Budget",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_DistributorPerformance",
+      "target": "data_Rotten_Tomatoes_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_DistributorPerformance",
+      "target": "data_IMDB_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_Director",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_Major_Genre",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_Creative_Type",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_Rotten_Tomatoes_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_IMDB_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_FilmmakerInfluence",
+      "target": "data_Production_Budget",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_ContentSuitabilityAndDemographics",
+      "target": "data_MPAA_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_ContentSuitabilityAndDemographics",
+      "target": "data_Major_Genre",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.9
+      }
+    },
+    {
+      "source": "concept_TemporalTrendsInMovieProduction",
+      "target": "data_Release_Date",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_TemporalTrendsInMovieProduction",
+      "target": "data_Running_Time_min",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_TemporalTrendsInMovieProduction",
+      "target": "data_Production_Budget",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_TemporalTrendsInMovieProduction",
+      "target": "data_Worldwide_Gross",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_TemporalTrendsInMovieProduction",
+      "target": "data_Rotten_Tomatoes_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    },
+    {
+      "source": "concept_TemporalTrendsInMovieProduction",
+      "target": "data_IMDB_Rating",
+      "edge_type": "operationalized_by",
+      "metadata": {
+        "source": "concept_definition",
+        "concept_confidence": 0.95
+      }
+    }
+  ],
+  "metadata": {}
+}

@@ -1,0 +1,8 @@
+google-genai
+python-dotenv
+pydantic>=2.0
+networkx
+matplotlib
+pyvis
+jinja2
+pandas

@@ -20,7 +20,7 @@ class ParameterState(str, Enum):
     '''
     parameter states supported by the grammar
     '''
-        
+
     UNDERSPECIFIED = "UNDERSPECIFIED"
     AMBIGUOUS = "AMBIGUOUS"
     PARTIAL = "PARTIAL"
@@ -30,7 +30,7 @@ class DataType(str, Enum):
     '''
     data types supported by the grammar
     '''
-        
+
     NUMERICAL = "NUMERICAL"
     CATEGORICAL = "CATEGORICAL"
 
@@ -66,7 +66,7 @@ class ParameterSpec(BaseModel):
     required: bool = True
 
     # constraints
-    
+
     # allowed data types
     allowed_types: List[DataType]
 
@@ -89,7 +89,7 @@ class IntentSignature(BaseModel):
     terminal_condition: boolean expr to evaluate if intent is terminal
     allow_auto_discovery: whether auto-discovery of parameters is allowed
     '''
-    
+
     intent_type: IntentType
     parameters: Dict[str, ParameterSpec]
     terminal_condition: str

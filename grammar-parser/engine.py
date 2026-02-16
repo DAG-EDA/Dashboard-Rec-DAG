@@ -11,7 +11,7 @@ class GrammarProcessor:
     '''
     def __init__(self, grammar: GrammarSpec):
         self.grammar = grammar
-    
+
     def validate_intent(self, intent: IntentNode) -> List[str]:
         '''
         validate intent against its grammar definition
@@ -79,21 +79,20 @@ class GrammarRuleEngine(KnowledgeEngine):
         self.grammar = grammar
         self.triggered_actions = []
 
-
-class ExplainEngine(KnowledgeEngine):
+class BaseIntentEngine(KnowledgeEngine):
     '''
-    reasoning engine for EXPLAIN intent built on top of experta's KnowledgeEngine
-    - manages the life cycle of a single EXPLAIN intent
-    - todo: extend to other intent types
+    reasoning engine for generic intent built on top of experta's KnowledgeEngine
+    - manages the life cycle of a single intent
+    - todo: subclass for specific intent types
 
     rules:
     - auto-discovery of predictors when outcome is grounded
         - if allow_auto_discovery
             - automatically discovers candidate predictors
             - grounds predictors when candidates are found
-        
+
     - terminal condition check
-        - evaluates whether EXPLAIN intent has reached terminal state
+        - evaluates whether intent has reached terminal state
         - if so, transition intent state to TERMINAL and halt engine
 
     - relationship suggestions
@@ -105,6 +104,21 @@ class ExplainEngine(KnowledgeEngine):
         self.intent = intent
         self.spec = intent_spec
 
+    def _build_ctx(self):
+        return {
+            name: param
+            for name, param in self.intent.parameters.items()
+        }
+
+    def check_terminal_common(self):
+        ctx = self._build_ctx()
+        if simple_eval(self.spec.terminal_condition, names=ctx):
+            print(f"-- {self.intent.intent_type} intent reached TERMINAL")
+            self.intent.state = IntentState.TERMINAL
+            self.halt()
+
+
+class ExplainEngine(BaseIntentEngine):
     # auto discovery
     @Rule(
         IntentFact(
@@ -122,19 +136,34 @@ class ExplainEngine(KnowledgeEngine):
     # terminal check
     @Rule(IntentFact(intent_type=IntentType.EXPLAIN))
     def check_terminal(self):
-        params = self.intent.parameters
+        self.check_terminal_common()
 
-        ctx = {
-            "outcome": params["outcome"],
-            "predictors": params["predictors"],
-            "auto_discover": self.spec.allow_auto_discovery
-        }
+class ExploreEngine(BaseIntentEngine):
+    @Rule(IntentFact(intent_type=IntentType.EXPLORE))
+    def terminal_check(self):
+        self.check_terminal_common()
 
-        if simple_eval(self.spec.terminal_condition, names=ctx):
-            print("-- EXPLAIN intent reached TERMINAL")
-            self.intent.state = IntentState.TERMINAL
-            self.halt()
+class DescribeEngine(BaseIntentEngine):
+    @Rule(IntentFact(intent_type=IntentType.DESCRIBE))
+    def terminal_check(self):
+        self.check_terminal_common()
 
+class PredictEngine(BaseIntentEngine):
+    @Rule(
+        IntentFact(intent_type=IntentType.PREDICT)
+    )
+    def terminal_check(self):
+        self.check_terminal_common()
+
+class CompareEngine(BaseIntentEngine):
+    @Rule(IntentFact(intent_type=IntentType.COMPARE))
+    def terminal_check(self):
+        self.check_terminal_common()
+
+class CompareOutcomesEngine(BaseIntentEngine):
+    @Rule(IntentFact(intent_type=IntentType.COMPARE_OUTCOMES))
+    def terminal_check(self):
+        self.check_terminal_common()
 
 def relationship_suggestions(self, intents: List[IntentNode]) -> List[dict]:
     suggestions = []
@@ -159,4 +188,19 @@ def relationship_suggestions(self, intents: List[IntentNode]) -> List[dict]:
 
     return suggestions
 
-    
+ENGINE_REGISTRY = {
+    IntentType.EXPLORE: ExploreEngine,
+    IntentType.EXPLAIN: ExplainEngine,
+    IntentType.DESCRIBE: DescribeEngine,
+    IntentType.PREDICT: PredictEngine,
+    IntentType.COMPARE: CompareEngine,
+    IntentType.COMPARE_OUTCOMES: CompareOutcomesEngine
+}
+
+
+def build_engine(intent: IntentNode, grammar: GrammarSpec):
+    spec = grammar.intents[intent.intent_type]
+    engine_cls = ENGINE_REGISTRY[intent.intent_type]
+    return engine_cls(intent, spec)
+
+

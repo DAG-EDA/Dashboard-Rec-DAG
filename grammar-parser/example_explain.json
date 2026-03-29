@@ -1,0 +1,116 @@
+{
+  "intents": {
+    "EXPLAIN": {
+      "intent_type": "EXPLAIN",
+      "parameters": {
+        "outcome": {
+          "name": "outcome",
+          "required": true,
+          "allowed_types": ["NUMERICAL"],
+          "role": "OUTCOME"
+        },
+        "predictors": {
+          "name": "predictors",
+          "required": false,
+          "allowed_types": ["NUMERICAL", "CATEGORICAL"],
+          "depends_on": "outcome",
+          "role": "PREDICTOR"
+        }
+      },
+      "terminal_condition": "outcome.state == 'GROUNDED' and (predictors.state == 'GROUNDED')",
+      "allow_auto_discovery": true
+    },
+
+    "COMPARE": {
+      "intent_type": "COMPARE",
+      "parameters": {
+        "variable": {
+          "name": "variable",
+          "required": true,
+          "allowed_types": ["NUMERICAL"]
+        },
+        "grouping_factor": {
+          "name": "grouping_factor",
+          "required": true,
+          "allowed_types": ["CATEGORICAL"],
+          "min_cardinality": 2,
+          "max_cardinality": 20,
+          "role": "GROUPING_FACTOR"
+        }
+      },
+      "terminal_condition": "variable.state == 'GROUNDED' and grouping_factor.state == 'GROUNDED'"
+    },
+
+    "DESCRIBE": {
+      "intent_type": "DESCRIBE",
+      "parameters": {
+        "variable": {
+          "name": "variable",
+          "required": true,
+          "allowed_types": ["NUMERICAL", "CATEGORICAL"]
+        }
+      },
+      "terminal_condition": "variable.state == 'GROUNDED'"
+    },
+
+    "EXPLORE": {
+      "intent_type": "EXPLORE",
+      "parameters": {
+        "topic": {
+          "name": "topic",
+          "required": true,
+          "allowed_types": []
+        }
+      },
+      "terminal_condition": "false"
+    }
+  },
+
+  "propagation_rules": [
+    {
+      "intent_type": "EXPLAIN",
+      "trigger": "outcome.state == 'GROUNDED'",
+      "action": "DISCOVER_PREDICTORS"
+    },
+    {
+      "intent_type": "COMPARE",
+      "trigger": "grouping_factor.state == 'GROUNDED' and grouping_factor.cardinality > 20",
+      "action": "SUGGEST_BINNING"
+    }
+  ],
+
+  "relationship_rules": [
+    {
+      "relationship_type": "DECOMPOSES_TO",
+      "source_intent": "EXPLORE",
+      "target_intent": "EXPLAIN",
+      "condition": "true",
+      "mandatory": true,
+      "description": "EXPLORE must decompose into one or more analytical intents."
+    },
+    {
+      "relationship_type": "REFINES_TO",
+      "source_intent": "EXPLAIN",
+      "target_intent": "COMPARE",
+      "condition": "predictor.is_categorical and predictor.feature_importance > 0.2",
+      "mandatory": false,
+      "description": "High-importance categorical predictor suggests direct comparison."
+    },
+    {
+      "relationship_type": "COMPOSES_TO",
+      "source_intent": "EXPLAIN",
+      "target_intent": "COMPARE_OUTCOMES",
+      "condition": "predictor_overlap(source, target) > 0.7",
+      "mandatory": false,
+      "description": "Similar predictors across analyses suggest outcome comparison."
+    },
+    {
+      "relationship_type": "CONTEXTUALIZES_WITH",
+      "source_intent": "EXPLAIN",
+      "target_intent": "DESCRIBE",
+      "condition": "outcome.distribution.is_skewed",
+      "mandatory": false,
+      "description": "Skewed outcome distribution benefits from descriptive context."
+    }
+  ]
+}
